@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0"> 
+<title>聊天系统</title>
+<link href="css/login.css" type="text/css" rel="stylesheet">
+</head>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	function mlogin() {
+		$.ajax({
+			type:"POST",
+			dataType:"json",
+			url:"user/login",
+			data:$("#form1").serialize(),
+			success:function (result) {
+            var code = result.code;
+            if(code==20000){
+                window.location.href = "chatMain.html?account="+result.data.account+"&name="+result.data.name;
+			}else{
+                alert(result.message)
+			}
+            },
+			error:function () {
+				alert("fail!")
+            }
+		});
+    }
+
+</script>
+<body>
+<div class="login">
+    <div class="message">Cayp聊天系统登录</div>
+    <div id="darkbannerwrap"></div>
+    <form id="form1" method="post">
+		<input id="account" name="account" placeholder="用户名" required="" type="text">
+		<hr class="hr15">
+		<input id="password" name="password" placeholder="密码" required="" type="password">
+		<hr class="hr15">
+		<input id="login" value="登录" style="width:100%;" type="button" onclick="mlogin()">
+		<hr class="hr20">
+
+	</form>
+
+	
+</div>
+
+<div class="copyright"> by Cayp</div>
+
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="ajax方式">
+</head>
+<form id="isUserF" method="post" onsubmit="return false" >
+    isUser:<input type="text" id="userId" name="userId"/><br/>
+    <input value="getf" name= "getF" type="submit" onclick="getFriend()"/>
+</form>
+<form id="toIdF"onsubmit="return false">
+    isId:<input type="text" id="toid",name="toid"/><br/>
+    <input value="initWs" name="initWs" type="submit" onclick="initChat()" />
+</form>
+<form  id="form1"onsubmit="return false">
+    text: <input type="text" id="text1" /><br />
+    <input type="submit" onclick="sendMessageBySocket()" />
+</form>
+<p>聊天:</p>
+<div id="message"></div>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-1.7.min.js"></script>
+<script type="text/javascript">
+    var websocket = null;
+    function initChat() {
+        var isUser = document.getElementById("userId").value;
+        var chatId = document.getElementById("toid").value;
+        //判断当前浏览器是否支持WebSocket
+        if ('WebSocket' in window) {
+            var socketUrl = "ws://localhost:10000/webSocket/"+isUser;
+            websocket = new WebSocket(socketUrl);
+
+        } else {
+            alert('Your browser Not support webSocket')
+            return;
+        }
+
+        //连接发生错误的回调方法
+        websocket.onerror = function () {
+            document.getElementById('message').innerHTML += "连接失败" + '<br/>';
+
+        };
+
+        //连接成功建立的回调方法
+        websocket.onopen = function (event) {
+            document.getElementById('message').innerHTML += "连接成功" + '<br/>';
+        };
+
+        //接收到消息的回调方法
+        websocket.onmessage = function (data) {
+            document.getElementById('message').innerHTML += data.data + '<br/>';
+        };
+
+        //连接关闭的回调方法
+        websocket.onclose = function () {
+            document.getElementById('message').innerHTML += "连接关闭" + '<br/>';
+            websocket.close();
+        };
+
+        //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+        window.onbeforeunload = function () {
+            websocket.close();
+        };
+        window.onbeforeunload = function(event) {
+            websocket.onclose =function(){};
+            websocket.close();
+        }
+    }
+
+    function sendMessageBySocket() {
+        var json = "{\"type\":\""+2+"\",\"fromid\":\""+document.getElementById("userId").value+"\",\"toid\":\""+document.getElementById("toid").value+"\",\"textone\":\""+document.getElementById("text1").value+"\"}";
+        websocket.send(json);
+    }
+
+    function load() {
+        var loc = location.href;
+        var n1 = loc.length;
+        var n2 = loc.indexOf("=");
+        var isUser = decodeURI(loc.substr(n2 + 1, n1 - n2));
+        alert("load"+isUser);
+    }
+    function getFriend() {
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "Home/user/getFriends" ,//url
+            data:$("#isUserF").serialize(),
+            success: function (result) {
+                if(result.code=="20000"){
+                    document.getElementById("toid").value = result.datalist[0];
+
+                }else{
+                    alert("fail");
+                }
+
+
+            },
+            error : function() {
+                alert("异常！");
+            }
+        });
+
+    }
+</script>
+
+</html>

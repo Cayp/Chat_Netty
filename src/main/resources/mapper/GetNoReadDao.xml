@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Dao.GetNoReadDao">
+    <update id="setUnRead">
+        INSERT INTO noreadme VALUES (#{toid},#{fromid},#{text},#{time});
+    </update>
+    <delete id="deleteUnRead">
+        DELETE FROM noreadme WHERE toid = #{toid};
+    </delete>
+    <select id="getNoRead" resultType="com.Entity.Noreadme">
+        SELECT * FROM noreadme WHERE toid = #{toid};
+    </select>
+    <select id="getUnReadAcc" resultType="java.lang.Integer">
+        SELECT fromid FROM noreadme WHERE toid = #{toid} group by fromid;
+    </select>
+</mapper>
