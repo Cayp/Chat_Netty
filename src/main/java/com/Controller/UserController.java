@@ -1,6 +1,7 @@
 package com.Controller;
 
 
+import com.Entity.Friend;
 import com.Entity.User;
 import com.Interceptor.MySessionListener;
 import com.Service.UserService;
@@ -35,7 +36,7 @@ public class UserController {
             return response.error("没有这账号!");
         } else {
             if (login.getPassword().equals(password)) {
-                session.setAttribute("userId",(Integer)login.getAccount());
+                session.setAttribute("userId", (Integer) login.getAccount());
                 return response.successWithData("登录成功", login);
             } else {
                 return response.error("登录失败");
@@ -54,35 +55,71 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/getFriends",method = RequestMethod.GET)
+    @RequestMapping(value = "/getFriends", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
-    public Response getFriends(HttpSession httpSession){
+    public Response getFriends(HttpSession httpSession) {
         Integer account = (Integer) httpSession.getAttribute("userId");
         List<User> userFriends = userService.getUserFriends(account);
-      return response.successWithDataList("获取好友列表成功",userFriends);
+        return response.successWithDataList("获取好友列表成功", userFriends);
     }
 
-    @RequestMapping(value = "online",method = RequestMethod.GET)
+    @RequestMapping(value = "online", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
-    public Response getOnlineNu(){
-        return response.successWithData("online",MySessionListener.getOnline());
+    public Response getOnlineNu() {
+        return response.successWithData("online", MySessionListener.getOnline());
     }
 
-    @RequestMapping(value = "/checklogin",method = RequestMethod.GET)
+    @RequestMapping(value = "/checklogin", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
-    public Response checklogin(HttpSession httpSession){
+    public Response checklogin(HttpSession httpSession) {
         Integer userId = (Integer) httpSession.getAttribute("userId");
-        if (userId==null){
+        if (userId == null) {
             return response.error("haven't login");
-        }else{
+        } else {
             return response.success("ok");
         }
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
-    public Response logout(HttpSession httpSession){
+    public Response logout(HttpSession httpSession) {
         httpSession.invalidate();
         return response.success("success");
     }
+
+    @RequestMapping(value = "/addFriend", method = RequestMethod.GET)
+    @SuppressWarnings("unchecked")
+    public Response addFriend(HttpSession httpSession, String id) {
+        Integer userId = (Integer) httpSession.getAttribute("userId");
+        int toid = Integer.parseInt(id);
+        if(toid==userId){
+            return response.error("不能添加自己!");
+        }
+        User login = userService.login(toid);
+        if (login == null) {
+            return response.error("没有该用户");
+        } else {
+            Friend i = userService.checkFriend(userId, toid);
+            if (i !=null) {
+                return response.error("已添加该好友");
+            } else {
+                userService.addFriend(toid,userId);
+                return response.successWithData("添加好友成功!",login);
+            }
+        }
+    }
+    @RequestMapping(value = "/deleteFriend", method = RequestMethod.GET)
+    @SuppressWarnings("unchecked")
+    public Response deleteFriend(HttpSession httpSession, String id) {
+        Integer userId = (Integer) httpSession.getAttribute("userId");
+        int toid = Integer.parseInt(id);
+        int i = userService.deleteFriend(userId, toid);
+        if(i==1){
+            return response.success("删除成功！");
+        }else{
+            return response.error("fail");
+        }
+
+    }
+
 }

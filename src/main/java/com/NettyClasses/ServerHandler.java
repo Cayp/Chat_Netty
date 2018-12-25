@@ -56,7 +56,6 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         if (msg instanceof CloseWebSocketFrame) {
             ChannelMessage.removeChannel(ctx.channel());
             handshaker.close(ctx.channel(), (CloseWebSocketFrame) msg.retain());
-
             return;
         }
 
@@ -78,6 +77,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         jsonObject.put("time",new Date());
         String toid = jsonObject.get("toid").toString();
         String type = jsonObject.get("type").toString();
+        String fromid = jsonObject.get("fromid").toString();
         System.out.println(requset);
         Channel channel = ChannelMessage.getChannel(toid);
         //判断是否是群聊
@@ -87,16 +87,22 @@ public class ServerHandler extends SimpleChannelInboundHandler {
                 if (unReadService == null) {
                     unReadService = SpringUtil.getBean(UnReadServiceImp.class);
                 }
-                String fromid = jsonObject.get("fromid").toString();
                 unReadService.setUnRead(Integer.parseInt(toid), Integer.parseInt(fromid), jsonObject.get("textone").toString(), (Date) jsonObject.get("time"));
 
             } else {
                 channel.writeAndFlush(new TextWebSocketFrame(requset));
             }
-        } else {
             //群聊处理逻辑
+        } else {
             ChannelGroup chatgroup = ChannelMessage.getChatgroup();
-            chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
+            if(ChannelMessage.checkInGroup(fromid)){
+                chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
+            }else{
+                //不是群聊中的成员返回处理
+                jsonObject.put("type","4");
+                ctx.channel().writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
+            }
+
 
         }
 

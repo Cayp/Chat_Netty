@@ -8,4 +8,5 @@ public interface GroupService {
     int deleteOne(int id);
     int addOne(int id);
     List<Integer> initGroup();
+    Integer getOne(int id);
 }

@@ -41,8 +41,8 @@
     <div class="container">
         <div class="left">
             <div class="top">
-                <input type="text" placeholder="Search" />
-                <a href="javascript:;" class="search"></a>
+                <input id="addfriend" type="text" placeholder="Search" />
+                <button onclick=addFriends()  style="position:relative;top:5px;left: 5px;height: 30px;width: 50px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">添加</button>
             </div>
             <ul id="people" class="people" style="height:500px;overflow-y:scroll;">
                 <li class="person" data-chat="person1">
@@ -57,7 +57,13 @@
 
         <div class="right1" >
             <div id="rightC" class="right" >
-                <div class="top"><span>To: <span class="name">公共聊天室</span></span></div>
+                <div class="top">
+                    <span>To: <span id="chatname" class="name">公共聊天室</span>
+                    </span>
+                    <button onclick=deleteFriend()   style="position:relative;top:-2px;left: 70px;height: 30px;width: 70px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">删除好友</button>
+                    <button onclick= "addGroup()"  style="position:relative;top:-2px;left: 75px;height: 30px;width: 70px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">邀请进群</button>
+                    <button onclick="deleteGroup()"   style="position:relative;top:-2px;left: 80px;height: 30px;width: 70px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">踢出群聊</button>
+                </div>
                 <div id="person1" class="chat" data-chat="person1">
                     </div>
                 </div>
@@ -90,6 +96,70 @@ function logout() {
         }
     })
 }
+
+
+
+function deleteFriend() {
+    var toid =  friends.list.querySelector(".active").getAttribute('data-chat');
+    if(toid=="person1"){
+        return
+    }
+    $.get("user/deleteFriend?id="+toid,
+    function (data) {
+        if(data.code==20000){
+            alert("删除好友成功")
+            document.querySelector('.chat[data-chat=person1]').classList.add('active-chat');
+            document.querySelector('.person[data-chat=person1]').classList.add('active');
+            document.querySelector('.chat[data-chat="'+toid+'"]').remove();
+            document.querySelector('.person[data-chat="'+toid+'"]').remove();
+            $("#chatname").text("公共聊天室");
+
+        }
+    })
+}
+function addGroup() {
+    var toid =  friends.list.querySelector(".active").getAttribute('data-chat');
+    if(toid=="person1"){
+        return
+    }
+    $.get("group/addOne?id="+toid,
+    function (data) {
+        alert(data.message);
+    })
+}
+function deleteGroup() {
+    var toid =  friends.list.querySelector(".active").getAttribute('data-chat');
+    if(toid=="person1"){
+        return
+    }
+    $.get("group/deleteOne?id="+toid,
+        function (data) {
+            alert(data.message);
+        })
+}
+   function addFriends() {
+        var toid = $("#addfriend").val();
+        if(toid==""){
+            alert("不能为空!");
+            return
+        }
+        $.get("user/addFriend?id="+toid ,
+            function (data) {
+                alert(data.message)
+                if(data.code==20000){
+                    $("#addfriend").val("");
+                    var toid = data.data.account;
+                    var name = data.data.name;
+                    document.getElementById("people").innerHTML += "<li class=\"person\" data-chat=\""+toid+"\"><span class=\'name\'>"+name+"</span><span  class=\"time\" style=\"color: #ff0000\"></span></li>";
+                    document.getElementById("rightC").innerHTML += "<div id=\""+toid+"\" class=\"chat\" data-chat=\""+toid+"\"></div>"
+                    initclick();
+                }
+            }
+        )
+
+  }
+
+
       function initChat() {
           var isUser = document.getElementById("account").text;
           //判断当前浏览器是否支持WebSocket
@@ -123,16 +193,26 @@ function logout() {
                  var text = dataz.textone;
                  document.getElementById(""+fromid).innerHTML += "<div class=\"bubble you\">"+text+"</div>"
 
-             }else{
+             }else if(dataz.type==2){
                 var name = dataz.name;
                 var text = dataz.textone;
                 if(name == document.getElementById("name").text){
                    return
                 }
-
                  document.getElementById("person1").innerHTML += "<div class=\"bubble you\">"+name+"："+text+"</div>"
-
+             }else if(dataz.type==4){
+                 alert("你不是群成员!");
+             }else if(dataz.type==8){
+                 document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:"+dataz.id+"上线</span></div>"
+             }else if(dataz.type==9){
+                 document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:"+dataz.id+"下线</span></div>"
+             }else if(dataz.type==6){
+                 document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:"+dataz
+                     .id+"被邀请进来</span></div>"
+             }else if(dataz.type==7){
+                 document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:"+dataz.id+"被踢出聊天室</span></div>"
              }
+
           };
 
           //连接关闭的回调方法
@@ -176,9 +256,7 @@ function logout() {
       }
 
   </script>
-<script type="text/javascript">
 
-</script>
 </body>
 
 </html>

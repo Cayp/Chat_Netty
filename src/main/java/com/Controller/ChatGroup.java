@@ -28,25 +28,34 @@ public class ChatGroup {
     private
     GroupService groupService;
 
-    @RequestMapping(value = "/deleteOne", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteOne", method = RequestMethod.GET)
     public Response deleteOne(int id) {
         int i = groupService.deleteOne(id);
-        ChannelMessage.removeFromGroup(Integer.toString(id));
-        if (i > 0) {
-            return response.success("删除成功");
+        boolean b = ChannelMessage.removeFromGroup(Integer.toString(id));
+        if (b && i > 0) {
+            return response.success("踢出成功");
         } else {
-            return response.error("删除失败");
+            if (i > 0) {
+                return response.success("踢出成功");
+            } else {
+                return response.error("踢人失败");
+            }
+
         }
     }
 
-    @RequestMapping(value = "/addOne", method = RequestMethod.POST)
+    @RequestMapping(value = "/addOne", method = RequestMethod.GET)
     public Response addOne(int id) {
-        int i = groupService.addOne(id);
-        ChannelMessage.addToGroup(Integer.toString(id));
-        if (i > 0) {
-            return response.success("添加成功");
+        Integer one = groupService.getOne(id);
+        if (one != null) {
+            return response.error("该用户已在群聊中!");
+        }
+        groupService.addOne(id);
+        boolean b = ChannelMessage.addToGroup(Integer.toString(id));
+        if (b) {
+            return response.success("邀请成功");
         } else {
-            return response.error("添加失败");
+            return response.error("邀请失败");
         }
     }
 

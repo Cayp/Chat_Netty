@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.Dao.GetUserInfoDao">
+    <insert id="addFriend">
+        INSERT INTO friend VALUES (#{toid},#{friendid});
+    </insert>
+    <delete id="deleteFriend">
+        DELETE FROM friend WHERE toid = #{toid} and friendid = #{friendid};
+    </delete>
     <select id="getUserInfo" resultType="com.Entity.User">
         SELECT * FROM user WHERE account = #{account};
     </select>
@@ -9,5 +15,8 @@
           </select>
     <select id="getFriends" resultType="com.Entity.User">
         SELECT account,name FROM user,friend WHERE toid=#{account} and friendid = user.account;
+    </select>
+    <select id="checkFriend" resultType="com.Entity.Friend">
+        SELECT * FROM friend WHERE toid = #{userid} and  friendid = #{toid};
     </select>
 </mapper>

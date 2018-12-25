@@ -33,4 +33,9 @@ public class GroupServiceImp implements GroupService {
     public List<Integer> initGroup() {
         return getGroupDao.getUsers();
     }
+
+    @Override
+    public Integer getOne(int id) {
+        return getGroupDao.getOne(id);
+    }
 }
