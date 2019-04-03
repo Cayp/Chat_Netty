@@ -31,11 +31,6 @@ public class ChannelMessage {
     public final static String OFFLINE = "9";
 
 
-
-
-
-
-
     public static boolean addChannel(Channel channel) {
         System.out.println("addChannel" + channel.id());
         return group.add(channel);
@@ -159,6 +154,7 @@ public class ChannelMessage {
     public static ChannelGroup getChatgroup() {
         return chatgroup;
     }
+
     private static String getGroupChatKey(ChannelId channelId){
         Set<Map.Entry<String, ChannelId>> entries = channelIds.entrySet();
         for (Map.Entry entry:entries) {

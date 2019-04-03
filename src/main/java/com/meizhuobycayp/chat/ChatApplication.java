@@ -8,6 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+
 /**
  * @author ljp
  */
@@ -17,7 +22,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("com.Dao")
 @SpringBootApplication
 public class ChatApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ChatApplication.class, args);
 		Server.bind(10000);

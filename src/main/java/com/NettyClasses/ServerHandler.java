@@ -70,11 +70,10 @@ public class ServerHandler extends SimpleChannelInboundHandler {
             throw new UnsupportedOperationException(String.format("%s frame type not support", msg.getClass().getName()));
 
         }
-
         //应答消息
         String requset = ((TextWebSocketFrame) msg).text();
         JSONObject jsonObject = JSONObject.parseObject(requset);
-        jsonObject.put("time",new Date());
+        jsonObject.put("time", new Date());
         String toid = jsonObject.get("toid").toString();
         String type = jsonObject.get("type").toString();
         String fromid = jsonObject.get("fromid").toString();
@@ -95,11 +94,11 @@ public class ServerHandler extends SimpleChannelInboundHandler {
             //群聊处理逻辑
         } else {
             ChannelGroup chatgroup = ChannelMessage.getChatgroup();
-            if(ChannelMessage.checkInGroup(fromid)){
+            if (ChannelMessage.checkInGroup(fromid)) {
                 chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
-            }else{
+            } else {
                 //不是群聊中的成员返回处理
-                jsonObject.put("type","4");
+                jsonObject.put("type", "4");
                 ctx.channel().writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
             }
 
