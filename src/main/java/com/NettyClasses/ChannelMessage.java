@@ -8,7 +8,11 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.net.Inet4Address;
+import java.net.InetSocketAddress;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -23,16 +27,17 @@ public class ChannelMessage {
     private static ChannelGroup chatgroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     private static ConcurrentHashMap<String, ChannelId> channelIds = new ConcurrentHashMap<>();
     private static ConcurrentHashMap<String, Integer> groupUsers = new ConcurrentHashMap<>();
+    private static Logger logger = LoggerFactory.getLogger(ChannelMessage.class);
     public final static String SINGLE_CHAT = "1";
     public final static String GROUP_CHAT = "2";
-    public final static String IN = "6";
-    public final static String OFF = "7";
-    public final static String ONLINE = "8";
-    public final static String OFFLINE = "9";
+    private final static String IN = "6";
+    private final static String OFF = "7";
+    private final static String ONLINE = "8";
+    private final static String OFFLINE = "9";
 
 
     public static boolean addChannel(Channel channel) {
-        System.out.println("addChannel" + channel.id());
+        logger.info("client from {}",channel.remoteAddress());
         return group.add(channel);
     }
 
@@ -144,11 +149,7 @@ public class ChannelMessage {
 
     public static boolean checkInGroup(String account) {
         Integer integer = groupUsers.get(account);
-        if (integer != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return integer != null;
     }
 
     public static ChannelGroup getChatgroup() {
