@@ -5,6 +5,7 @@ import com.Entity.Friend;
 import com.Entity.User;
 import com.Interceptor.MySessionListener;
 import com.Service.UserService;
+import com.Utils.HashStrUtil;
 import com.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -30,13 +35,21 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @SuppressWarnings("unchecked")
-    public Response login(int account, String password, HttpSession session) {
+    public Response login(int account, String password, HttpSession session, HttpServletResponse servletResponse) {
         User login = userService.login(account);
         if (login == null) {
             return response.error("没有这账号!");
         } else {
             if (login.getPassword().equals(password)) {
                 session.setAttribute("userId", (Integer) login.getAccount());
+                //写入验证字段,防止csrf攻击
+                int authorizationNum = (int) (Math.random()*10000000);
+                String authorization = HashStrUtil.hash(String.valueOf(authorizationNum), "MD5");
+                session.setAttribute("authorization",authorization);
+                Cookie cookie = new Cookie("authorization", authorization);
+                cookie.setPath("/");
+                cookie.setHttpOnly(false);
+                servletResponse.addCookie(cookie);
                 return response.successWithData("登录成功", login);
             } else {
                 return response.error("登录失败");

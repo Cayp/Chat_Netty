@@ -2,6 +2,7 @@ package com.Interceptor;
 
 import com.Utils.Response;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.tomcat.util.net.NioEndpoint;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +38,15 @@ public class LoginInterceptor implements HandlerInterceptor {
             }
             return false;
         } else {
-            return true;
+            //判断该http请求 head首部是否带有authorization和是否与服务器存的一致，一致则通过
+            String authorization = request.getHeader("authorization");
+            String authorizationSession = (String) session.getAttribute("authorization");
+            if (authorization != null && authorizationSession != null && authorization.equals(authorizationSession)) {
+                return true;
+            }else {
+                return false;
+            }
+
         }
 
     }
