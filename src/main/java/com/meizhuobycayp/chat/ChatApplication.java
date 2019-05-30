@@ -17,8 +17,7 @@ import java.nio.channels.SocketChannel;
  * @author ljp
  */
 
-@ComponentScan({"com.Controller","com.Service","com.Utils","com.Interceptor","com.NettyClasses"})
-@ServletComponentScan("com.Interceptor")
+@ComponentScan({"com.Controller","com.Service","com.Utils","com.Interceptor","com.NettyClasses","com.Config"})
 @MapperScan("com.Dao")
 @SpringBootApplication
 public class ChatApplication {
