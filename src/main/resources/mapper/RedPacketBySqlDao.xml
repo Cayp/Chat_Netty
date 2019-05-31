@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Dao.RedPacketBySqlDao">
+    <insert id="insertRedPacketDetail">
+        INSERT INTO redpacket_detail(redpacket_id,userid,money,time) VALUES
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.redPacketId},#{item.userId},#{item.money},#{item.time}
+        </foreach>
+    </insert>
+    <insert id="addRedPacketMessage">
+        INSERT INTO redpacket_table(redpacket_id,userid_pub,total_money,redpacket_type,size,time)
+        VALUES (#{redPacket.redPacketId},#{redPacket.userId},#{redPacket.total_money},#{redPacket.redPacket_type},#{redPacket.redPacket_size},#{redPacket.publish_time})
+    </insert>
+    <update id="addMoneyToUser">
+        UPDATE wallet AS w SET w.money = w.money + money where w.userId = userid;
+    </update>
+    <update id="deductRedPacketMoney">
+        UPDATE wallet as w SET w.money = w.money - money WHERE w.userId = userid and w.money >= money;
+    </update>
+</mapper>
