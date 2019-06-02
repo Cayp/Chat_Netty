@@ -6,10 +6,15 @@ import com.Entity.UserRedPacket;
 import com.Service.RedPacketBySqlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
 /**
  * 红包相关信息操作Service类
@@ -32,8 +37,22 @@ public class RedPacketBySqlServiceImpl implements RedPacketBySqlService {
         return redPacketBySqlDao.addMoneyToUser(userId, money);
     }
 
+
+    //异步插入Mysql
+    @Async
     @Override
-    public int insertRedPacketDetail(List<UserRedPacket> partlist) {
+    public int insertRedPacketDetail(Map<String, String> userRedPacketMap, long redPacketId) {
+        ArrayList<UserRedPacket> partlist = new ArrayList<>();
+        Set<Map.Entry<String, String>> entries = userRedPacketMap.entrySet();
+        entries.forEach(entry -> {
+            String value = entry.getValue();
+            String[] split = value.split("-");
+            String userid = entry.getKey();
+            String money = split[0];
+            String time = split[1];
+            UserRedPacket userRedPacket = new UserRedPacket(redPacketId, Integer.parseInt(userid), money, Long.valueOf(time), "1");
+            partlist.add(userRedPacket);
+        });
         return redPacketBySqlDao.insertRedPacketDetail(partlist);
     }
 

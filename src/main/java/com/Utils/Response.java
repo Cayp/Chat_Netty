@@ -13,6 +13,7 @@ public class Response<T> {
     private String message;
     private T data;
     private List<T> dataList;
+
     public Integer getCode() {
         return code;
     }
@@ -45,6 +46,7 @@ public class Response<T> {
     private void setDataList(List<T> dataList) {
         this.dataList = dataList;
     }
+
     @SuppressWarnings("unchecked")
     public Response notVisit(int code, String message) {
         GeneralResponseHolder.generalResponse.setCode(code);
@@ -53,28 +55,29 @@ public class Response<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public  Response error(String message) {
+    public Response error(String message) {
         GeneralResponseHolder.generalResponse.setCode(40000);
         GeneralResponseHolder.generalResponse.setMessage(message);
         return GeneralResponseHolder.generalResponse;
     }
 
     @SuppressWarnings("unchecked")
-    public  Response success(String message) {
+    public Response success(String message) {
         GeneralResponseHolder.generalResponse.setCode(20000);
         GeneralResponseHolder.generalResponse.setMessage(message);
         return GeneralResponseHolder.generalResponse;
     }
 
     @SuppressWarnings("unchecked")
-    public  Response successWithData(String message, T data) {
+    public Response successWithData(String message, T data) {
         DataResponseHolder.dataResponse.setCode(20000);
         DataResponseHolder.dataResponse.setMessage(message);
         DataResponseHolder.dataResponse.setData(data);
         return DataResponseHolder.dataResponse;
     }
+
     @SuppressWarnings("unchecked")
-    public  Response successWithDataList(String message, List<T> dataList) {
+    public Response successWithDataList(String message, List<T> dataList) {
         DataListResponseHolder.dataListResponse.setCode(20000);
         DataListResponseHolder.dataListResponse.setMessage(message);
         DataListResponseHolder.dataListResponse.setDataList(dataList);
@@ -82,20 +85,19 @@ public class Response<T> {
     }
 
 
-
-    private static class GeneralResponseHolder{
+    private static class GeneralResponseHolder {
         private static final Response generalResponse = new Response();
     }
 
-    private static class DataResponseHolder{
+    private static class DataResponseHolder {
         private static final Response dataResponse = new Response();
     }
 
-    private static class DataListResponseHolder{
+    private static class DataListResponseHolder {
         private static final Response dataListResponse = new Response();
     }
 
-    private static class ResponseHolder{
+    private static class ResponseHolder {
         private static final Response response = new Response();
     }
 }

@@ -4,6 +4,7 @@ import com.Entity.PubRedPacket;
 import com.Entity.UserRedPacket;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ljp
@@ -17,7 +18,7 @@ public interface RedPacketBySqlService {
     int addMoneyToUser( int userId,  double money);
 
     //将红包细节持久化到Mysql
-    int insertRedPacketDetail(List<UserRedPacket> partlist);
+    int insertRedPacketDetail(Map<String,String> userRedPacketMap,long redPacketId);
 
     //将红包信息持久化到Mysql
     int addRedPacketMessage( PubRedPacket redPacket);

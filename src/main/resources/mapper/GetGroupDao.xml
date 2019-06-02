@@ -10,7 +10,7 @@
     <select id="getUsers" resultType="Integer">
         SELECT userId FROM groupchat;
     </select>
-    <select id="getOne" resultType="java.lang.Integer">
+    <select id="getOne" resultType="Integer">
         SELECT * FROM groupchat WHERE userId = #{id};
     </select>
 </mapper>

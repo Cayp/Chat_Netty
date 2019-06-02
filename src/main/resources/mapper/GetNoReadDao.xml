@@ -7,10 +7,10 @@
     <delete id="deleteUnRead">
         DELETE FROM noreadme WHERE toid = #{toid};
     </delete>
-    <select id="getNoRead" resultType="com.Entity.Noreadme">
+    <select id="getNoRead" resultType="Noreadme">
         SELECT * FROM noreadme WHERE toid = #{toid};
     </select>
-    <select id="getUnReadAcc" resultType="java.lang.Integer">
+    <select id="getUnReadAcc" resultType="Integer">
         SELECT fromid FROM noreadme WHERE toid = #{toid} group by fromid;
     </select>
 </mapper>

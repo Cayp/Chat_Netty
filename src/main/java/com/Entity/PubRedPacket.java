@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class PubRedPacket implements Serializable {
     private static final long serialVersionUID = -7039240798592909745L;
     //红包id
-    public long redPackerId;
+    public long redPacketId;
     //发红包用户Id
     public int userId;
     //红包类型, average-均值 unaverage-拼手气
@@ -26,8 +26,8 @@ public class PubRedPacket implements Serializable {
     //发布红包时的时间戳
     public long publish_time;
 
-    public PubRedPacket(long redPackerId, int userId, int redPacket_type, int redPacket_size, double total_money, ArrayList<String> redPacket_part, long publish_time) {
-        this.redPackerId = redPackerId;
+    public PubRedPacket(long redPacketId, int userId, int redPacket_type, int redPacket_size, double total_money, ArrayList<String> redPacket_part, long publish_time) {
+        this.redPacketId = redPacketId;
         this.userId = userId;
         this.redPacket_type = redPacket_type;
         this.redPacket_size = redPacket_size;
@@ -40,8 +40,8 @@ public class PubRedPacket implements Serializable {
         return serialVersionUID;
     }
 
-    public long getRedPackerId() {
-        return redPackerId;
+    public long getRedPacketId() {
+        return redPacketId;
     }
 
     public int getUserId() {

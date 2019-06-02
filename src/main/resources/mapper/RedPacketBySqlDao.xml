@@ -12,9 +12,9 @@
         VALUES (#{redPacket.redPacketId},#{redPacket.userId},#{redPacket.total_money},#{redPacket.redPacket_type},#{redPacket.redPacket_size},#{redPacket.publish_time})
     </insert>
     <update id="addMoneyToUser">
-        UPDATE wallet AS w SET w.money = w.money + money where w.userId = userid;
+        UPDATE wallet AS w SET w.money = w.money + #{money} where w.userId = #{userId};
     </update>
     <update id="deductRedPacketMoney">
-        UPDATE wallet as w SET w.money = w.money - money WHERE w.userId = userid and w.money >= money;
+       UPDATE wallet AS w SET w.money = w.money - #{money} where w.userId = #{userId} and w.money >= #{money};
     </update>
 </mapper>
