@@ -9,11 +9,16 @@ public class Const {
     public static final int REDPACKET_AVERAGE = 0;
     public static final int REDPACKET_UNAVERAGE = 1;
     public static final int REDPACKET_MAXSIZE = 100;
+    public static final String DLEXCHANE = "DEADLETTER_EXCHANGE";
+    public static final String DLQUEUEROUTINGKEY = "DIRECT_ROUTING_KEY";
+    //设置过期红包时间 单位为毫秒
+    public static final String REDPACKETOUTTIME = "3600000";
     public static final String SUCCESS = "200";
     public static final String EXIST = "0";
     public static final String LOOT = "100";
     public static final String LASTONE = "300";
     public static final String HREDPACKEKEY = "HRedPacket_";
+    public static final String LREDPACKETKEY = "RedPacket_";
     public static final String PUBLISHREDPACKET_LUA =
             "local listkey = 'RedPacket_'..KEYS[1];\n" +
                     "for i = 1,#ARGV do " +
