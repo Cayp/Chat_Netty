@@ -6,6 +6,11 @@ import com.Service.RedPacketByRedisService;
 import com.Service.RedPacketBySqlService;
 import com.Utils.Const;
 import com.Utils.CutPointUtils;
+import com.Utils.StringObjectUtils;
+import com.alibaba.fastjson.JSONObject;
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.core.MessageProperties;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -37,6 +42,16 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
     @Resource(name = "redPacketBySqlServiceImpl")
     RedPacketBySqlService redPacketBySqlService;
 
+    @Resource
+    RabbitTemplate rabbitTemplate;
+
+    private static MessagePostProcessor messagePostProcessor = message -> {
+        MessageProperties messageProperties = message.getMessageProperties();
+        messageProperties.setContentEncoding("utf-8");
+        messageProperties.setExpiration(Const.REDPACKETOUTTIME);
+        return message;
+    };
+
     /**
      * 发布红包
      *
@@ -60,18 +75,26 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
             //获取存在redis的记录红包数的变量作为id并自增
             redPacketId = jedis.incr("RedPacketId");
             redPacketIdL.add(Long.toString(redPacketId));
+            redPacketIdL.add(Integer.toString(size));
             //判断是否有脚本的sha记录和在redis上脚本是否还存活
             if (sha1_Pub == null || jedis.scriptExists(sha1_Pub)) {
                 sha1_Pub = jedis.scriptLoad(Const.PUBLISHREDPACKET_LUA);
             }
             //redis返回的结果
             respo = (String) (jedis.evalsha(sha1_Pub, redPacketIdL, parts));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         } finally {
             jedis.close();
+
         }
         PubRedPacket pubRedPacket = new PubRedPacket(redPacketId, userId, redPacketType, size, money, parts, time);
         //保存红包信息进mysql
         redPacketBySqlService.addRedPacketMessage(pubRedPacket);
+        //保存红包时间信息进rabbitmq
+        String mqString = StringObjectUtils.ObjectToString(String.valueOf(userId), String.valueOf(redPacketId));
+        rabbitTemplate.convertAndSend(Const.DLEXCHANE, Const.DLQUEUEROUTINGKEY, mqString, messagePostProcessor);
         //成功响应码200
         if (respo != null && Const.SUCCESS.equals(respo)) {
             return pubRedPacket;
@@ -92,10 +115,10 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
         Jedis jedis = jedisPool.getResource();
         String respo;
         if (sha1_Get == null || jedis.scriptExists(sha1_Get)) {
-            sha1_Get  = jedis.scriptLoad(Const.GETREDPACKET_LUA);
+            sha1_Get = jedis.scriptLoad(Const.GETREDPACKET_LUA);
         }
         try {
-            respo = (String) jedis.evalsha(sha1_Get, 2, Long.toString(redPacketId),"", Integer.toString(userId), Long.toString(time));
+            respo = (String) jedis.evalsha(sha1_Get, 2, Long.toString(redPacketId), "", Integer.toString(userId), Long.toString(time));
         } finally {
             jedis.close();
         }
@@ -103,30 +126,44 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
         UserRedPacket userRedPacket;
         //解析返回的结果,以 ‘-’作切割,前面是响应码,后面是金额,除错误响应码外:0,1
         switch (split[0]) {
-            //已抢过的情况
+            //已抢过的情况  0
             case Const.EXIST:
                 userRedPacket = new UserRedPacket(redPacketId, userId, "0", time, Const.EXIST);
                 break;
-            //当抢到最后一个红包,将红包已消费的情况持久化到Mysql
+            //当抢到最后一个红包,将红包已消费的情况持久化到Mysql 300
             case Const.LASTONE:
                 userRedPacket = new UserRedPacket(redPacketId, userId, split[1], time, Const.LASTONE);
-                jedis = jedisPool.getResource();
-                Map<String, String> map = jedis.hgetAll(Const.HREDPACKEKEY + redPacketId);
-                jedis.close();
-                redPacketBySqlService.insertRedPacketDetail(map, redPacketId);
+                persistToSql(redPacketId);
                 break;
-            //没抢到
+            //没抢到 100
             case Const.LOOT:
                 userRedPacket = new UserRedPacket(redPacketId, userId, "0", time, Const.LOOT);
                 break;
-            //抢到成功
+            //抢到成功 200
             case Const.SUCCESS:
-                userRedPacket = new UserRedPacket(redPacketId, userId, split[1], time, Const.SUCCESS);
-                break;
             default:
                 userRedPacket = new UserRedPacket(redPacketId, userId, split[1], time, Const.SUCCESS);
                 break;
         }
+
         return userRedPacket;
     }
+
+    /**
+     * 将redis的已抢红包对应信息持久化到mysql
+     *
+     * @param redPacketId
+     */
+    @Override
+    public void persistToSql(long redPacketId) {
+        Jedis jedis = jedisPool.getResource();
+        jedis.del(Const.LREDPACKETKEY + redPacketId);
+        Map<String, String> map = jedis.hgetAll(Const.HREDPACKEKEY + redPacketId);
+        //删除hash红包记录队列
+        jedis.del(Const.HREDPACKEKEY + redPacketId);
+        jedis.close();
+        redPacketBySqlService.insertRedPacketDetail(map, redPacketId);
+    }
+
+
 }
