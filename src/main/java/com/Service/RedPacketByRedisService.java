@@ -8,6 +8,6 @@ public interface RedPacketByRedisService {
 
     UserRedPacket getRedPacket(long redPacketId, int userId);
 
-    void persistToSql(long redPacketId);
+    void persistToSql(long redPacketId,int userid);
 
 }

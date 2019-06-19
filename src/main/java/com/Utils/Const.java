@@ -12,7 +12,7 @@ public class Const {
     public static final String DLEXCHANE = "DEADLETTER_EXCHANGE";
     public static final String DLQUEUEROUTINGKEY = "DIRECT_ROUTING_KEY";
     //设置过期红包时间 单位为毫秒
-    public static final String REDPACKETOUTTIME = "3600000";
+    public static final String REDPACKETOUTTIME = "60000";
     public static final String SUCCESS = "200";
     public static final String EXIST = "0";
     public static final String LOOT = "100";
@@ -20,16 +20,18 @@ public class Const {
     public static final String HREDPACKEKEY = "HRedPacket_";
     public static final String LREDPACKETKEY = "RedPacket_";
     public static final String PUBLISHREDPACKET_LUA =
-            "local listkey = 'RedPacket_'..KEYS[1];\n" +
+                    "local listkey = 'RedPacket_'..KEYS[1];\n" +
                     "local redbacketHkey = 'HRedPacket_'..KEYS[1];\n" +
                     "local size = KEYS[2]" +
+                    "local money = KEYS[3]"+
                     "for i = 1,#ARGV do " +
                     "redis.call('rpush',listkey,ARGV[i]); " +
                     "end\n" +
                     "redis.call('hset',redbacketHkey,'redpacketsize',size);\n"+
+                    "redis.call('hset',redbacketHkey,'money',money);\n"+
                     "return '200'";
     public static final String GETREDPACKET_LUA =
-            "local listkey = 'RedPacket_'..KEYS[1];\n" +
+                    "local listkey = 'RedPacket_'..KEYS[1];\n" +
                     "local redbacetHkey = 'HRedPacket_'..KEYS[1];\n" +
                     "local userid = ARGV[1];\n" +
                     "local time = ARGV[2];\n" +

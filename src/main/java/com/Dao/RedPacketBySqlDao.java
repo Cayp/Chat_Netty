@@ -19,7 +19,7 @@ public  interface RedPacketBySqlDao {
     int addMoneyToUser(@Param("userId") int userId, @Param("money") double money);
 
     //将红包细节持久化到Mysql
-    int insertRedPacketDetail(@Param("partlist") List<UserRedPacket> partlist);
+    int insertRedPacketDetail(@Param("list") List<UserRedPacket> partlist,double moneysum,long redpacketid);
 
     //将红包信息持久化到Mysql
     int addRedPacketMessage(@Param("redPacket") PubRedPacket redPacket);

@@ -44,16 +44,19 @@ public class RedPacketBySqlServiceImpl implements RedPacketBySqlService {
     public int insertRedPacketDetail(Map<String, String> userRedPacketMap, long redPacketId) {
         ArrayList<UserRedPacket> partlist = new ArrayList<>();
         Set<Map.Entry<String, String>> entries = userRedPacketMap.entrySet();
-        entries.forEach(entry -> {
+        //记录已抢红包的金额总数
+        double moneySum = 0.0;
+        for (Map.Entry<String, String> entry : entries) {
             String value = entry.getValue();
             String[] split = value.split("-");
             String userid = entry.getKey();
             String money = split[0];
             String time = split[1];
+            moneySum += Double.valueOf(money);
             UserRedPacket userRedPacket = new UserRedPacket(redPacketId, Integer.parseInt(userid), money, Long.valueOf(time), "1");
             partlist.add(userRedPacket);
-        });
-        return redPacketBySqlDao.insertRedPacketDetail(partlist);
+        }
+        return redPacketBySqlDao.insertRedPacketDetail(partlist,moneySum,redPacketId);
     }
 
     @Override

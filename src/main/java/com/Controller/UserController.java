@@ -41,7 +41,7 @@ public class UserController {
             return response.error("没有这账号!");
         } else {
             if (login.getPassword().equals(password)) {
-                session.setAttribute("userId", (Integer) login.getAccount());
+                session.setAttribute("userId", login.getAccount());
                 //写入验证字段,防止csrf攻击
                 int authorizationNum = (int) (Math.random()*10000000);
                 String authorization = HashStrUtil.hash(String.valueOf(authorizationNum), "MD5");

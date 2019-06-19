@@ -19,10 +19,10 @@ import redis.clients.jedis.JedisPool;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Map;
-import java.util.Objects;
+import java.text.DecimalFormat;
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * 发布红包,抢红包的service类
@@ -76,6 +76,7 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
             redPacketId = jedis.incr("RedPacketId");
             redPacketIdL.add(Long.toString(redPacketId));
             redPacketIdL.add(Integer.toString(size));
+            redPacketIdL.add(Double.toString(money));
             //判断是否有脚本的sha记录和在redis上脚本是否还存活
             if (sha1_Pub == null || jedis.scriptExists(sha1_Pub)) {
                 sha1_Pub = jedis.scriptLoad(Const.PUBLISHREDPACKET_LUA);
@@ -92,8 +93,8 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
         PubRedPacket pubRedPacket = new PubRedPacket(redPacketId, userId, redPacketType, size, money, parts, time);
         //保存红包信息进mysql
         redPacketBySqlService.addRedPacketMessage(pubRedPacket);
-        //保存红包时间信息进rabbitmq
-        String mqString = StringObjectUtils.ObjectToString(String.valueOf(userId), String.valueOf(redPacketId));
+        //发送红包信息进rabbitmq 数据格式为 A-B A为userid B为红包id
+        String mqString = String.valueOf(userId)+"-"+String.valueOf(redPacketId);
         rabbitTemplate.convertAndSend(Const.DLEXCHANE, Const.DLQUEUEROUTINGKEY, mqString, messagePostProcessor);
         //成功响应码200
         if (respo != null && Const.SUCCESS.equals(respo)) {
@@ -133,7 +134,7 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
             //当抢到最后一个红包,将红包已消费的情况持久化到Mysql 300
             case Const.LASTONE:
                 userRedPacket = new UserRedPacket(redPacketId, userId, split[1], time, Const.LASTONE);
-                persistToSql(redPacketId);
+                persistToSql(redPacketId, userId);
                 break;
             //没抢到 100
             case Const.LOOT:
@@ -155,13 +156,26 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
      * @param redPacketId
      */
     @Override
-    public void persistToSql(long redPacketId) {
+    public void persistToSql(long redPacketId, int userid) {
         Jedis jedis = jedisPool.getResource();
         jedis.del(Const.LREDPACKETKEY + redPacketId);
         Map<String, String> map = jedis.hgetAll(Const.HREDPACKEKEY + redPacketId);
         //删除hash红包记录队列
         jedis.del(Const.HREDPACKEKEY + redPacketId);
         jedis.close();
+        int redpacketsize = Integer.parseInt(map.remove("redpacketsize"));
+        int money = (int) (Double.valueOf(map.remove("money")) * 100);
+        //如果未抢完则进行退还红包
+        if (redpacketsize > map.size() - 1) {
+            double surplus;
+            //计算已抢的数目
+            int sum = map.entrySet().stream()
+                    .map(o -> (int)(Double.parseDouble(o.getValue().split("-")[0])*100))
+                    .mapToInt(Integer::intValue).sum();
+            surplus = (double) (money - sum) / 100;
+            //退还剩余红包钱给用户
+            redPacketBySqlService.addMoneyToUser(userid, surplus);
+        }
         redPacketBySqlService.insertRedPacketDetail(map, redPacketId);
     }
 

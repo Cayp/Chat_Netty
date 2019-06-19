@@ -22,12 +22,14 @@ import javax.annotation.Resource;
 public class RedPacketController {
 
     @Autowired
-    Response<UserRedPacket> response;
+    Response response;
 
     @Resource(name = "redPacketByRedisServiceImpl")
+    private
     RedPacketByRedisService redPacketByRedisService;
 
     @Resource(name = "redPacketBySqlServiceImpl")
+    private
     RedPacketBySqlService redPacketBySqlService;
 
     @RequestMapping(value = "/publish", method = RequestMethod.POST)
@@ -36,7 +38,7 @@ public class RedPacketController {
         if (successCount > 0) {
             PubRedPacket pubRedPacket = redPacketByRedisService.publishRedPacket(userid, money, redPakcetType, groupid, size);
             if (pubRedPacket != null) {
-                return response.success("success");
+                return response.successWithData("success",pubRedPacket.redPacketId);
             }
             return response.error("fail");
         } else {

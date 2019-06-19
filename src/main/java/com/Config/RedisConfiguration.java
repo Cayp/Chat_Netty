@@ -23,8 +23,9 @@ public class RedisConfiguration {
     @Autowired
     public JedisPool jedisPool(@Qualifier("jedis.pool.config") JedisPoolConfig config,
                                @Value("${redis.host}")String host,
-                               @Value("${redis.port}")int port) {
-        return new JedisPool(config, host, port);
+                               @Value("${redis.port}")int port,
+                               @Value("${redis.timeout}")int timeout ) {
+        return new JedisPool(config, host, port,timeout);
     }
 
     @Bean(name= "jedis.pool.config")
