@@ -4,6 +4,7 @@ package com.Service.ServiceImp;
 import com.Dao.GetGroupDao;
 import com.Entity.User;
 import com.Service.GroupService;
+import com.Utils.Const;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,22 +21,33 @@ public class GroupServiceImp implements GroupService {
     GetGroupDao getGroupDao;
 
     @Override
-    public int deleteOne(int id) {
-        return getGroupDao.deleteOne(id);
+    public int deleteOne(int groupid, int deleteid) {
+        return getGroupDao.deleteOneFromGroup(deleteid, groupid);
     }
 
     @Override
-    public int addOne(int id) {
-        return getGroupDao.addOne(id);
+    public int addOne(int groupid, int addid) {
+        return getGroupDao.addOneToGroup(addid, groupid);
     }
 
     @Override
-    public List<Integer> initGroup() {
-        return getGroupDao.getUsers();
+    public int deleteGroup(int groupid, int ownerid) {
+        int groupOwner = getGroupDao.getGroupOwner(groupid);
+        if (groupOwner == ownerid) {
+            return getGroupDao.deleteGroup(groupid);
+        } else {
+            return Const.NORIGHT;
+        }
     }
 
     @Override
-    public Integer getOne(int id) {
-        return getGroupDao.getOne(id);
+    public int changeOwner(int groupid, int userid) {
+        int groupOwner = getGroupDao.getGroupOwner(groupid);
+        if (groupOwner == userid) {
+            return getGroupDao.changeOwner(groupid, userid);
+        } else {
+            return Const.NORIGHT;
+        }
+
     }
 }

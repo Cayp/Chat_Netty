@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.Dao.GetNoReadDao">
     <update id="setUnRead">
-        INSERT INTO noreadme VALUES (#{toid},#{fromid},#{text},#{time});
+        INSERT INTO noreadme VALUES (#{toid},#{fromid},#{type},#{text},#{time});
     </update>
     <delete id="deleteUnRead">
-        DELETE FROM noreadme WHERE toid = #{toid};
+        DELETE FROM noreadme WHERE recvid = #{recvid};
     </delete>
-    <select id="getNoRead" resultType="Noreadme">
-        SELECT * FROM noreadme WHERE toid = #{toid};
+    <select id="getNoRead" resultType="com.Entity.Noreadme">
+        SELECT * FROM noreadme WHERE recvid = #{recvid};
     </select>
     <select id="getUnReadAcc" resultType="Integer">
         SELECT fromid FROM noreadme WHERE toid = #{toid} group by fromid;

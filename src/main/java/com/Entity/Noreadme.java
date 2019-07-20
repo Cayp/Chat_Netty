@@ -5,42 +5,49 @@ import java.sql.Date;
 
 public class Noreadme {
 
-  private int toid;
-  private int fromid;
+  private int recvid;
+  private int sendid;
+  private int type;
   private String message;
- private Date time;
+  private long time;
 
-  public int getToid() {
-    return toid;
-  }
+    public int getRecvid() {
+        return recvid;
+    }
 
-  public void setToid(int toid) {
-    this.toid = toid;
-  }
+    public void setRecvid(int recvid) {
+        this.recvid = recvid;
+    }
 
+    public int getSendid() {
+        return sendid;
+    }
 
-  public long getFromid() {
-    return fromid;
-  }
+    public void setSendid(int sendid) {
+        this.sendid = sendid;
+    }
 
-  public void setFromid(int fromid) {
-    this.fromid = fromid;
-  }
+    public int getType() {
+        return type;
+    }
 
+    public void setType(int type) {
+        this.type = type;
+    }
 
-  public String getMessage() {
-    return message;
-  }
+    public String getMessage() {
+        return message;
+    }
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
-    public Date getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(long time) {
         this.time = time;
     }
 }

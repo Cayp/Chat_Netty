@@ -1,5 +1,6 @@
 package com.NettyClasses;
 
+import com.Dao.GetGroupDao;
 import com.Entity.ChatMessage;
 import com.Service.GroupService;
 import com.Service.ServiceImp.UnReadServiceImp;
@@ -54,7 +55,8 @@ public class ServerHandler extends SimpleChannelInboundHandler {
     private void handleWebsocketFrame(ChannelHandlerContext ctx, WebSocketFrame msg) {
         //关闭链路指令
         if (msg instanceof CloseWebSocketFrame) {
-            ChannelMessage.removeChannel(ctx.channel());
+            //remove该用户的channel
+            ChannelMessage.getChannelMessage().removeChannel(ctx.channel());
             handshaker.close(ctx.channel(), (CloseWebSocketFrame) msg.retain());
             return;
         }
@@ -73,39 +75,39 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         //应答消息
         String requset = ((TextWebSocketFrame) msg).text();
         JSONObject jsonObject = JSONObject.parseObject(requset);
-        jsonObject.put("time", new Date());
+        int time = (int) (System.currentTimeMillis()/1000);
+        jsonObject.put("time", time);
         String toid = jsonObject.get("toid").toString();
         String type = jsonObject.get("type").toString();
         String fromid = jsonObject.get("fromid").toString();
-        System.out.println(requset);
-        Channel channel = ChannelMessage.getChannel(toid);
-        //判断是否是群聊
+        //判断是否是群聊 singlechat为一对一
         if (ChannelMessage.SINGLE_CHAT.equals(type)) {
+            Channel channel = ChannelMessage.getChannelMessage().getChannel(toid);
             //对方用户没有上线
             if (channel == null) {
                 if (unReadService == null) {
                     unReadService = SpringUtil.getBean(UnReadServiceImp.class);
                 }
-                unReadService.setUnRead(Integer.parseInt(toid), Integer.parseInt(fromid), jsonObject.get("textone").toString(), (Date) jsonObject.get("time"));
+                unReadService.setUnRead(Integer.parseInt(toid), Integer.parseInt(fromid), jsonObject.get("textone").toString(),time);
 
             } else {
                 channel.writeAndFlush(new TextWebSocketFrame(requset));
             }
+
             //群聊处理逻辑
         } else {
-            ChannelGroup chatgroup = ChannelMessage.getChatgroup();
-            if (ChannelMessage.checkInGroup(fromid)) {
+            ChannelGroup chatgroup = ChannelMessage.getChannelMessage().getChatgroup(toid);
+            if (chatgroup != null) {
+                GetGroupDao bean = SpringUtil.getBean(GetGroupDao.class);
+                //信息持久化到数据库
+                bean.addChatRecGroup(Integer.parseInt(toid), time, Integer.parseInt(fromid),jsonObject.get("textone").toString(), Integer.parseInt(type));
                 chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
             } else {
                 //不是群聊中的成员返回处理
                 jsonObject.put("type", "4");
                 ctx.channel().writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
             }
-
-
         }
-
-
     }
 
     private void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest msg) {
@@ -117,7 +119,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         }
 
         //握手
-        WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory("ws://localhost:8080/websocket", null, false);
+        WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory("ws://localhost:10000/websocket", null, false);
         handshaker = wsFactory.newHandshaker(msg);
         if (handshaker == null) {
             WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx.channel());
@@ -126,9 +128,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
             handshaker.handshake(ctx.channel(), msg);
             String uri = msg.getUri();
             String userid = uri.substring(11, uri.length());
-            ChannelMessage.addChannel(ctx.channel());
-            ChannelMessage.saveAccount(userid, ctx.channel());
-
+            ChannelMessage.getChannelMessage().saveAccount(userid, ctx.channel());
         }
     }
 

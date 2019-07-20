@@ -1,5 +1,6 @@
 package com.NettyClasses;
 
+import com.Dao.GetGroupDao;
 import com.Entity.User;
 import com.Service.GroupService;
 import com.Utils.SpringUtil;
@@ -47,10 +48,9 @@ public class Server {
                                         .addLast("handler", new ServerHandler());
                             }
                         });
-                //初始化有关群聊
-                GroupService groupService = SpringUtil.getBean(GroupService.class);
-                List<Integer> users = groupService.initGroup();
-                ChannelMessage.initGroup(users);
+                //初始化群聊在内存的集合
+                GetGroupDao bean = SpringUtil.getBean(GetGroupDao.class);
+                ChannelMessage.getChannelMessage().initGroup(bean.getAllGroup());
                 ChannelFuture sync = serverBootstrap.bind(port).sync();
                 if (sync.isSuccess()) {
                     System.out.println("server start success");

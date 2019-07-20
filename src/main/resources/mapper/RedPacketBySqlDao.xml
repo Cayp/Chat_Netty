@@ -3,9 +3,10 @@
 <mapper namespace="com.Dao.RedPacketBySqlDao">
     <insert id="insertRedPacketDetail">
         INSERT INTO redpacket_detail(redpacket_id,userid,money,time) VALUES
-        <foreach collection="list" item="item" open="(" close=")" separator=",">
-            #{item.redPacketId},#{item.userId},#{item.money},#{item.time}
+        <foreach collection="list" item="item" separator=",">
+            (#{item.redPacketId},#{item.userId},#{item.money},#{item.time})
         </foreach>
+
     </insert>
     <insert id="addRedPacketMessage">
         INSERT INTO redpacket_table(redpacket_id,userid_pub,total_money,redpacket_type,size,time)
