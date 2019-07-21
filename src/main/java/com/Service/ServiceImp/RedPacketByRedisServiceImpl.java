@@ -65,16 +65,16 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
 
     @Override
     public PubRedPacket publishRedPacket(int userId, double money, int redPacketType, int groupId, int size) {
-        Long redPacketId = -1L;
         ArrayList<String> parts = CutPointUtils.getRedPacketPartsByTypeId(money, size, redPacketType);
-        long time = System.currentTimeMillis();
+        long time = System.currentTimeMillis()/1000;
+        PubRedPacket pubRedPacket = new PubRedPacket(userId, redPacketType, size, money, parts, time);
+        //保存红包信息进mysql,获取自增红包id
+        redPacketBySqlService.addRedPacketMessage(pubRedPacket);
         ArrayList<String> redPacketIdL = new ArrayList<>();
         Jedis jedis = jedisPool.getResource();
         String respo;
         try {
-            //获取存在redis的记录红包数的变量作为id并自增
-            redPacketId = jedis.incr("RedPacketId");
-            redPacketIdL.add(Long.toString(redPacketId));
+            redPacketIdL.add(Long.toString(pubRedPacket.redPacketId));
             redPacketIdL.add(Integer.toString(size));
             redPacketIdL.add(Double.toString(money));
             //判断是否有脚本的sha记录和在redis上脚本是否还存活
@@ -90,11 +90,8 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
             jedis.close();
 
         }
-        PubRedPacket pubRedPacket = new PubRedPacket(redPacketId, userId, redPacketType, size, money, parts, time);
-        //保存红包信息进mysql
-        redPacketBySqlService.addRedPacketMessage(pubRedPacket);
         //发送红包信息进rabbitmq 数据格式为 A-B A为userid B为红包id
-        String mqString = String.valueOf(userId)+"-"+String.valueOf(redPacketId);
+        String mqString = String.valueOf(userId)+"-"+String.valueOf(pubRedPacket.redPacketId);
         rabbitTemplate.convertAndSend(Const.DLEXCHANE, Const.DLQUEUEROUTINGKEY, mqString, messagePostProcessor);
         //成功响应码200
         if (respo != null && Const.SUCCESS.equals(respo)) {
