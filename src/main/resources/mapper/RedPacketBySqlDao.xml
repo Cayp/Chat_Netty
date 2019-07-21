@@ -8,9 +8,9 @@
         </foreach>
 
     </insert>
-    <insert id="addRedPacketMessage">
-        INSERT INTO redpacket_table(redpacket_id,userid_pub,total_money,redpacket_type,size,time)
-        VALUES (#{redPacket.redPacketId},#{redPacket.userId},#{redPacket.total_money},#{redPacket.redPacket_type},#{redPacket.redPacket_size},#{redPacket.publish_time})
+    <insert id="addRedPacketMessage" keyProperty="redPacket.redPacketId" useGeneratedKeys="true">
+        INSERT INTO redpacket_table(userid_pub,total_money,redpacket_type,size,time)
+        VALUES (#{redPacket.userId},#{redPacket.total_money},#{redPacket.redPacket_type},#{redPacket.redPacket_size},#{redPacket.publish_time});
     </insert>
     <update id="addMoneyToUser">
         UPDATE wallet AS w SET w.money = w.money + #{money} where w.userId = #{userId};

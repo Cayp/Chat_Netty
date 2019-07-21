@@ -26,8 +26,8 @@ public class PubRedPacket implements Serializable {
     //发布红包时的时间戳
     public long publish_time;
 
-    public PubRedPacket(long redPacketId, int userId, int redPacket_type, int redPacket_size, double total_money, ArrayList<String> redPacket_part, long publish_time) {
-        this.redPacketId = redPacketId;
+    public PubRedPacket(int userId, int redPacket_type, int redPacket_size, double total_money, ArrayList<String> redPacket_part, long publish_time) {
+
         this.userId = userId;
         this.redPacket_type = redPacket_type;
         this.redPacket_size = redPacket_size;
@@ -36,13 +36,17 @@ public class PubRedPacket implements Serializable {
         this.publish_time = publish_time;
     }
 
+    public void setRedPacketId(long redPacketId) {
+        this.redPacketId = redPacketId;
+    }
+    public long getRedPacketId() {
+        return redPacketId;
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public long getRedPacketId() {
-        return redPacketId;
-    }
 
     public int getUserId() {
         return userId;
