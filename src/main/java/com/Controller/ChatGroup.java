@@ -1,6 +1,7 @@
 package com.Controller;
 
 
+import com.Entity.Groupchat;
 import com.Entity.User;
 import com.NettyClasses.ChannelMessage;
 import com.Service.GroupService;
@@ -45,7 +46,7 @@ public class ChatGroup {
     @RequestMapping(value = "/addOne", method = RequestMethod.GET)
     public Response addOne(int groupid, int addid) {
         int one = groupService.addOne(groupid, addid);
-        ChannelMessage.getChannelMessage().addToGroup(String.valueOf(addid),String.valueOf(groupid) );
+        ChannelMessage.getChannelMessage().addToGroup(String.valueOf(addid), String.valueOf(groupid));
         if (one == 0) {
             return response.error("该用户已在群聊中!");
         }
@@ -75,4 +76,16 @@ public class ChatGroup {
             return response.success("移交成功!");
         }
     }
+
+    @RequestMapping(value = "/buildGroup", method = RequestMethod.POST)
+    public Response buildGroup(int userid, String groupname) {
+        Groupchat groupchat = groupService.buildGroup(userid, groupname);
+        if (groupchat == null) {
+            return response.error("创建失败");
+        }
+        return response.successWithData("创建成功", groupchat);
+    }
+
+
+
 }

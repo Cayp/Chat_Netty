@@ -18,6 +18,7 @@ public class Const {
     public static final String LOOT = "100";
     public static final String LASTONE = "300";
     public static final int NORIGHT = 1000;
+    public static final String DEFAULT_PICTURE = "";
     public static final String HREDPACKEKEY = "HRedPacket_";
     public static final String LREDPACKETKEY = "RedPacket_";
     public static final String PUBLISHREDPACKET_LUA =

@@ -2,6 +2,7 @@ package com.Controller;
 
 
 import com.Entity.Noreadme;
+import com.Entity.UnReadGroup;
 import com.Service.UnReadService;
 import com.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,11 @@ public class UnReadController {
     public Response getUnreadAcc(int toid) {
         List<Integer> unReadAcc = unReadService.getUnReadAcc(toid);
         return response.successWithDataList("success", unReadAcc);
+    }
+
+    @RequestMapping(value = "/getGroupUnRead", method = RequestMethod.GET)
+    public Response getGroupUnRead(int userid, int groupid) {
+        List<UnReadGroup> groupUnReads = unReadService.getGroupUnRead(userid, groupid);
+        return response.successWithDataList("获取群未读信息成功", groupUnReads);
     }
 }

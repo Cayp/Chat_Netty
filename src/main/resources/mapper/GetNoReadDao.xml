@@ -10,7 +10,10 @@
     <select id="getNoRead" resultType="com.Entity.Noreadme">
         SELECT * FROM noreadme WHERE recvid = #{recvid};
     </select>
-    <select id="getUnReadAcc" resultType="Integer">
+    <select id="getUnReadAcc" resultType="java.lang.Integer">
         SELECT fromid FROM noreadme WHERE toid = #{toid} group by fromid;
+    </select>
+    <select id="getUnReadGroup" resultType="com.Entity.UnReadGroup">
+        SELECT * FROM unread_group where groupid = #{groupid} and time >= #{lastime};
     </select>
 </mapper>

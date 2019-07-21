@@ -2,6 +2,7 @@ package com.Service.ServiceImp;
 
 
 import com.Dao.GetGroupDao;
+import com.Entity.Groupchat;
 import com.Entity.User;
 import com.Service.GroupService;
 import com.Utils.Const;
@@ -48,6 +49,17 @@ public class GroupServiceImp implements GroupService {
         } else {
             return Const.NORIGHT;
         }
+    }
 
+    @Override
+    public Groupchat buildGroup(int userid, String groupname) {
+        Groupchat groupchat = new Groupchat(userid, groupname);
+        groupchat.setPeoplenum(1);
+        groupchat.setPicture(Const.DEFAULT_PICTURE);
+        int i = getGroupDao.buildGroup(groupchat);
+        if(i>0){
+            return groupchat;
+        }
+        return null;
     }
 }

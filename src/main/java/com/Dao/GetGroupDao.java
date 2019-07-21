@@ -1,10 +1,12 @@
 package com.Dao;
 
 
+import com.Entity.Groupchat;
 import com.Entity.UnReadGroup;
 import com.Entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,8 +18,8 @@ import java.util.List;
 public interface GetGroupDao {
     List<Integer> getGroup(String userid);
     List<Integer> getAllGroup();
-    int addOneToGroup(int userid,int groupid);
-    int deleteOneFromGroup(int userid,int groupid);
+    int addOneToGroup(@Param("userid") int userid,@Param("groupid") int groupid);
+    int deleteOneFromGroup(@Param("userid") int userid,@Param("groupid") int groupid);
 
     /**
      * 群聊未读信息
@@ -26,7 +28,7 @@ public interface GetGroupDao {
      * @param lastime
      * @return
      */
-    List<UnReadGroup> getUnReadFromGroup(int userid,int lastime);
+    List<UnReadGroup> getUnReadFromGroup(@Param("userid") int userid,@Param("lastime") int lastime);
 
     /**
      * 保存群聊信息进入数据库
@@ -37,7 +39,7 @@ public interface GetGroupDao {
      * @param type
      * @return
      */
-    int addChatRecGroup(int groupid,int time,int sendid,String message,int type);
+    int addChatRecGroup(@Param("groupid") int groupid,@Param("time") int time,@Param("sendid") int sendid,@Param("message") String message,@Param("type") int type);
 
     /**
      * 转移群主
@@ -45,15 +47,26 @@ public interface GetGroupDao {
      * @param changeUserid
      * @return
      */
-    int changeOwner(int groupid,int changeUserid);
+    int changeOwner(@Param("groupid") int groupid,@Param("changeUserid") int changeUserid);
 
     /**
      * 删除群
      * @param groupid
      * @return
      */
-    int deleteGroup(int groupid);
+    int deleteGroup(@Param("groupid") int groupid);
 
-    int getGroupOwner(int groupid);
+    /**
+     * 返回该群聊的群主
+     * @param groupid
+     * @return
+     */
+    int getGroupOwner(@Param("groupid") int groupid);
+
+    /**
+     * 创建一个群聊
+     * @return
+     */
+    int buildGroup(Groupchat groupchat);
 
 }

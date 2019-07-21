@@ -1,6 +1,7 @@
 package com.Dao;
 
 import com.Entity.Noreadme;
+import com.Entity.UnReadGroup;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,12 +13,10 @@ import java.util.List;
 @Mapper
 public interface GetNoReadDao {
 
-    /**获取未读信息
-     * @param toid
-     * @return
-     */
-    List<Noreadme> getNoRead(int toid);
-    List<Integer> getUnReadAcc(int toid);
-    int setUnRead(@Param("toid") int toid, @Param("fromid") int fromid, @Param("text") String text, @Param("time") Date time);
+
+    List<Noreadme> getNoRead(int recvid);
+    List<Integer> getUnReadAcc(int recvid);
+    int setUnRead(@Param("toid") int toid, @Param("fromid") int fromid,@Param("tpye")int type,@Param("text") String text, @Param("time") long time);
     int deleteUnRead(int toid);
+    List<UnReadGroup> getUnReadGroup(int lastime,int groupid);
 }

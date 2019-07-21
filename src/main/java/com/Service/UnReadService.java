@@ -2,6 +2,7 @@ package com.Service;
 
 
 import com.Entity.Noreadme;
+import com.Entity.UnReadGroup;
 
 
 import java.util.Date;
@@ -14,6 +15,7 @@ public interface UnReadService {
 
     List<Noreadme> getNoRead(int toid);
     List<Integer> getUnReadAcc(int toid);
-    int setUnRead(int toid, int fromid, String text, int time);
+    int setUnRead(int toid, int fromid,int time,int type, String text);
     int deleteUnRead(int toid);
+    List<UnReadGroup> getGroupUnRead(int userid,int groupid);
 }

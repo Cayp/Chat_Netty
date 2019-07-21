@@ -75,7 +75,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         //应答消息
         String requset = ((TextWebSocketFrame) msg).text();
         JSONObject jsonObject = JSONObject.parseObject(requset);
-        int time = (int) (System.currentTimeMillis()/1000);
+        int time = (int) (System.currentTimeMillis() / 1000);
         jsonObject.put("time", time);
         String toid = jsonObject.get("toid").toString();
         String type = jsonObject.get("type").toString();
@@ -88,7 +88,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
                 if (unReadService == null) {
                     unReadService = SpringUtil.getBean(UnReadServiceImp.class);
                 }
-                unReadService.setUnRead(Integer.parseInt(toid), Integer.parseInt(fromid), jsonObject.get("textone").toString(),time);
+                unReadService.setUnRead(Integer.parseInt(toid), Integer.parseInt(fromid), time, Integer.parseInt(type), jsonObject.get("textone").toString());
 
             } else {
                 channel.writeAndFlush(new TextWebSocketFrame(requset));

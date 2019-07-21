@@ -1,5 +1,6 @@
 package com.Service;
 
+import com.Entity.Groupchat;
 import com.Entity.User;
 
 import java.util.List;
@@ -9,4 +10,5 @@ public interface GroupService {
     int addOne(int groupid,int addid);
     int deleteGroup(int groupid,int ownerid);
     int changeOwner(int groupid,int userid);
+    Groupchat buildGroup(int userid,String groupname);
 }

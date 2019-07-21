@@ -2,10 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.Dao.GetGroupDao">
     <insert id="addOneToGroup">
-        INSERT TO groupmembers VALUES (#{userid},#{groupid});
+        INSERT INTO groupmembers VALUES (#{userid},#{groupid});
     </insert>
     <insert id="addChatRecGroup">
-        INSERT TO unread_group VALUES (#{groupid},#{time},#{sendid},#{message},#{type});
+        INSERT INTO unread_group VALUES (#{groupid},#{time},#{sendid},#{message},#{type});
+    </insert>
+    <insert id="buildGroup" keyProperty="groupid" useGeneratedKeys="true">
+        INSERT INTO groupchat(groupowner,groupname,peoplenum,picture) VALUES (#{userId},#{groupname},#{peoplenum},#{picture});
     </insert>
     <update id="changeOwner">
         UPDATE groupmembers SET groupowner = #{changeUserid} where groupid = #{groupid};
