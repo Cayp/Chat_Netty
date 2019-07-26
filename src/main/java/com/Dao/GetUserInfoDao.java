@@ -17,10 +17,12 @@ import java.util.List;
 public interface GetUserInfoDao {
 
     /**获取用户信息
-     * @param account
+     * @param phone
      * @return
      */
-     User getUserInfo(@Param("account") long account);
+     User getUserInfo(@Param("phone") String phone);
+     User findUser(@Param("id")long id);
+     int logout(@Param("id")long id,@Param("lastime")int time);
      List<User> getUserByIndex(@Param("index") Object index);
      List<User> getFriends(@Param("account") long account);
      int addFriend(@Param("toid") long toid, @Param("friendid") long friendid);

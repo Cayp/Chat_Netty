@@ -42,7 +42,7 @@ public class UnReadServiceImp implements UnReadService {
 
     @Override
     public List<UnReadGroup> getGroupUnRead(long userid, int groupid) {
-        User userInfo = getUserInfoDao.getUserInfo(userid);
+        User userInfo = getUserInfoDao.findUser(userid);
         return getNoReadDao.getUnReadGroup(userInfo.getLastime(), groupid);
     }
 

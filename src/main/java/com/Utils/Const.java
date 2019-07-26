@@ -9,6 +9,7 @@ public class Const {
     public static final int REDPACKET_AVERAGE = 0;
     public static final int REDPACKET_UNAVERAGE = 1;
     public static final int REDPACKET_MAXSIZE = 100;
+    public static final String VERIFYCODEKEY = "CODE";
     public static final String DLEXCHANE = "DEADLETTER_EXCHANGE";
     public static final String DLQUEUEROUTINGKEY = "DIRECT_ROUTING_KEY";
     //设置过期红包时间 单位为毫秒

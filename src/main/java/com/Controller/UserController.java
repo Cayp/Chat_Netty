@@ -37,8 +37,8 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @SuppressWarnings("unchecked")
-    public Response login(int account, String password, HttpSession session, HttpServletResponse servletResponse) {
-        User login = userService.login(account);
+    public Response login(String phone, String password, HttpSession session, HttpServletResponse servletResponse) {
+        User login = userService.login(phone);
         if (login == null) {
             return response.error("没有这账号!");
         } else {
@@ -99,27 +99,36 @@ public class UserController {
     @SuppressWarnings("unchecked")
     public Response logout(HttpSession httpSession) {
         httpSession.invalidate();
-        return response.success("success");
+        long userId = (long) httpSession.getAttribute("userId");
+        int logout = userService.logout(userId, (int) (System.currentTimeMillis() / 1000));
+        if (logout > 0) {
+            return response.success("success");
+        } else {
+            return response.error("fail");
+        }
+
     }
 
     @RequestMapping(value = "/addFriend", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
-    public Response addFriend(HttpSession httpSession, String id) {
-        Integer userId = (Integer) httpSession.getAttribute("userId");
-        int toid = Integer.parseInt(id);
-        if (toid == userId) {
+    public Response addFriend(HttpSession httpSession, long id) {
+        Long userId = (Long) httpSession.getAttribute("userId");
+        if (userId == id) {
             return response.error("不能添加自己!");
         }
-        User login = userService.login(toid);
+        User login = userService.findUser(id);
         if (login == null) {
             return response.error("没有该用户");
         } else {
-            Friend i = userService.checkFriend(userId, toid);
+            Friend i = userService.checkFriend(userId, id);
             if (i != null) {
                 return response.error("已添加该好友");
             } else {
-                userService.addFriend(toid, userId);
-                return response.successWithData("添加好友成功!", login);
+                int i1 = userService.addFriend(id, userId);
+                if (i1 > 1) {
+                    return response.successWithData("添加好友成功!", login);
+                }
+                return response.error("fail");
             }
         }
     }
@@ -127,10 +136,10 @@ public class UserController {
     @RequestMapping(value = "/deleteFriend", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public Response deleteFriend(HttpSession httpSession, String id) {
-        Integer userId = (Integer) httpSession.getAttribute("userId");
-        int toid = Integer.parseInt(id);
+        long userId = (long) httpSession.getAttribute("userId");
+        long toid = Long.parseLong(id);
         int i = userService.deleteFriend(userId, toid);
-        if (i == 1) {
+        if (i > 1) {
             return response.success("删除成功！");
         } else {
             return response.error("fail");
@@ -139,19 +148,17 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public Response register(RegisterEntity registerEntity, HttpSession session) {
-        System.out.println(registerEntity.toString());
-//        String code = (String) session.getAttribute(Const.VERIFYCODEKEY);
-//        if (code.equals(registerEntity.getVerifycode())) {
-//            boolean register = userService.register(registerEntity);
-//            if (register) {
-//                return response.success("success");
-//            } else {
-//                return response.error("账户已注册");
-//            }
-//        } else {
-//            return response.error("验证码错误");
-//        }
-return response;
+        String code = (String) session.getAttribute(Const.VERIFYCODEKEY);
+        if (code != null && code.toLowerCase().equals(registerEntity.getVerifycode().toLowerCase())) {
+            boolean register = userService.register(registerEntity);
+            if (register) {
+                return response.success("success");
+            } else {
+                return response.error("手机已注册");
+            }
+        } else {
+            return response.error("验证码错误");
+        }
     }
 
 

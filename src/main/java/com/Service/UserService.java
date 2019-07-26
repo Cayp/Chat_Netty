@@ -10,11 +10,13 @@ import java.util.List;
  * @author ljp
  */
 public interface UserService {
-    User login(int account);
+    User login(String phone);
+    User findUser(long id);
+    int logout(long id,int time);
     List<User> getUserByIndex(String index);
-    List<User> getUserFriends(int account);
-    int addFriend(int userId,int toid);
-    int deleteFriend(int userId,int toid);
-    Friend checkFriend(int userId,int toid);
+    List<User> getUserFriends(long account);
+    int addFriend(long userId,long toid);
+    int deleteFriend(long userId,long toid);
+    Friend checkFriend(long userId,long toid);
     boolean register(RegisterEntity registerEntity);
 }

@@ -22,8 +22,18 @@ public class UserServiceImp implements UserService {
     private GetUserInfoDao getUserInfoDao;
 
     @Override
-    public User login(int account) {
-        return getUserInfoDao.getUserInfo(account);
+    public User login(String phone) {
+        return getUserInfoDao.getUserInfo(phone);
+    }
+
+    @Override
+    public User findUser(long id) {
+        return getUserInfoDao.findUser(id);
+    }
+
+    @Override
+    public int logout(long id, int time) {
+        return getUserInfoDao.logout(id, time);
     }
 
     @Override
@@ -32,31 +42,31 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public List<User> getUserFriends(int account) {
+    public List<User> getUserFriends(long account) {
         return getUserInfoDao.getFriends(account);
     }
 
     @Override
-    public int addFriend(int userId, int toid) {
-        getUserInfoDao.addFriend(userId, toid);
-        getUserInfoDao.addFriend(toid, userId);
-        return 1;
+    public int addFriend(long userId, long toid) {
+        return getUserInfoDao.addFriend(toid, userId) + getUserInfoDao.addFriend(userId, toid);
     }
 
     @Override
-    public int deleteFriend(int userId, int toid) {
-        getUserInfoDao.deleteFriend(userId, toid);
-        getUserInfoDao.deleteFriend(toid, userId);
-        return 1;
+    public int deleteFriend(long userId, long toid) {
+        return getUserInfoDao.deleteFriend(toid, userId) + getUserInfoDao.deleteFriend(userId, toid);
     }
 
     @Override
-    public Friend checkFriend(int userId, int toid) {
+    public Friend checkFriend(long userId, long toid) {
         return getUserInfoDao.checkFriend(userId, toid);
     }
 
     @Override
     public boolean register(RegisterEntity registerEntity) {
+        User userInfo = getUserInfoDao.getUserInfo(registerEntity.getPhone());
+        if (userInfo != null) {
+            return false;
+        }
         int register = getUserInfoDao.register(registerEntity);
         if (register > 0) {
             return true;

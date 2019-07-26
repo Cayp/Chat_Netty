@@ -4,11 +4,17 @@
     <insert id="addFriend">
         INSERT INTO friend VALUES (#{toid},#{friendid});
     </insert>
+    <insert id="register">
+        INSERT INTO user(name,password,phone,icon,lastime) VALUES (#{name},#{password},#{phone},#{icon},0);
+    </insert>
+    <update id="logout">
+        UPDATE user SET lastime = #{lastime} WHERE id = #{id};
+    </update>
     <delete id="deleteFriend">
         DELETE FROM friend WHERE toid = #{toid} and friendid = #{friendid};
     </delete>
     <select id="getUserInfo" resultType="com.Entity.User">
-        SELECT * FROM user WHERE account = #{account};
+        SELECT * FROM user WHERE phone = #{phone};
     </select>
     <select id="getUserByIndex" resultType="com.Entity.User">
         SELECT account,name FROM user  WHERE  account = #{index} or name = #{index};
@@ -18,5 +24,8 @@
     </select>
     <select id="checkFriend" resultType="com.Entity.Friend">
         SELECT * FROM friend WHERE toid = #{userid} and  friendid = #{toid};
+    </select>
+    <select id="findUser" resultType="com.Entity.User">
+        SELECT * FROM user where id = #{id};
     </select>
 </mapper>
