@@ -3,8 +3,8 @@ package com.Entity;
 
 public class Friend {
 
-  private int toid;
-  private int friendid;
+  private long toid;
+  private long friendid;
 
 
   public long getToid() {

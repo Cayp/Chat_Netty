@@ -1,6 +1,7 @@
 package com.Service;
 
 import com.Entity.Friend;
+import com.Entity.RegisterEntity;
 import com.Entity.User;
 
 import java.util.List;
@@ -15,4 +16,5 @@ public interface UserService {
     int addFriend(int userId,int toid);
     int deleteFriend(int userId,int toid);
     Friend checkFriend(int userId,int toid);
+    boolean register(RegisterEntity registerEntity);
 }

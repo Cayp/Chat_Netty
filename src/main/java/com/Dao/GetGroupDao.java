@@ -18,8 +18,8 @@ import java.util.List;
 public interface GetGroupDao {
     List<Integer> getGroup(String userid);
     List<Integer> getAllGroup();
-    int addOneToGroup(@Param("userid") int userid,@Param("groupid") int groupid);
-    int deleteOneFromGroup(@Param("userid") int userid,@Param("groupid") int groupid);
+    int addOneToGroup(@Param("userid") long userid,@Param("groupid") int groupid);
+    int deleteOneFromGroup(@Param("userid") long userid,@Param("groupid") int groupid);
 
     /**
      * 群聊未读信息
@@ -28,7 +28,7 @@ public interface GetGroupDao {
      * @param lastime
      * @return
      */
-    List<UnReadGroup> getUnReadFromGroup(@Param("userid") int userid,@Param("lastime") int lastime);
+    List<UnReadGroup> getUnReadFromGroup(@Param("userid") long userid,@Param("lastime") int lastime);
 
     /**
      * 保存群聊信息进入数据库
@@ -39,7 +39,7 @@ public interface GetGroupDao {
      * @param type
      * @return
      */
-    int addChatRecGroup(@Param("groupid") int groupid,@Param("time") int time,@Param("sendid") int sendid,@Param("message") String message,@Param("type") int type);
+    int addChatRecGroup(@Param("groupid") int groupid,@Param("time") int time,@Param("sendid") long sendid,@Param("message") String message,@Param("type") int type);
 
     /**
      * 转移群主
@@ -47,7 +47,7 @@ public interface GetGroupDao {
      * @param changeUserid
      * @return
      */
-    int changeOwner(@Param("groupid") int groupid,@Param("changeUserid") int changeUserid);
+    int changeOwner(@Param("groupid") int groupid,@Param("changeUserid") long changeUserid);
 
     /**
      * 删除群

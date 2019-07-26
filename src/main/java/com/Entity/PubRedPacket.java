@@ -14,7 +14,7 @@ public class PubRedPacket implements Serializable {
     //红包id
     public long redPacketId;
     //发红包用户Id
-    public int userId;
+    public long userId;
     //红包类型, average-均值 unaverage-拼手气
     public int redPacket_type;
     //红包个数 最大值MaxSize为100
@@ -26,7 +26,7 @@ public class PubRedPacket implements Serializable {
     //发布红包时的时间戳
     public long publish_time;
 
-    public PubRedPacket(int userId, int redPacket_type, int redPacket_size, double total_money, ArrayList<String> redPacket_part, long publish_time) {
+    public PubRedPacket(long userId, int redPacket_type, int redPacket_size, double total_money, ArrayList<String> redPacket_part, long publish_time) {
 
         this.userId = userId;
         this.redPacket_type = redPacket_type;
@@ -48,7 +48,7 @@ public class PubRedPacket implements Serializable {
     }
 
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 

@@ -13,7 +13,7 @@ public class UserRedPacket implements Serializable {
     //抢到该红包id
     public long redPacketId;
     //用户id
-    public int userId;
+    public long userId;
     //抢到的金额
     public String money;
     //抢红包的时间
@@ -21,7 +21,7 @@ public class UserRedPacket implements Serializable {
 
     private String status;
 
-    public UserRedPacket(long redPacketId, int userId, String money, long time, String status) {
+    public UserRedPacket(long redPacketId, long userId, String money, long time, String status) {
         this.redPacketId = redPacketId;
         this.userId = userId;
         this.money = money;
@@ -33,7 +33,7 @@ public class UserRedPacket implements Serializable {
         return redPacketId;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 

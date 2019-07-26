@@ -13,9 +13,9 @@ import java.util.List;
  */
 public interface UnReadService {
 
-    List<Noreadme> getNoRead(int toid);
-    List<Integer> getUnReadAcc(int toid);
-    int setUnRead(int toid, int fromid,int time,int type, String text);
-    int deleteUnRead(int toid);
-    List<UnReadGroup> getGroupUnRead(int userid,int groupid);
+    List<Noreadme> getNoRead(long toid);
+    List<Integer> getUnReadAcc(long toid);
+    int setUnRead(long toid, long fromid,int time,int type, String text);
+    int deleteUnRead(long toid);
+    List<UnReadGroup> getGroupUnRead(long userid,int groupid);
 }

@@ -6,7 +6,7 @@ package com.Entity;
 public class UnReadGroup {
     private int groupid;
     private int time;
-    private int sendid;
+    private long sendid;
     private String message;
     private int type;
 
@@ -26,11 +26,11 @@ public class UnReadGroup {
         this.time = time;
     }
 
-    public int getSendid() {
+    public long getSendid() {
         return sendid;
     }
 
-    public void setSendid(int sendid) {
+    public void setSendid(long sendid) {
         this.sendid = sendid;
     }
 

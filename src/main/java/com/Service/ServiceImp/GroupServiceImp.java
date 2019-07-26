@@ -22,17 +22,17 @@ public class GroupServiceImp implements GroupService {
     GetGroupDao getGroupDao;
 
     @Override
-    public int deleteOne(int groupid, int deleteid) {
+    public int deleteOne(int groupid, long deleteid) {
         return getGroupDao.deleteOneFromGroup(deleteid, groupid);
     }
 
     @Override
-    public int addOne(int groupid, int addid) {
+    public int addOne(int groupid, long addid) {
         return getGroupDao.addOneToGroup(addid, groupid);
     }
 
     @Override
-    public int deleteGroup(int groupid, int ownerid) {
+    public int deleteGroup(int groupid, long ownerid) {
         int groupOwner = getGroupDao.getGroupOwner(groupid);
         if (groupOwner == ownerid) {
             return getGroupDao.deleteGroup(groupid);
@@ -42,7 +42,7 @@ public class GroupServiceImp implements GroupService {
     }
 
     @Override
-    public int changeOwner(int groupid, int userid) {
+    public int changeOwner(int groupid, long userid) {
         int groupOwner = getGroupDao.getGroupOwner(groupid);
         if (groupOwner == userid) {
             return getGroupDao.changeOwner(groupid, userid);
@@ -52,12 +52,12 @@ public class GroupServiceImp implements GroupService {
     }
 
     @Override
-    public Groupchat buildGroup(int userid, String groupname) {
+    public Groupchat buildGroup(long userid, String groupname) {
         Groupchat groupchat = new Groupchat(userid, groupname);
         groupchat.setPeoplenum(1);
         groupchat.setPicture(Const.DEFAULT_PICTURE);
         int i = getGroupDao.buildGroup(groupchat);
-        if(i>0){
+        if (i > 0) {
             return groupchat;
         }
         return null;

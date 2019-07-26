@@ -2,6 +2,7 @@ package com.Service.ServiceImp;
 
 import com.Dao.GetUserInfoDao;
 import com.Entity.Friend;
+import com.Entity.RegisterEntity;
 import com.Entity.User;
 import com.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,21 +38,30 @@ public class UserServiceImp implements UserService {
 
     @Override
     public int addFriend(int userId, int toid) {
-        getUserInfoDao.addFriend(userId,toid);
-        getUserInfoDao.addFriend(toid,userId);
+        getUserInfoDao.addFriend(userId, toid);
+        getUserInfoDao.addFriend(toid, userId);
         return 1;
     }
 
     @Override
     public int deleteFriend(int userId, int toid) {
-        getUserInfoDao.deleteFriend(userId,toid);
-        getUserInfoDao.deleteFriend(toid,userId);
+        getUserInfoDao.deleteFriend(userId, toid);
+        getUserInfoDao.deleteFriend(toid, userId);
         return 1;
     }
 
     @Override
     public Friend checkFriend(int userId, int toid) {
-        return getUserInfoDao.checkFriend(userId,toid);
+        return getUserInfoDao.checkFriend(userId, toid);
+    }
+
+    @Override
+    public boolean register(RegisterEntity registerEntity) {
+        int register = getUserInfoDao.register(registerEntity);
+        if (register > 0) {
+            return true;
+        }
+        return false;
     }
 }
 

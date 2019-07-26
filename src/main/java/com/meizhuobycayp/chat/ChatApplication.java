@@ -17,14 +17,14 @@ import java.nio.channels.SocketChannel;
  * @author ljp
  */
 
-@ComponentScan({"com.Controller","com.Service","com.Utils","com.Interceptor","com.NettyClasses","com.Config"})
+@ComponentScan({"com.Controller","com.Service","com.Utils","com.NettyClasses","com.Config","com.Listener"})
 @MapperScan("com.Dao")
 @SpringBootApplication
 public class ChatApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ChatApplication.class, args);
-		Server.bind(10000);
+		//Server.bind(10000);
 	}
 
 }

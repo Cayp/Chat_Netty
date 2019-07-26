@@ -3,13 +3,13 @@ package com.Entity;
 
 public class User {
 
-  private int account;
+  private long account;
   private String name;
   private String password;
   private String icon;
   private int lastime;
 
-  public int getAccount() {
+  public long getAccount() {
     return account;
   }
 

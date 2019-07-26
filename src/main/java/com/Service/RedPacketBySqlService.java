@@ -12,10 +12,10 @@ import java.util.Map;
 public interface RedPacketBySqlService {
 
     //从发红包人账户减去金额
-    int deductRedPacketMoney( int userId,  double money);
+    int deductRedPacketMoney( long userId,  double money);
 
     //增加抢到红包人的账户
-    int addMoneyToUser( int userId,  double money);
+    int addMoneyToUser( long userId,  double money);
 
     //将红包细节持久化到Mysql
     int insertRedPacketDetail(Map<String,String> userRedPacketMap,long redPacketId);

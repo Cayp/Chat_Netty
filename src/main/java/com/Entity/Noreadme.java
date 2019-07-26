@@ -5,25 +5,25 @@ import java.sql.Date;
 
 public class Noreadme {
 
-  private int recvid;
-  private int sendid;
+  private long recvid;
+  private long sendid;
   private int type;
   private String message;
   private long time;
 
-    public int getRecvid() {
+    public long getRecvid() {
         return recvid;
     }
 
-    public void setRecvid(int recvid) {
+    public void setRecvid(long recvid) {
         this.recvid = recvid;
     }
 
-    public int getSendid() {
+    public long getSendid() {
         return sendid;
     }
 
-    public void setSendid(int sendid) {
+    public void setSendid(long sendid) {
         this.sendid = sendid;
     }
 

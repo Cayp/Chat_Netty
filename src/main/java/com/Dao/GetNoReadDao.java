@@ -14,9 +14,9 @@ import java.util.List;
 public interface GetNoReadDao {
 
 
-    List<Noreadme> getNoRead(int recvid);
-    List<Integer> getUnReadAcc(int recvid);
-    int setUnRead(@Param("toid") int toid, @Param("fromid") int fromid,@Param("tpye")int type,@Param("text") String text, @Param("time") long time);
-    int deleteUnRead(int toid);
+    List<Noreadme> getNoRead(long recvid);
+    List<Integer> getUnReadAcc(long  recvid);
+    int setUnRead(@Param("toid") long toid, @Param("fromid") long fromid,@Param("type")int type,@Param("text") String text, @Param("time") long time);
+    int deleteUnRead(long toid);
     List<UnReadGroup> getUnReadGroup(int lastime,int groupid);
 }

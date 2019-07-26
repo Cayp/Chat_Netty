@@ -33,7 +33,7 @@ public class RedPacketController {
     RedPacketBySqlService redPacketBySqlService;
 
     @RequestMapping(value = "/publish", method = RequestMethod.POST)
-    public Response publishRedPacket(int userid, double money, int size, int groupid, @RequestParam("type") int redPakcetType) {
+    public Response publishRedPacket(long userid, double money, int size, int groupid, @RequestParam("type") int redPakcetType) {
         int successCount = redPacketBySqlService.deductRedPacketMoney(userid, money);
         if (successCount > 0) {
             PubRedPacket pubRedPacket = redPacketByRedisService.publishRedPacket(userid, money, redPakcetType, groupid, size);
@@ -47,7 +47,7 @@ public class RedPacketController {
     }
 
     @RequestMapping(value = "/grap", method = RequestMethod.POST)
-    public Response grapRedPacket(int userid, long redPacketId) {
+    public Response grapRedPacket(long userid, long redPacketId) {
         UserRedPacket redPacket = redPacketByRedisService.getRedPacket(redPacketId, userid);
         if (redPacket != null) {
             switch (redPacket.getStatus()) {

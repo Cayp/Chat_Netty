@@ -37,7 +37,7 @@ public class RabbitMqLReceiver {
         Jedis jedis = jedisPool.getResource();
         //判断list redpacket未抢红包的key是否存在,存在则是未抢完进行持久化处理,不存在则可忽略处理
         if (jedis.exists(Const.LREDPACKETKEY + redpacketid)) {
-            redPacketByRedisService.persistToSql(Long.parseLong(redpacketid), Integer.parseInt(userid));
+            redPacketByRedisService.persistToSql(Long.parseLong(redpacketid), Long.parseLong(userid));
         }
         logger.info("redpacketid:{} 已处理",redpacketid);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);

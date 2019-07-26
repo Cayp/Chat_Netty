@@ -64,7 +64,7 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
      */
 
     @Override
-    public PubRedPacket publishRedPacket(int userId, double money, int redPacketType, int groupId, int size) {
+    public PubRedPacket publishRedPacket(long userId, double money, int redPacketType, int groupId, int size) {
         ArrayList<String> parts = CutPointUtils.getRedPacketPartsByTypeId(money, size, redPacketType);
         long time = System.currentTimeMillis()/1000;
         PubRedPacket pubRedPacket = new PubRedPacket(userId, redPacketType, size, money, parts, time);
@@ -108,15 +108,15 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
      * @return
      */
     @Override
-    public UserRedPacket getRedPacket(long redPacketId, int userId) {
-        long time = System.currentTimeMillis();
+    public UserRedPacket getRedPacket(long redPacketId, long userId) {
+        long time = System.currentTimeMillis()/1000;
         Jedis jedis = jedisPool.getResource();
         String respo;
         if (sha1_Get == null || jedis.scriptExists(sha1_Get)) {
             sha1_Get = jedis.scriptLoad(Const.GETREDPACKET_LUA);
         }
         try {
-            respo = (String) jedis.evalsha(sha1_Get, 2, Long.toString(redPacketId), "", Integer.toString(userId), Long.toString(time));
+            respo = (String) jedis.evalsha(sha1_Get, 2, Long.toString(redPacketId), "", Long.toString(userId), Long.toString(time));
         } finally {
             jedis.close();
         }
@@ -153,7 +153,7 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
      * @param redPacketId
      */
     @Override
-    public void persistToSql(long redPacketId, int userid) {
+    public void persistToSql(long redPacketId, long userid) {
         Jedis jedis = jedisPool.getResource();
         jedis.del(Const.LREDPACKETKEY + redPacketId);
         Map<String, String> map = jedis.hgetAll(Const.HREDPACKEKEY + redPacketId);

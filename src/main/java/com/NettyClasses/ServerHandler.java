@@ -88,7 +88,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
                 if (unReadService == null) {
                     unReadService = SpringUtil.getBean(UnReadServiceImp.class);
                 }
-                unReadService.setUnRead(Integer.parseInt(toid), Integer.parseInt(fromid), time, Integer.parseInt(type), jsonObject.get("textone").toString());
+                unReadService.setUnRead(Long.parseLong(toid), Long.parseLong(fromid), time, Integer.parseInt(type), jsonObject.get("textone").toString());
 
             } else {
                 channel.writeAndFlush(new TextWebSocketFrame(requset));
@@ -100,7 +100,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
             if (chatgroup != null) {
                 GetGroupDao bean = SpringUtil.getBean(GetGroupDao.class);
                 //信息持久化到数据库
-                bean.addChatRecGroup(Integer.parseInt(toid), time, Integer.parseInt(fromid),jsonObject.get("textone").toString(), Integer.parseInt(type));
+                bean.addChatRecGroup(Integer.parseInt(toid), time, Long.parseLong(fromid), jsonObject.get("textone").toString(), Integer.parseInt(type));
                 chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
             } else {
                 //不是群聊中的成员返回处理

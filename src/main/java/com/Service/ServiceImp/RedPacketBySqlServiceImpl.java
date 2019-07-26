@@ -28,12 +28,12 @@ public class RedPacketBySqlServiceImpl implements RedPacketBySqlService {
     RedPacketBySqlDao redPacketBySqlDao;
 
     @Override
-    public int deductRedPacketMoney(int userId, double money) {
+    public int deductRedPacketMoney(long userId, double money) {
         return redPacketBySqlDao.deductRedPacketMoney(userId, money);
     }
 
     @Override
-    public int addMoneyToUser(int userId, double money) {
+    public int addMoneyToUser(long userId, double money) {
         return redPacketBySqlDao.addMoneyToUser(userId, money);
     }
 

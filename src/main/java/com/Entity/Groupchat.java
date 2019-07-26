@@ -4,12 +4,12 @@ package com.Entity;
 public class Groupchat {
 
   private  int groupid;
-  private int userId;
+  private long userId;
   private String groupname;
   private int peoplenum;
   private String picture;
 
-  public Groupchat(int userId, String groupname) {
+  public Groupchat(long userId, String groupname) {
     this.userId = userId;
     this.groupname = groupname;
   }
@@ -22,11 +22,11 @@ public class Groupchat {
     this.groupid = groupid;
   }
 
-  public int getUserId() {
+  public long getUserId() {
     return userId;
   }
 
-  public void setUserId(int userId) {
+  public void setUserId(long userId) {
     this.userId = userId;
   }
 

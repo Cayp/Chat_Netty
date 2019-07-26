@@ -33,7 +33,7 @@ public class ChatGroup {
     GroupService groupService;
 
     @RequestMapping(value = "/deleteOne", method = RequestMethod.GET)
-    public Response deleteOne(int groupid, int userid) {
+    public Response deleteOne(int groupid, long userid) {
         int i = groupService.deleteOne(groupid, userid);
         ChannelMessage.getChannelMessage().removeFromGroup(String.valueOf(userid), String.valueOf(groupid));
         if (i > 0) {
@@ -44,7 +44,7 @@ public class ChatGroup {
     }
 
     @RequestMapping(value = "/addOne", method = RequestMethod.GET)
-    public Response addOne(int groupid, int addid) {
+    public Response addOne(int groupid, long addid) {
         int one = groupService.addOne(groupid, addid);
         ChannelMessage.getChannelMessage().addToGroup(String.valueOf(addid), String.valueOf(groupid));
         if (one == 0) {
@@ -57,7 +57,7 @@ public class ChatGroup {
 
 
     @RequestMapping(value = "/deleteGroup", method = RequestMethod.GET)
-    public Response deleteGroup(int groupid, int userid) {
+    public Response deleteGroup(int groupid, long userid) {
         int i = groupService.deleteGroup(groupid, userid);
         ChannelMessage.getChannelMessage().deleteGroup(String.valueOf(groupid));
         if (i == Const.NORIGHT) {
@@ -68,7 +68,7 @@ public class ChatGroup {
     }
 
     @RequestMapping(value = "/changeOwner", method = RequestMethod.GET)
-    public Response changeOwner(int groupid, int ownerid) {
+    public Response changeOwner(int groupid, long ownerid) {
         int i = groupService.changeOwner(groupid, ownerid);
         if (i == Const.NORIGHT) {
             return response.error("你没有权限");
@@ -78,14 +78,11 @@ public class ChatGroup {
     }
 
     @RequestMapping(value = "/buildGroup", method = RequestMethod.POST)
-    public Response buildGroup(int userid, String groupname) {
+    public Response buildGroup(long userid, String groupname) {
         Groupchat groupchat = groupService.buildGroup(userid, groupname);
         if (groupchat == null) {
             return response.error("创建失败");
         }
         return response.successWithData("创建成功", groupchat);
     }
-
-
-
 }

@@ -26,28 +26,28 @@ public class UnReadServiceImp implements UnReadService {
     GetUserInfoDao getUserInfoDao;
 
     @Override
-    public List<Noreadme> getNoRead(int toid) {
+    public List<Noreadme> getNoRead(long toid) {
         return getNoReadDao.getNoRead(toid);
     }
 
     @Override
-    public List<Integer> getUnReadAcc(int toid) {
+    public List<Integer> getUnReadAcc(long toid) {
         return getNoReadDao.getUnReadAcc(toid);
     }
 
     @Override
-    public int setUnRead(int toid, int fromid, int time, int type, String text) {
+    public int setUnRead(long toid, long fromid, int time, int type, String text) {
         return getNoReadDao.setUnRead(toid, fromid, type, text, time);
     }
 
     @Override
-    public List<UnReadGroup> getGroupUnRead(int userid, int groupid) {
+    public List<UnReadGroup> getGroupUnRead(long userid, int groupid) {
         User userInfo = getUserInfoDao.getUserInfo(userid);
         return getNoReadDao.getUnReadGroup(userInfo.getLastime(), groupid);
     }
 
     @Override
-    public int deleteUnRead(int toid) {
+    public int deleteUnRead(long toid) {
         return getNoReadDao.deleteUnRead(toid);
     }
 }

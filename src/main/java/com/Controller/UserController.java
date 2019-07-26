@@ -2,9 +2,11 @@ package com.Controller;
 
 
 import com.Entity.Friend;
+import com.Entity.RegisterEntity;
 import com.Entity.User;
 import com.Interceptor.MySessionListener;
 import com.Service.UserService;
+import com.Utils.Const;
 import com.Utils.HashStrUtil;
 import com.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +45,9 @@ public class UserController {
             if (login.getPassword().equals(password)) {
                 session.setAttribute("userId", login.getAccount());
                 //写入验证字段,防止csrf攻击
-                int authorizationNum = (int) (Math.random()*10000000);
+                int authorizationNum = (int) (Math.random() * 10000000);
                 String authorization = HashStrUtil.hash(String.valueOf(authorizationNum), "MD5");
-                session.setAttribute("authorization",authorization);
+                session.setAttribute("authorization", authorization);
                 Cookie cookie = new Cookie("authorization", authorization);
                 cookie.setPath("/");
                 cookie.setHttpOnly(false);
@@ -105,7 +107,7 @@ public class UserController {
     public Response addFriend(HttpSession httpSession, String id) {
         Integer userId = (Integer) httpSession.getAttribute("userId");
         int toid = Integer.parseInt(id);
-        if(toid==userId){
+        if (toid == userId) {
             return response.error("不能添加自己!");
         }
         User login = userService.login(toid);
@@ -113,26 +115,44 @@ public class UserController {
             return response.error("没有该用户");
         } else {
             Friend i = userService.checkFriend(userId, toid);
-            if (i !=null) {
+            if (i != null) {
                 return response.error("已添加该好友");
             } else {
-                userService.addFriend(toid,userId);
-                return response.successWithData("添加好友成功!",login);
+                userService.addFriend(toid, userId);
+                return response.successWithData("添加好友成功!", login);
             }
         }
     }
+
     @RequestMapping(value = "/deleteFriend", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public Response deleteFriend(HttpSession httpSession, String id) {
         Integer userId = (Integer) httpSession.getAttribute("userId");
         int toid = Integer.parseInt(id);
         int i = userService.deleteFriend(userId, toid);
-        if(i==1){
+        if (i == 1) {
             return response.success("删除成功！");
-        }else{
+        } else {
             return response.error("fail");
         }
-
     }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public Response register(RegisterEntity registerEntity, HttpSession session) {
+        System.out.println(registerEntity.toString());
+//        String code = (String) session.getAttribute(Const.VERIFYCODEKEY);
+//        if (code.equals(registerEntity.getVerifycode())) {
+//            boolean register = userService.register(registerEntity);
+//            if (register) {
+//                return response.success("success");
+//            } else {
+//                return response.error("账户已注册");
+//            }
+//        } else {
+//            return response.error("验证码错误");
+//        }
+return response;
+    }
+
 
 }

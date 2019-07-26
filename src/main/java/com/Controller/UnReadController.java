@@ -34,7 +34,7 @@ public class UnReadController {
     @RequestMapping(value = "/getUnRead", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public Response getUnread(HttpSession httpSession) {
-        Integer toid = (Integer) httpSession.getAttribute("userId");
+        Long toid = (Long) httpSession.getAttribute("userId");
         List<Noreadme> noRead = unReadService.getNoRead(toid);
         unReadService.deleteUnRead(toid);
         return response.successWithDataList("success", noRead);
@@ -43,13 +43,13 @@ public class UnReadController {
 
     @RequestMapping(value = "/getUnReadAcc", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
-    public Response getUnreadAcc(int toid) {
+    public Response getUnreadAcc(long toid) {
         List<Integer> unReadAcc = unReadService.getUnReadAcc(toid);
         return response.successWithDataList("success", unReadAcc);
     }
 
     @RequestMapping(value = "/getGroupUnRead", method = RequestMethod.GET)
-    public Response getGroupUnRead(int userid, int groupid) {
+    public Response getGroupUnRead(long userid, int groupid) {
         List<UnReadGroup> groupUnReads = unReadService.getGroupUnRead(userid, groupid);
         return response.successWithDataList("获取群未读信息成功", groupUnReads);
     }
