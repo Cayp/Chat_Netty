@@ -20,6 +20,6 @@ public class PictureController {
 
     @RequestMapping(value = "verifycode", method = RequestMethod.GET)
     public void getVerifyCode(HttpSession session, HttpServletResponse response) {
-        RandomVerifyCode.getRandomImage(session, response, Const.VERIFYCODEKEY);
+        RandomVerifyCode.getRandomImage(session, response, Const.PICTURECODEKEY);
     }
 }

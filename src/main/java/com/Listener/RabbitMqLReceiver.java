@@ -3,6 +3,7 @@ package com.Listener;
 
 import com.Service.RedPacketByRedisService;
 import com.Utils.Const;
+import com.Utils.SendMailUtils;
 import com.rabbitmq.client.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,12 +17,14 @@ import javax.annotation.Resource;
 import java.io.IOException;
 
 /**
+ * mq监听处理类
+ *
  * @author ljp
  */
 @Component
 public class RabbitMqLReceiver {
     public static final Logger logger = LoggerFactory.getLogger(RabbitMqLReceiver.class);
-
+    public static String sha_mail;
     @Resource
     JedisPool jedisPool;
 
@@ -30,7 +33,7 @@ public class RabbitMqLReceiver {
     RedPacketByRedisService redPacketByRedisService;
 
     @RabbitListener(queues = "REDIRECT_QUEUE")
-    public void on(Message message, Channel channel) throws IOException, InterruptedException {
+    public void on(Message message, Channel channel) throws IOException {
         String[] messageStr = new String(message.getBody()).split("-");
         String userid = messageStr[0];
         String redpacketid = messageStr[1];
@@ -39,8 +42,30 @@ public class RabbitMqLReceiver {
         if (jedis.exists(Const.LREDPACKETKEY + redpacketid)) {
             redPacketByRedisService.persistToSql(Long.parseLong(redpacketid), Long.parseLong(userid));
         }
-        logger.info("redpacketid:{} 已处理",redpacketid);
+        logger.info("redpacketid:{} 已处理", redpacketid);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
+    }
+
+    @RabbitListener(queues = "REDIRECT_MAIL_QUEUE")
+    public void mailon(Message message, Channel channel) {
+        String[] messageStr = new String(message.getBody()).split("-");
+        String mail = messageStr[0];
+        String code = messageStr[1];
+        Jedis jedis = jedisPool.getResource();
+        if (sha_mail == null || jedis.scriptExists(sha_mail)) {
+            sha_mail = jedis.scriptLoad(Const.MAILCODE_LUA);
+        }
+        System.out.println(mail+"-"+code);
+        String sendCode = (String)jedis.evalsha(sha_mail, 1, mail, code);
+        jedis.close();
+
+        try {
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
+            SendMailUtils.sendMail(sendCode,mail );
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(mail+" "+e.getMessage());
+        }
     }
 
 

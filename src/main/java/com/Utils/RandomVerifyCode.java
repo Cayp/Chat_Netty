@@ -24,6 +24,7 @@ public class RandomVerifyCode {
     private static int lineNum = 25;//干扰线数量
     private static int codeNum = 5;//验证码长度
     private static int textSize = 23;//字号
+    private static int randomCodeSize = 6;
 
     private static Font getFont() {
         return new Font("Clanner", Font.BOLD, textSize);
@@ -98,5 +99,14 @@ public class RandomVerifyCode {
                 e2.printStackTrace();
             }
         }
+    }
+
+    public static String randomCode() {
+        StringBuilder stringBuilder = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < randomCodeSize; i++) {
+            stringBuilder.append(random.nextInt(10));
+        }
+        return stringBuilder.toString();
     }
 }

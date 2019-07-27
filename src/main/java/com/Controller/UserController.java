@@ -37,8 +37,8 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @SuppressWarnings("unchecked")
-    public Response login(String phone, String password, HttpSession session, HttpServletResponse servletResponse) {
-        User login = userService.login(phone);
+    public Response login(String mail, String password, HttpSession session, HttpServletResponse servletResponse) {
+        User login = userService.login(mail);
         if (login == null) {
             return response.error("没有这账号!");
         } else {
@@ -146,20 +146,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Response register(RegisterEntity registerEntity, HttpSession session) {
-        String code = (String) session.getAttribute(Const.VERIFYCODEKEY);
-        if (code != null && code.toLowerCase().equals(registerEntity.getVerifycode().toLowerCase())) {
-            boolean register = userService.register(registerEntity);
-            if (register) {
-                return response.success("success");
-            } else {
-                return response.error("手机已注册");
-            }
-        } else {
-            return response.error("验证码错误");
-        }
-    }
+
 
 
 }

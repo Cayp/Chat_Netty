@@ -16,11 +16,11 @@ import java.util.List;
 @Mapper
 public interface GetUserInfoDao {
 
-    /**获取用户信息
-     * @param phone
+    /**通过邮箱获取用户信息
+     * @param mail
      * @return
      */
-     User getUserInfo(@Param("phone") String phone);
+     User getUserInfo(@Param("mail") String mail);
      User findUser(@Param("id")long id);
      int logout(@Param("id")long id,@Param("lastime")int time);
      List<User> getUserByIndex(@Param("index") Object index);

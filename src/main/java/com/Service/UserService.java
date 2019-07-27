@@ -10,7 +10,7 @@ import java.util.List;
  * @author ljp
  */
 public interface UserService {
-    User login(String phone);
+    User login(String mail);
     User findUser(long id);
     int logout(long id,int time);
     List<User> getUserByIndex(String index);

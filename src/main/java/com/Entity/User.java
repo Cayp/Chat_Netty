@@ -6,7 +6,7 @@ public class User {
     private long account;
     private String name;
     private String password;
-    private String phone;
+    private String mail;
     private String icon;
     private int lastime;
 
@@ -19,12 +19,12 @@ public class User {
         this.account = account;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getMail() {
+        return mail;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getName() {

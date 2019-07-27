@@ -7,6 +7,7 @@ import com.Entity.User;
 import com.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,8 +23,8 @@ public class UserServiceImp implements UserService {
     private GetUserInfoDao getUserInfoDao;
 
     @Override
-    public User login(String phone) {
-        return getUserInfoDao.getUserInfo(phone);
+    public User login(String mail) {
+        return getUserInfoDao.getUserInfo(mail);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public boolean register(RegisterEntity registerEntity) {
-        User userInfo = getUserInfoDao.getUserInfo(registerEntity.getPhone());
+        User userInfo = getUserInfoDao.getUserInfo(registerEntity.getMail());
         if (userInfo != null) {
             return false;
         }

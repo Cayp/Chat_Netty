@@ -80,4 +80,19 @@ public class RabbitConfig {
         return BindingBuilder.bind(queue).to(exchange).with("REDIRECT_QUEUE_KEY").noargs();
     }
 
+    @Bean("mail_queue")
+    public Queue directMailQueue() {
+        return QueueBuilder.durable("REDIRECT_MAIL_QUEUE").build();
+    }
+
+    @Bean("mail_exchange")
+    public Exchange directMailExchange() {
+        return ExchangeBuilder.directExchange("MAIL_EXCHANGE").durable(true).build();
+    }
+
+    @Bean
+    public Binding directBindingMail(@Qualifier("mail_queue")Queue queue,@Qualifier("mail_exchange")Exchange exchange){
+        return BindingBuilder.bind(queue).to(exchange).with("MAIL_QUEUE_KEY").noargs();
+    }
+
 }

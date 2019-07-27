@@ -5,7 +5,7 @@
         INSERT INTO friend VALUES (#{toid},#{friendid});
     </insert>
     <insert id="register">
-        INSERT INTO user(name,password,phone,icon,lastime) VALUES (#{name},#{password},#{phone},#{icon},0);
+        INSERT INTO user(name,password,mail,icon,lastime,mailcrc) VALUES (#{name},#{password},#{mail},#{icon},0,CRC32(#{mail}));
     </insert>
     <update id="logout">
         UPDATE user SET lastime = #{lastime} WHERE id = #{id};
@@ -14,7 +14,7 @@
         DELETE FROM friend WHERE toid = #{toid} and friendid = #{friendid};
     </delete>
     <select id="getUserInfo" resultType="com.Entity.User">
-        SELECT * FROM user WHERE phone = #{phone};
+        SELECT * FROM user WHERE mailcrc = CRC32(#{mail}) and mail = #{mail};
     </select>
     <select id="getUserByIndex" resultType="com.Entity.User">
         SELECT account,name FROM user  WHERE  account = #{index} or name = #{index};

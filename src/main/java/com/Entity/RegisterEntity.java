@@ -6,18 +6,18 @@ public class RegisterEntity {
     private long account;
     private String password;
     private String name;
-    private String phone;
+    private String mail;
     private String verifycode;
     private String icon = Const.DEFAULT_PICTURE;
 
-
-    public String getPhone() {
-        return phone;
+    public String getMail() {
+        return mail;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
+
 
     public String getIcon() {
         return icon;
