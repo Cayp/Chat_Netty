@@ -9,11 +9,13 @@ public class Const {
     public static final int REDPACKET_AVERAGE = 0;
     public static final int REDPACKET_UNAVERAGE = 1;
     public static final int REDPACKET_MAXSIZE = 100;
+    public static final int MAIL_REGISTER = 1001;
+    public static final int MAIL_FINDPWBACK = 1002;
     public static final String PICTURECODEKEY = "CODE";
     public static final String MAILCODEKEY = "MAIL";
     //邮箱验证码过期时间,秒
     public static final String MAILTIME= "MAILTIMEKEY";
-    public static final int MAILEXPIRE = 120;
+    public static final int MAILEXPIRE = 60;
     public static final String DLEXCHANE = "DEADLETTER_EXCHANGE";
     public static final String DLQUEUEROUTINGKEY = "DIRECT_ROUTING_KEY";
     //设置过期红包时间 单位为毫秒
@@ -64,7 +66,7 @@ public class Const {
                     "return oldcode;\n" +
                     "end\n" +
                     "redis.call('set',mailaccount,code)\n" +
-                    "redis.call('expire',mailaccount,120)\n" +
+                    "redis.call('expire',mailaccount,60)\n" +
                     "return code;\n";
 
 }

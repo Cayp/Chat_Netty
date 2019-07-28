@@ -10,6 +10,12 @@
     <update id="logout">
         UPDATE user SET lastime = #{lastime} WHERE id = #{id};
     </update>
+    <update id="changePassWord">
+        UPDATE user SET password = #{password} where mailcrc = CRC32(#{mail}) and mail = #{mail};
+    </update>
+    <update id="changePassWordByid">
+        UPDATE user SET password = #{password} where account = #{userid};
+    </update>
     <delete id="deleteFriend">
         DELETE FROM friend WHERE toid = #{toid} and friendid = #{friendid};
     </delete>

@@ -146,7 +146,14 @@ public class UserController {
         }
     }
 
-
-
-
+    @RequestMapping(value = "/changePassWord", method = RequestMethod.POST)
+    public Response changePassWord(HttpSession httpSession, String newPassWord) {
+        long userId = (long) httpSession.getAttribute("userId");
+        int i = userService.changePasswordByid(userId, newPassWord);
+        if (i > 0) {
+            return response.success("密码修改成功");
+        } else {
+            return response.error("密码修改失败");
+        }
+    }
 }

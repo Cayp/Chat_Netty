@@ -17,8 +17,8 @@ public class SendMailSeriveImpl  implements SendMailSerivce{
 
 
     @Override
-    public void sendMail(String mail, String code) {
-        String mqString = mail + "-" + code;
+    public void sendMail(String mail, String code,int type) {
+        String mqString = mail + "-"+type+"-"+ code;
         rabbitTemplate.convertAndSend("MAIL_EXCHANGE","MAIL_QUEUE_KEY" , mqString);
     }
 }

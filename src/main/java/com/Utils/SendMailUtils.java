@@ -32,7 +32,7 @@ public class SendMailUtils {
     public static final String SMTPHOST = "smtp.163.com";
 
 
-    public static void sendMail(String code,String tomail) throws Exception {
+    public static void sendMail(String code, String tomail, int type) throws Exception {
         // 1. 创建参数配置, 用于连接邮件服务器的参数配置
         Properties props = new Properties();                    // 参数配置
         props.setProperty("mail.transport.protocol", "smtp");   // 使用的协议（JavaMail规范要求）
@@ -57,7 +57,7 @@ public class SendMailUtils {
         session.setDebug(false);
         // 3. 创建一封邮件
         MimeMessage message = null;
-        message = createMimeMessage(session, EMALACCOUNT, tomail,code);
+        message = createMimeMessage(session, EMALACCOUNT, tomail, code, type);
         // 4. 根据 Session 获取邮件传输对象
         Transport transport = session.getTransport();
         // 5. 使用 邮箱账号 和 密码 连接邮件服务器, 这里认证的邮箱必须与 message 中的发件人邮箱一致, 否则报错
@@ -80,6 +80,7 @@ public class SendMailUtils {
         // 7. 关闭连接
         transport.close();
     }
+
     /**
      * 创建一封只包含文本的简单邮件
      *
@@ -89,7 +90,7 @@ public class SendMailUtils {
      * @return
      * @throws Exception
      */
-    public static MimeMessage createMimeMessage(Session session, String sendMail, String receiveMail,String code) throws Exception {
+    public static MimeMessage createMimeMessage(Session session, String sendMail, String receiveMail, String code, int type) throws Exception {
         // 1. 创建一封邮件
         MimeMessage message = new MimeMessage(session);
         // 2. From: 发件人
@@ -97,9 +98,13 @@ public class SendMailUtils {
         // 3. To: 收件人（可以增加多个收件人、抄送、密送）
         message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiveMail, "XX用户", "UTF-8"));
         // 4. Subject: 邮件主题
-        message.setSubject("mzchat邮箱验证", "UTF-8");
+        if (type == Const.MAIL_REGISTER) {
+            message.setSubject("mzchat邮箱注册验证", "UTF-8");
+        } else if (type == Const.MAIL_FINDPWBACK) {
+            message.setSubject("mzchat邮箱修改密码验证", "UTF-8");
+        }
         // 5. Content: 邮件正文（可以使用html标签）
-        message.setContent("【mzchat】欢迎使用mzchat服务，验证码 "+code+" 。如非本人操作，请检查帐号安全 ", "text/html;charset=UTF-8");
+        message.setContent("【mzchat】欢迎使用mzchat服务，验证码 " + code + " 。如非本人操作，请检查帐号安全 ", "text/html;charset=UTF-8");
         // 6. 设置发件时间
         message.setSentDate(new Date());
         // 7. 保存设置

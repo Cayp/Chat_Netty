@@ -19,4 +19,6 @@ public interface UserService {
     int deleteFriend(long userId,long toid);
     Friend checkFriend(long userId,long toid);
     boolean register(RegisterEntity registerEntity);
+    int changePassword(String mail,String password);
+    int changePasswordByid(long userid,String password);
 }

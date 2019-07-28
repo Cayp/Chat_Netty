@@ -74,5 +74,15 @@ public class UserServiceImp implements UserService {
         }
         return false;
     }
+
+    @Override
+    public int changePassword(String mail, String password) {
+        return getUserInfoDao.changePassWord(mail,password );
+    }
+
+    @Override
+    public int changePasswordByid(long userid, String password) {
+        return getUserInfoDao.changePassWordByid(userid,password );
+    }
 }
 

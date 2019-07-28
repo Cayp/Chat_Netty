@@ -29,4 +29,6 @@ public interface GetUserInfoDao {
      int deleteFriend(@Param("toid") long toid, @Param("friendid") long friendid);
      Friend checkFriend(@Param("userid") long userid, @Param("toid") long toid);
      int register(RegisterEntity registerEntity);
+     int changePassWord(@Param("mail") String mail,@Param("password") String password);
+     int changePassWordByid(@Param("userid")long id,@Param("password")String password);
 }

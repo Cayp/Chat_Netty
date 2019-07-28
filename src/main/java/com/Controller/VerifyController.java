@@ -35,9 +35,10 @@ public class VerifyController {
     @Resource(name = "sendMailSeriveImpl")
     private SendMailSerivce sendMailSerivce;
 
-    @RequestMapping(value = "/SendMail", method = RequestMethod.GET)
-    public Response sendMail(HttpSession session, String pictureCode, String mail) {
+    @RequestMapping(value = "/sendMail", method = RequestMethod.POST)
+    public Response sendMail(HttpSession session, String pictureCode, String mail, int type) {
         String code = (String) session.getAttribute(Const.PICTURECODEKEY);
+        session.removeAttribute(Const.PICTURECODEKEY);
         Integer lastSendTime = (Integer) session.getAttribute(Const.MAILTIME);
         //判断上次发送邮箱成功的时间是否过了设置期限
         if (lastSendTime != null) {
@@ -51,7 +52,7 @@ public class VerifyController {
             String mailcode = RandomVerifyCode.randomCode();
             session.setAttribute(Const.MAILCODEKEY, mailcode);
             session.setAttribute(Const.MAILTIME, (int) (System.currentTimeMillis() / 1000));
-            sendMailSerivce.sendMail(mail, mailcode);
+            sendMailSerivce.sendMail(mail, mailcode, type);
             return response.success("发送成功");
         } else {
             return response.error("验证码错误");
@@ -63,6 +64,7 @@ public class VerifyController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public Response register(RegisterEntity registerEntity, HttpSession session) {
         String code = (String) session.getAttribute(Const.MAILCODEKEY);
+        session.removeAttribute(Const.MAILCODEKEY);
         if (code != null && code.equals(registerEntity.getVerifycode())) {
             boolean register = userService.register(registerEntity);
             if (register) {
@@ -83,5 +85,21 @@ public class VerifyController {
         } else {
             return response.success("available");
         }
+    }
+
+    @RequestMapping(value = "/findPw", method = RequestMethod.POST)
+    public Response findPw(HttpSession session, String mail, String newpassword, String umailcode) {
+        String localmailcode = (String) session.getAttribute(Const.MAILCODEKEY);
+        session.removeAttribute(Const.MAILCODEKEY);
+        if (localmailcode != null && localmailcode.equals(umailcode)) {
+            int i = userService.changePassword(mail, newpassword);
+            if (i > 0) {
+                return response.success("修改密码成功");
+            }
+            return response.error("fail");
+        } else {
+            return response.error("邮箱验证码错误");
+        }
+
     }
 }
