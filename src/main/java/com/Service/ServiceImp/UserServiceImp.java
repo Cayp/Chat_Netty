@@ -48,11 +48,13 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    @Transactional
     public int addFriend(long userId, long toid) {
         return getUserInfoDao.addFriend(toid, userId) + getUserInfoDao.addFriend(userId, toid);
     }
 
     @Override
+    @Transactional
     public int deleteFriend(long userId, long toid) {
         return getUserInfoDao.deleteFriend(toid, userId) + getUserInfoDao.deleteFriend(userId, toid);
     }
