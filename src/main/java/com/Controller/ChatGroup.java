@@ -2,20 +2,15 @@ package com.Controller;
 
 
 import com.Entity.Groupchat;
-import com.Entity.User;
 import com.NettyClasses.ChannelMessage;
 import com.Service.GroupService;
 import com.Utils.Const;
 import com.Utils.Response;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author ljp
@@ -83,6 +78,7 @@ public class ChatGroup {
         if (groupchat == null) {
             return response.error("创建失败");
         }
+        ChannelMessage.getChannelMessage().addGroup(String.valueOf(groupchat.getGroupid()));
         return response.successWithData("创建成功", groupchat);
     }
 }

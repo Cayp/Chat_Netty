@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "redis.max_active",
+      "type": "java.lang.String",
+      "description": "Description for redis.max_active."
+    },
+    {
+      "name": "redis.host",
+      "type": "java.lang.String",
+      "description": "Description for redis.host."
+    }
+  ] }

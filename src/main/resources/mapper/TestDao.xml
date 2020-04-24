@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Dao.TestDao">
+
+    <insert id="insert1">
+        INSERT INTO test1(url,urlcrc) VALUES (#{url},CRC32(#{url}));
+    </insert>
+    <insert id="insert2">
+        INSERT INTO test1(url) VALUES (#{url});
+    </insert>
+    <insert id="insert3">
+        INSERT INTO test1(url) VALUES (#{url});
+
+    </insert>
+
+</mapper>

@@ -1,52 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<title>Direct Messaging</title>
+    <meta charset="UTF-8">
+    <title>Direct Messaging</title>
 
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-<link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/reset.min.css">
 
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 
 </head>
 
 <script src="js/jquery-1.11.1.min.js"></script>
-
 <script>
-    $.get("user/checklogin",
-        function (data) {
-            if (data.code==40000)
+    function getCookie(name) {
+        var strcookie = document.cookie;//获取cookie字符串
+        var arrcookie = strcookie.split("; ");//分割
+//遍历匹配
+        for (var i = 0; i < arrcookie.length; i++) {
+            var arr = arrcookie[i].split("=");
+            if (arr[0] == name) {
+                return arr[1];
+            }
+        }
+        return "";
+    }
+</script>
+<script>
+
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "user/checklogin",
+        headers: {
+            "authorization": getCookie("authorization")
+        },
+        success: function (data) {
+            if (data.code == 40000)
                 window.location.href = "demo.html";
-        });
+        }
+    });
     var websocket = null;
 </script>
 <body>
 <div class="topnav">
-    <a >Cayp聊天系统</a>
+    <a>Cayp聊天系统</a>
     <a>欢迎:</a>
     <a id="account">未登录</a>s
     <a id="name"></a>
     <a onclick=logout()>退出</a>
 </div>
-  <div class="wrapper">
+<div class="wrapper">
     <div class="container">
         <div class="left">
             <div class="top">
-                <input id="addfriend" type="text" placeholder="Search" />
-                <button onclick=addFriends()  style="position:relative;top:5px;left: 5px;height: 30px;width: 50px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">添加</button>
+                <input id="addfriend" type="text" placeholder="Search"/>
+                <button onclick=addFriends()
+                        style="position:relative;top:5px;left: 5px;height: 30px;width: 50px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">
+                    添加
+                </button>
             </div>
             <ul id="people" class="people" style="height:500px;overflow-y:scroll;">
                 <li class="person" data-chat="person1">
-                    <img src="images/timg.jpg" alt="" />
+                    <img src="images/timg.jpg" alt=""/>
                     <span class="name">公共聊天室</span>
                     <span class="time" style="color: #ff0000"></span>
                     <span class="preview"></span>
@@ -55,207 +79,272 @@
             </ul>
         </div>
 
-        <div class="right1" >
-            <div id="rightC" class="right" >
+        <div class="right1">
+            <div id="rightC" class="right">
                 <div class="top">
                     <span>To: <span id="chatname" class="name">公共聊天室</span>
                     </span>
-                    <button onclick=deleteFriend()   style="position:relative;top:-2px;left: 70px;height: 30px;width: 70px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">删除好友</button>
-                    <button onclick= "addGroup()"  style="position:relative;top:-2px;left: 75px;height: 30px;width: 70px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">邀请进群</button>
-                    <button onclick="deleteGroup()"   style="position:relative;top:-2px;left: 80px;height: 30px;width: 70px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">踢出群聊</button>
+                    <button onclick=deleteFriend()
+                            style="position:relative;top:-2px;left: 70px;height: 30px;width: 70px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">
+                        删除好友
+                    </button>
+                    <button onclick="addGroup()"
+                            style="position:relative;top:-2px;left: 75px;height: 30px;width: 70px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">
+                        邀请进群
+                    </button>
+                    <button onclick="deleteGroup()"
+                            style="position:relative;top:-2px;left: 80px;height: 30px;width: 70px;color: #00b0ff;text-decoration-color: #DCDEE0;   border-radius:15px; ">
+                        踢出群聊
+                    </button>
                 </div>
                 <div id="person1" class="chat" data-chat="person1">
-                    </div>
                 </div>
-
+            </div>
 
 
             <div id="into" class="inTo">
-                <input id="messageTxt" type="text"style="position: relative;left: 10%;width: 50%;height: 30px"/>
-                <button onclick="sendMessageBySocket()" class="send" style="position:relative;left:25%;height: 30px;width: 50px;color: #00b0ff;text-decoration-color: #DCDEE0">发送</button>
+                <input id="messageTxt" type="text" style="position: relative;left: 10%;width: 50%;height: 30px"/>
+                <button onclick="sendMessageBySocket()" class="send"
+                        style="position:relative;left:25%;height: 30px;width: 50px;color: #00b0ff;text-decoration-color: #DCDEE0">
+                    发送
+                </button>
 
             </div>
         </div>
     </div>
 
-        </div>
-        </div>
+</div>
+</div>
 
 
-
-
-
-<script  src="js/index.js"></script>
+<script src="js/index.js"></script>
 <script type="text/javascript">
-      initChat();
-function logout() {
-    $.get("user/logout"
-        ,function (data) {
-        if(data.code==20000){
-            window.location.href = "demo.html"
-        }
-    })
-}
+    initChat();
 
-
-
-function deleteFriend() {
-    var toid =  friends.list.querySelector(".active").getAttribute('data-chat');
-    if(toid=="person1"){
-        return
-    }
-    $.get("user/deleteFriend?id="+toid,
-    function (data) {
-        if(data.code==20000){
-            alert("删除好友成功")
-            document.querySelector('.chat[data-chat=person1]').classList.add('active-chat');
-            document.querySelector('.person[data-chat=person1]').classList.add('active');
-            document.querySelector('.chat[data-chat="'+toid+'"]').remove();
-            document.querySelector('.person[data-chat="'+toid+'"]').remove();
-            $("#chatname").text("公共聊天室");
-
-        }
-    })
-}
-function addGroup() {
-    var toid =  friends.list.querySelector(".active").getAttribute('data-chat');
-    if(toid=="person1"){
-        return
-    }
-    $.get("group/addOne?id="+toid,
-    function (data) {
-        alert(data.message);
-    })
-}
-function deleteGroup() {
-    var toid =  friends.list.querySelector(".active").getAttribute('data-chat');
-    if(toid=="person1"){
-        return
-    }
-    $.get("group/deleteOne?id="+toid,
-        function (data) {
-            alert(data.message);
+    function logout() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "user/logout",
+            headers: {
+                "authorization": getCookie("authorization")
+            },
+            success: function (data) {
+                if (data.code == 20000) {
+                    window.location.href = "demo.html"
+                }
+            }
         })
-}
-   function addFriends() {
+    }
+
+
+    function deleteFriend() {
+        var toid = friends.list.querySelector(".active").getAttribute('data-chat');
+        if (toid == "person1") {
+            return
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "user/deleteFriend?id=" + toid,
+            headers: {
+                "authorization": getCookie("authorization")
+            },
+            success: function (data) {
+                if (data.code == 20000) {
+                    alert("删除好友成功")
+                    document.querySelector('.chat[data-chat=person1]').classList.add('active-chat');
+                    document.querySelector('.person[data-chat=person1]').classList.add('active');
+                    document.querySelector('.chat[data-chat="' + toid + '"]').remove();
+                    document.querySelector('.person[data-chat="' + toid + '"]').remove();
+                    $("#chatname").text("公共聊天室");
+
+                }
+            }
+        })
+    }
+
+    function addGroup() {
+        var toid = friends.list.querySelector(".active").getAttribute('data-chat');
+        if (toid == "person1") {
+            return
+        }
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "group/addOne?id=" + toid,
+            headers: {
+                "authorization": getCookie("authorization")
+            },
+            success: function (data) {
+                alert(data.message);
+            }
+        })
+    }
+
+    function deleteGroup() {
+        var toid = friends.list.querySelector(".active").getAttribute('data-chat');
+        if (toid == "person1") {
+            return
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "group/deleteOne?id=" + toid,
+            headers: {
+                "authorization": $.cookie("authorization")
+            },
+            success: function (data) {
+                alert(data.message);
+            }
+        })
+    }
+
+    function addFriends() {
         var toid = $("#addfriend").val();
-        if(toid==""){
+        if (toid == "") {
             alert("不能为空!");
             return
         }
-        $.get("user/addFriend?id="+toid ,
-            function (data) {
-                alert(data.message)
-                if(data.code==20000){
-                    $("#addfriend").val("");
-                    var toid = data.data.account;
-                    var name = data.data.name;
-                    document.getElementById("people").innerHTML += "<li class=\"person\" data-chat=\""+toid+"\"><span class=\'name\'>"+name+"</span><span  class=\"time\" style=\"color: #ff0000\"></span></li>";
-                    document.getElementById("rightC").innerHTML += "<div id=\""+toid+"\" class=\"chat\" data-chat=\""+toid+"\"></div>"
-                    initclick();
+
+        $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "user/addFriend?id=" + toid,
+                headers: {
+                    "authorization": getCookie("authorization")
+                },
+                success: function (data) {
+                    alert(data.message)
+                    if (data.code == 20000) {
+                        $("#addfriend").val("");
+                        var toid = data.data.account;
+                        var name = data.data.name;
+                        document.getElementById("people").innerHTML += "<li class=\"person\" data-chat=\"" + toid + "\"><span class=\'name\'>" + name + "</span><span  class=\"time\" style=\"color: #ff0000\"></span></li>";
+                        document.getElementById("rightC").innerHTML += "<div id=\"" + toid + "\" class=\"chat\" data-chat=\"" + toid + "\"></div>"
+                        initclick();
+                    }
                 }
             }
         )
 
-  }
+    }
 
 
-      function initChat() {
-          var isUser = document.getElementById("account").text;
-          //判断当前浏览器是否支持WebSocket
-          if ('WebSocket' in window) {
-              var socketUrl = "ws://localhost:10000/webSocket/"+isUser;
-              websocket = new WebSocket(socketUrl);
+    function initChat() {
+        var isUser = document.getElementById("account").text;
+        //判断当前浏览器是否支持WebSocket
+        if ('WebSocket' in window) {
+            var socketUrl = "ws://" + document.location.hostname + ":10000/webSocket/" + isUser;
+            websocket = new WebSocket(socketUrl);
+        } else {
+            alert('Your browser Not support webSocket')
+            return;
+        }
 
-          } else {
-              alert('Your browser Not support webSocket')
-              return;
-          }
+        //连接发生错误的回调方法
+        websocket.onerror = function () {
+            alert("连接服务端失败!")
+            window.location.href = "demo.html"
+        };
 
-          //连接发生错误的回调方法
-          websocket.onerror = function () {
-              alert("连接服务端失败!")
-              window.location.href = "demo.html"
+        //连接成功建立的回调方法
+        websocket.onopen = function (event) {
+            heartCheck.start();
+        };
 
-          };
+        //接收到消息的回调方法
+        websocket.onmessage = function (data) {
+            heartCheck.reset();
+            //接收到服务端发回的心跳
+            if (data.data == "pong"){
+                return;
+            }
+            var dataz = JSON.parse(data.data);
+            if (dataz.type == 1) {
+                var fromid = dataz.fromid;
+                var text = dataz.textone;
+                document.getElementById("" + fromid).innerHTML += "<div class=\"bubble you\">" + text + "</div>"
 
-          //连接成功建立的回调方法
-          websocket.onopen = function (event) {
-
-          };
-
-          //接收到消息的回调方法
-          websocket.onmessage = function (data) {
-                 var dataz  = JSON.parse(data.data);
-
-             if(dataz.type == 1){
-                 var fromid = dataz.fromid;
-                 var text = dataz.textone;
-                 document.getElementById(""+fromid).innerHTML += "<div class=\"bubble you\">"+text+"</div>"
-
-             }else if(dataz.type==2){
+            } else if (dataz.type == 2) {
                 var name = dataz.name;
                 var text = dataz.textone;
-                if(name == document.getElementById("name").text){
-                   return
+                if (name == document.getElementById("name").text) {
+                    return
                 }
-                 document.getElementById("person1").innerHTML += "<div class=\"bubble you\">"+name+"："+text+"</div>"
-             }else if(dataz.type==4){
-                 alert("你不是群成员!");
-             }else if(dataz.type==8){
-                 document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:"+dataz.id+"上线</span></div>"
-             }else if(dataz.type==9){
-                 document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:"+dataz.id+"下线</span></div>"
-             }else if(dataz.type==6){
-                 document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:"+dataz
-                     .id+"被邀请进来</span></div>"
-             }else if(dataz.type==7){
-                 document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:"+dataz.id+"被踢出聊天室</span></div>"
-             }
+                document.getElementById("person1").innerHTML += "<div class=\"bubble you\">" + name + "：" + text + "</div>"
+            } else if (dataz.type == 4) {
+                alert("你不是群成员!");
+            } else if (dataz.type == 8) {
+                document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:" + dataz.id + "上线</span></div>"
+            } else if (dataz.type == 9) {
+                document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:" + dataz.id + "下线</span></div>"
+            } else if (dataz.type == 6) {
+                document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:" + dataz
+                    .id + "被邀请进来</span></div>"
+            } else if (dataz.type == 7) {
+                document.getElementById("person1").innerHTML += "<div class=\"conversation-start\"><span>用户:" + dataz.id + "被踢出聊天室</span></div>"
+            }
 
-          };
+        };
 
-          //连接关闭的回调方法
-          websocket.onclose = function () {
-              document.getElementById('message').innerHTML += "连接关闭" + '<br/>';
-              window.location.href = "demo.html"
-              websocket.close();
-          };
+        //连接关闭的回调方法
+        websocket.onclose = function () {
+            alert("连接已断开")
+            window.location.href = "demo.html"
+            websocket.close();
+        };
 
-          //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
-          window.onbeforeunload = function () {
-              websocket.close();
+        //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+        window.onbeforeunload = function () {
+            websocket.close();
+        };
+        //心跳检测,每10s心跳一次
+        var heartCheck = {
+            timeout: 10000,
+            timeoutObj: null,
+            serverTimeoutObj: null,
+            reset: function () {
+                clearTimeout(this.timeoutObj);
+                clearTimeout(this.serverTimeoutObj);
+                this.start();
+            },
+            start: function () {
+                var self = this;
+                this.timeoutObj = setTimeout(function () {
+                    console.log("test")
+                    websocket.send("ping");
+                    self.serverTimeoutObj = setTimeout(function () {
+                        websocket.close(); //如果onclose会执行reconnect，我们执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次
+                    }, self.timeout)
+                }, this.timeout)
+            }
+        }
+    }
 
-          };
-          window.onbeforeunload = function(event) {
-              websocket.onclose =function(){};
-              websocket.close();
-          }
-      }
+    function sendMessageBySocket() {
+        var text = document.getElementById("messageTxt").value;
+        var toid = friends.list.querySelector(".active").getAttribute('data-chat');
+        var fromid = document.getElementById("account").text;
+        var name = document.getElementById("name").text;
+        if (text == "") {
+            alert("输入框不能为空!")
+            return
+        }
+        if (toid == "person1") {
+            var json = "{\"type\":\"" + 2 + "\",\"fromid\":\"" + fromid + "\",\"toid\":\"" + toid + "\",\"textone\":\"" + text + "\",\"name\":\"" + name + "\"}";
+        } else {
+            var json = "{\"type\":\"" + 1 + "\",\"fromid\":\"" + fromid + "\",\"toid\":\"" + toid + "\",\"textone\":\"" + text + "\"}";
+        }
 
-      function sendMessageBySocket() {
-          var text = document.getElementById("messageTxt").value;
-          var toid =  friends.list.querySelector(".active").getAttribute('data-chat');
-          var fromid = document.getElementById("account").text;
-          var name = document.getElementById("name").text;
-          if(text==""){
-              alert("输入框不能为空!")
-              return
-          }
-          if(toid=="person1"){
-              var json = "{\"type\":\""+2+"\",\"fromid\":\""+fromid+"\",\"toid\":\""+toid+"\",\"textone\":\""+text+"\",\"name\":\""+name+"\"}";
-          }else{
-              var json = "{\"type\":\""+1+"\",\"fromid\":\""+fromid+"\",\"toid\":\""+toid+"\",\"textone\":\""+text+"\"}";
-          }
+        document.getElementById("" + toid).innerHTML += "<div class=\"bubble me\">" + text + "</div>"
+        websocket.send(json);
+        $("#messageTxt").val("");
 
-          document.getElementById(""+toid).innerHTML+="<div class=\"bubble me\">"+text+"</div>"
+    }
 
-          websocket.send(json);
-          $("#messageTxt").val("");
-
-      }
-
-  </script>
+</script>
 
 </body>
 

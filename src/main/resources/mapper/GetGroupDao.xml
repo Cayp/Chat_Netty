@@ -27,7 +27,7 @@
         SELECT groupid FROM groupchat;
     </select>
     <select id="getUnReadFromGroup" resultType="com.Entity.UnReadGroup">
-        SELECT * from unread_group where groupid in (SELECT groupid from groupmembers where userid = #{userid}) and time >= #{time};
+        SELECT * from unread_group where groupid in (SELECT groupid from groupmembers where userid = #{userid}) and time >= #{time} ;
     </select>
     <select id="getGroupOwner" resultType="java.lang.Integer">
         SELECT groupowner FROM groupchat WHERE groupid = #{groupid};

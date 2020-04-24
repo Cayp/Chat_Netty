@@ -50,21 +50,22 @@ public class RabbitMqLReceiver {
     public void mailon(Message message, Channel channel) {
         String[] messageStr = new String(message.getBody()).split("-");
         String mail = messageStr[0];
-        String code = messageStr[1];
+        int type = Integer.parseInt(messageStr[1]);
+        String code = messageStr[2];
         Jedis jedis = jedisPool.getResource();
         if (sha_mail == null || jedis.scriptExists(sha_mail)) {
             sha_mail = jedis.scriptLoad(Const.MAILCODE_LUA);
         }
-        System.out.println(mail+"-"+code);
-        String sendCode = (String)jedis.evalsha(sha_mail, 1, mail, code);
+        System.out.println(mail + "-" + code);
+        String sendCode = (String) jedis.evalsha(sha_mail, 1, mail + type, code);
         jedis.close();
 
         try {
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
-            SendMailUtils.sendMail(sendCode,mail );
+            SendMailUtils.sendMail(sendCode, mail, type);
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error(mail+" "+e.getMessage());
+            logger.error(mail + " " + e.getMessage());
         }
     }
 

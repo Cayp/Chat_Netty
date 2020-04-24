@@ -39,10 +39,14 @@ function setAciveChat(f) {
   chat.name.innerHTML = friends.name;
 }
 function initFriends() {
+
     $.ajax({
             type: "GET",
             dataType: "json",
             url: "user/getFriends",
+            headers:{
+                "authorization":getCookie("authorization")
+            },
             success: function (result) {
                 var code = result.code;
                 if (code == 20000) {
@@ -79,6 +83,9 @@ function initUnRead() {
       type:"GET",
       dataType:"json",
       url:"record/unRead/getUnRead",
+      headers:{
+            "authorization":getCookie("authorization")
+        },
       success:function (result) {
           var code = result.code;
           if(code == 20000){

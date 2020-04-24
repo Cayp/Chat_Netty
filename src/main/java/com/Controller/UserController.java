@@ -32,6 +32,7 @@ public class UserController {
     @Resource(name = "userServiceImp")
     private UserService userService;
 
+
     @Autowired
     private Response response;
 
@@ -73,8 +74,8 @@ public class UserController {
     @RequestMapping(value = "/getFriends", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public Response getFriends(HttpSession httpSession) {
-        Integer account = (Integer) httpSession.getAttribute("userId");
-        List<User> userFriends = userService.getUserFriends(account);
+        Long userId = (Long) httpSession.getAttribute("userId");
+        List<User> userFriends = userService.getUserFriends(userId);
         return response.successWithDataList("获取好友列表成功", userFriends);
     }
 
@@ -87,7 +88,7 @@ public class UserController {
     @RequestMapping(value = "/checklogin", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public Response checklogin(HttpSession httpSession) {
-        Integer userId = (Integer) httpSession.getAttribute("userId");
+        Long userId = (Long) httpSession.getAttribute("userId");
         if (userId == null) {
             return response.error("haven't login");
         } else {
@@ -136,7 +137,7 @@ public class UserController {
     @RequestMapping(value = "/deleteFriend", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public Response deleteFriend(HttpSession httpSession, String id) {
-        long userId = (long) httpSession.getAttribute("userId");
+        Long userId = (Long) httpSession.getAttribute("userId");
         long toid = Long.parseLong(id);
         int i = userService.deleteFriend(userId, toid);
         if (i > 1) {

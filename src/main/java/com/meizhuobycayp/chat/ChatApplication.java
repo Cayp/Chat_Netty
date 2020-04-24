@@ -18,7 +18,7 @@ import java.nio.channels.SocketChannel;
  * @author ljp
  */
 
-@ComponentScan({"com.Controller","com.Service","com.Utils","com.NettyClasses","com.Config","com.Listener"})
+@ComponentScan({"com.Controller","com.Service","com.Utils","com.NettyClasses","com.Config","com.Listener","com.Interceptor"})
 @MapperScan("com.Dao")
 @SpringBootApplication
 @EnableTransactionManagement
@@ -26,7 +26,7 @@ public class ChatApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ChatApplication.class, args);
-		//Server.bind(10000);
+		Server.bind(10000);
 	}
 
 }

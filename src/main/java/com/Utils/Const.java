@@ -11,6 +11,8 @@ public class Const {
     public static final int REDPACKET_MAXSIZE = 100;
     public static final int MAIL_REGISTER = 1001;
     public static final int MAIL_FINDPWBACK = 1002;
+    //最大心跳时间
+    public static final int MAX_PONG = 30;
     public static final String PICTURECODEKEY = "CODE";
     public static final String MAILCODEKEY = "MAIL";
     //邮箱验证码过期时间,秒
@@ -66,7 +68,7 @@ public class Const {
                     "return oldcode;\n" +
                     "end\n" +
                     "redis.call('set',mailaccount,code)\n" +
-                    "redis.call('expire',mailaccount,60)\n" +
+                    "redis.call('expire',mailaccount,"+Const.MAILEXPIRE+")\n" +
                     "return code;\n";
 
 }

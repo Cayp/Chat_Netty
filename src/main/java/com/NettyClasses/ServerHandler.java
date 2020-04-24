@@ -1,8 +1,6 @@
 package com.NettyClasses;
 
 import com.Dao.GetGroupDao;
-import com.Entity.ChatMessage;
-import com.Service.GroupService;
 import com.Service.ServiceImp.UnReadServiceImp;
 import com.Service.UnReadService;
 import com.Utils.SpringUtil;
@@ -13,10 +11,11 @@ import io.netty.channel.*;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.http.websocketx.*;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.CharsetUtil;
-
-
-import java.util.Date;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static io.netty.handler.codec.http.HttpHeaders.isKeepAlive;
 import static io.netty.handler.codec.http.HttpHeaders.setContentLength;
@@ -26,7 +25,7 @@ import static io.netty.handler.codec.http.HttpHeaders.setContentLength;
  */
 @ChannelHandler.Sharable
 public class ServerHandler extends SimpleChannelInboundHandler {
-
+    private static Logger logger = LoggerFactory.getLogger(ServerHandler.class);
     private WebSocketServerHandshaker handshaker;
 
 
@@ -40,17 +39,6 @@ public class ServerHandler extends SimpleChannelInboundHandler {
             handleWebsocketFrame(ctx, (WebSocketFrame) msg);
         }
     }
-
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
-    }
-
-    @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-
-    }
-
 
     private void handleWebsocketFrame(ChannelHandlerContext ctx, WebSocketFrame msg) {
         //关闭链路指令
@@ -74,6 +62,10 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         }
         //应答消息
         String requset = ((TextWebSocketFrame) msg).text();
+        if("ping".equals(requset)){
+            ctx.channel().writeAndFlush(new TextWebSocketFrame("pong"));
+            return;
+        }
         JSONObject jsonObject = JSONObject.parseObject(requset);
         int time = (int) (System.currentTimeMillis() / 1000);
         jsonObject.put("time", time);
@@ -147,8 +139,31 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         if (!isKeepAlive(resp) || resp.getStatus().code() != 200) {
             future.addListener(ChannelFutureListener.CLOSE);
         }
-
-
     }
+
+
+    /**
+     * 服务端心跳检测
+     * @param ctx
+     * @param evt
+     * @throws Exception
+     *
+     */
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+      if(evt instanceof IdleStateEvent){
+          IdleStateEvent evt1 = (IdleStateEvent) evt;
+          //设置的时间内未从channel中读到信息则会产生read_event事件
+          if(evt1.state()== IdleState.READER_IDLE){
+              //移除对应的channel
+              ChannelMessage.getChannelMessage().removeChannel(ctx.channel());
+              logger.info("client from {} 已断线", ctx.channel().remoteAddress());
+              if(ctx.channel().isOpen()){
+                  ctx.channel().close();
+              }
+          }
+      }
+    }
+
 }
 

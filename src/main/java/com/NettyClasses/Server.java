@@ -3,6 +3,7 @@ package com.NettyClasses;
 import com.Dao.GetGroupDao;
 import com.Entity.User;
 import com.Service.GroupService;
+import com.Utils.Const;
 import com.Utils.SpringUtil;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -12,10 +13,12 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -45,6 +48,7 @@ public class Server {
                                 pipeline.addLast("http-codec", new HttpServerCodec())
                                         .addLast("aggregator", new HttpObjectAggregator(65536))
                                         .addLast("http-chunked", new ChunkedWriteHandler())
+                                        .addLast(new IdleStateHandler(Const.MAX_PONG,0,0, TimeUnit.SECONDS))
                                         .addLast("handler", new ServerHandler());
                             }
                         });
