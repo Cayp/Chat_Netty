@@ -2,6 +2,7 @@ package com.Controller;
 
 
 import com.Entity.Friend;
+import com.Entity.LoginData;
 import com.Entity.RegisterEntity;
 import com.Entity.User;
 import com.Interceptor.MySessionListener;
@@ -10,9 +11,7 @@ import com.Utils.Const;
 import com.Utils.HashStrUtil;
 import com.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -36,10 +35,12 @@ public class UserController {
     @Autowired
     private Response response;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @SuppressWarnings("unchecked")
-    public Response login(String mail, String password, HttpSession session, HttpServletResponse servletResponse) {
-        User login = userService.login(mail);
+    public Response login(@RequestBody LoginData loginData, HttpSession session, HttpServletResponse servletResponse) {
+        String account = loginData.getAccount();
+        String password = loginData.getPassword();
+        User login = userService.login(account);
         if (login == null) {
             return response.error("没有这账号!");
         } else {

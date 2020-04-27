@@ -3,6 +3,7 @@ package com.Interceptor;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
@@ -10,19 +11,19 @@ import javax.servlet.http.HttpSessionListener;
  */
 @WebListener
 public class MySessionListener implements HttpSessionListener {
-    private static Integer online = 0;
+    private static AtomicInteger online = new AtomicInteger(0);
 
-    public static Integer getOnline() {
-        return online;
+    public static int getOnline() {
+        return online.get();
     }
 
     @Override
-    public synchronized void sessionCreated(HttpSessionEvent se) {
-        online++;
+    public void sessionCreated(HttpSessionEvent se) {
+        online.getAndIncrement();
     }
 
     @Override
-    public synchronized void sessionDestroyed(HttpSessionEvent se) {
-       online--;
+    public void sessionDestroyed(HttpSessionEvent se) {
+       online.getAndDecrement();
     }
 }
