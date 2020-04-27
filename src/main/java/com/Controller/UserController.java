@@ -61,6 +61,30 @@ public class UserController {
         }
     }
 
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    @SuppressWarnings("unchecked")
+//    public Response login(String mail, String password, HttpSession session, HttpServletResponse servletResponse) {
+//        User login = userService.login(mail);
+//        if (login == null) {
+//            return response.error("没有这账号!");
+//        } else {
+//            if (login.getPassword().equals(password)) {
+//                session.setAttribute("userId", login.getAccount());
+//                //写入验证字段,防止csrf攻击
+//                int authorizationNum = (int) (Math.random() * 10000000);
+//                String authorization = HashStrUtil.hash(String.valueOf(authorizationNum), "MD5");
+//                session.setAttribute("authorization", authorization);
+//                Cookie cookie = new Cookie("authorization", authorization);
+//                cookie.setPath("/");
+//                cookie.setHttpOnly(false);
+//                servletResponse.addCookie(cookie);
+//                return response.successWithData("登录成功", login);
+//            } else {
+//                return response.error("登录失败");
+//            }
+//        }
+//    }
+
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public Response getUser(String index) {
@@ -100,9 +124,9 @@ public class UserController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public Response logout(HttpSession httpSession) {
-        httpSession.invalidate();
         long userId = (long) httpSession.getAttribute("userId");
         int logout = userService.logout(userId, (int) (System.currentTimeMillis() / 1000));
+        httpSession.invalidate();
         if (logout > 0) {
             return response.success("success");
         } else {

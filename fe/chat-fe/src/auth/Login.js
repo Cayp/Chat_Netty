@@ -3,10 +3,7 @@ import { Form, Input, Button, Checkbox, message} from 'antd';
 import { Route, Link, Switch, withRouter, Redirect, } from "react-router-dom"; 
 import { myAxios } from '../utils/myAxios'
 import '../App.css'
-import {
-    UserOutlined,
-    LockOutlined,
-  } from '@ant-design/icons';
+
 const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -15,16 +12,24 @@ const layout = {
     wrapperCol: { offset: 8, span: 16 },
   };
  
-
-export class Login extends React.Component {
+class Login extends React.Component {
     constructor(props) {
         super(props);
+        const values = JSON.parse(localStorage.getItem("values"))
         this.state = {
-            
+            account:  values ? values.account : undefined,
+            password: values ? values.password : undefined,
+            remember: values ? values.remember : true,
         }
     }
 
     onFinish = values => {
+      console.log(values)
+      if (values.remember) {
+        localStorage.setItem("values", JSON.stringify(values))
+      } else {
+        localStorage.removeItem("values")
+      }
       myAxios.post('/chat/user/login', values)
              .then((respone) => {
                let json = respone.data
@@ -32,6 +37,7 @@ export class Login extends React.Component {
                 message.success(json.message)
                 window.sessionStorage.setItem("userId", json.data.account);
                 window.sessionStorage.setItem("userName", json.data.name);
+                this.props.history.push("/home")
                } else {
                 message.error(json.message)
                }
@@ -47,7 +53,7 @@ export class Login extends React.Component {
              <Form
               {...layout}
               name="basic"
-              initialValues={{ remember: true }}
+              initialValues={{account: this.state.account, password: this.state.password, remember: this.state.remember}}
               onFinish={this.onFinish}
               onFinishFailed={this.onFinishFailed}
             >
@@ -68,9 +74,8 @@ export class Login extends React.Component {
                 <Input.Password placeholder="请输入密码"/>
               </Form.Item>
         
-              <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                <Checkbox>记住密码</Checkbox>
-                <Link to="/auth/findPassword">忘记密码？</Link>
+              <Form.Item {...tailLayout} name="remember" valuePropName="checked" >
+                <Checkbox>记住账号密码</Checkbox>
               </Form.Item>
         
               <Form.Item {...tailLayout}>
@@ -79,8 +84,11 @@ export class Login extends React.Component {
                 </Button>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <Link to="/auth/register">去注册</Link>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <Link to="/auth/findPassword">忘记密码</Link>
               </Form.Item>
             </Form> 
      );
     }
 }
+export default withRouter(Login);

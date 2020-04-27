@@ -8,7 +8,7 @@
         INSERT INTO user(name,password,mail,icon,lastime,mailcrc) VALUES (#{name},#{password},#{mail},#{icon},0,CRC32(#{mail}));
     </insert>
     <update id="logout">
-        UPDATE user SET lastime = #{lastime} WHERE id = #{id};
+        UPDATE user SET lastime = #{lastime} WHERE account = #{id};
     </update>
     <update id="changePassWord">
         UPDATE user SET password = #{password} where mailcrc = CRC32(#{mail}) and mail = #{mail};
@@ -32,6 +32,6 @@
         SELECT * FROM friend WHERE toid = #{userid} and  friendid = #{toid};
     </select>
     <select id="findUser" resultType="com.Entity.User">
-        SELECT * FROM user where id = #{id};
+        SELECT * FROM user where account = #{id};
     </select>
 </mapper>

@@ -2,12 +2,8 @@ import React from 'react';
 import { Form, Input, Button, Checkbox, Card} from 'antd';
 import { Route, Link, Switch, withRouter, Redirect, } from "react-router-dom"; 
 import '../App.css'
-import {
-    UserOutlined,
-    LockOutlined,
-  } from '@ant-design/icons';
-import { Login } from './Login';
 import { Register } from './Register';
+import Login from './Login';
 export class FirstIndex extends React.Component {
     constructor(props) {
         super(props);

@@ -62,6 +62,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         }
         //应答消息
         String requset = ((TextWebSocketFrame) msg).text();
+        System.out.println(requset);
         if("ping".equals(requset)){
             ctx.channel().writeAndFlush(new TextWebSocketFrame("pong"));
             return;
@@ -111,7 +112,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         }
 
         //握手
-        WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory("ws://localhost:10000/websocket", null, false);
+        WebSocketServerHandshakerFactory wsFactory = new WebSocketServerHandshakerFactory("ws://localhost:10000/webSocket", null, false);
         handshaker = wsFactory.newHandshaker(msg);
         if (handshaker == null) {
             WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx.channel());
@@ -120,6 +121,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
             handshaker.handshake(ctx.channel(), msg);
             String uri = msg.getUri();
             String userid = uri.substring(11, uri.length());
+            System.out.println("已上线userId:" + userid);
             ChannelMessage.getChannelMessage().saveAccount(userid, ctx.channel());
         }
     }

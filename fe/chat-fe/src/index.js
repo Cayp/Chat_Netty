@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route} from 'react-router-dom'
-import { Login } from './auth/Login';
-import { FirstIndex } from './auth/FirstIndex';
+import store from './store'
+import { Provider } from 'react-redux'
 ReactDOM.render(
-  <BrowserRouter basename='/'>
- 
- <FirstIndex />
- </BrowserRouter>,
+  <Provider store={store}>
+      <BrowserRouter basename='/'>
+    <App />
+ </BrowserRouter>        
+</Provider >
+  ,
   document.getElementById('root')
 );
 
