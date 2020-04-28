@@ -23977,3 +23977,56 @@ Consider defining a bean named 'sss' in your configuration.
 2020-04-28 00:51:36 INFO ChannelMessage:60-client from /0:0:0:0:0:0:0:1:45521 退出连接
 2020-04-28 00:54:59 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:45731 已连接
 2020-04-28 00:55:19 INFO ChannelMessage:60-client from /0:0:0:0:0:0:0:1:45731 退出连接
+2020-04-28 00:58:56 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-04-28 00:58:56 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 14212 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-04-28 00:58:56 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-04-28 00:58:58 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$ca98b414] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-28 00:58:59 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-04-28 00:58:59 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2769 ms
+2020-04-28 00:59:00 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-28 00:59:01 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-04-28 00:59:01 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-04-28 00:59:01 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#7c28c1:0/SimpleConnection@43a51d00 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 45966]
+2020-04-28 00:59:01 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-04-28 00:59:01 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-04-28 00:59:01 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-04-28 00:59:01 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-04-28 00:59:01 INFO ChatApplication:59-Started ChatApplication in 5.797 seconds (JVM running for 9.275)
+2020-04-28 00:59:01 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-04-28 00:59:01 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-04-28 00:59:02 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-04-28 00:59:13 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-04-28 00:59:13 INFO DispatcherServlet:546-Completed initialization in 11 ms
+2020-04-28 00:59:21 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:46057 已连接
+2020-04-28 00:59:42 INFO ChannelMessage:60-client from /0:0:0:0:0:0:0:1:46057 退出连接
+2020-04-28 01:00:32 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:46145 已连接
+2020-04-28 01:02:02 INFO ChannelMessage:60-client from /0:0:0:0:0:0:0:1:46145 退出连接
+2020-04-28 17:22:14 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-04-28 17:22:16 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 16916 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-04-28 17:22:16 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-04-28 17:22:22 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$a710d947] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-28 17:22:32 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-04-28 17:22:34 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 18003 ms
+2020-04-28 17:22:50 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-28 17:22:51 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-04-28 17:22:55 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-04-28 17:23:00 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#4525d1d3:0/SimpleConnection@36361ddb [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 48889]
+2020-04-28 17:23:00 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-04-28 17:23:00 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-04-28 17:23:00 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-04-28 17:23:02 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-04-28 17:23:02 INFO ChatApplication:59-Started ChatApplication in 52.543 seconds (JVM running for 93.879)
+2020-04-28 17:23:03 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-04-28 17:23:03 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-04-28 17:23:05 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-04-28 17:27:08 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:49180 已连接
+2020-04-28 17:27:41 INFO ChannelMessage:60-client from /0:0:0:0:0:0:0:1:49180 退出连接
+2020-04-28 17:27:43 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:49236 已连接
+2020-04-28 17:28:14 INFO ChannelMessage:60-client from /0:0:0:0:0:0:0:1:49236 退出连接
+2020-04-28 17:28:16 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:49291 已连接
+2020-04-28 17:29:16 INFO ChannelMessage:60-client from /0:0:0:0:0:0:0:1:49291 退出连接
+2020-04-28 17:29:18 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:49375 已连接
+2020-04-28 17:29:55 INFO ChannelMessage:60-client from /0:0:0:0:0:0:0:1:49375 退出连接
+2020-04-28 17:29:57 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:49439 已连接
+2020-04-28 17:30:21 INFO ChannelMessage:60-client from /0:0:0:0:0:0:0:1:49439 退出连接
+2020-04-28 17:30:27 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:49504 已连接

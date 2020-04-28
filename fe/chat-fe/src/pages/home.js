@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route, Link, Switch, withRouter, Redirect, } from "react-router-dom";
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Route, Link, Switch, withRouter, Redirect} from "react-router-dom";
+import { Layout, Menu, Breadcrumb, Icon} from 'antd';
 import '../App.css'
 import 'antd/dist/antd.css'
 import {
@@ -13,6 +13,9 @@ import LoginUser from '../auth/LoginUser';
 import { initWebSocket } from '../store/actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import MySider from './MySider';
+import MyContent from './MyContent';
+import MyHeader from './MyHeader';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -29,6 +32,9 @@ class Home extends React.Component {
     this.state = {
       collapsed: false,
       authenticated: false,
+      panes: [],    //网站打开的标签页列表
+      activeMenu: '',  //网站活动的菜单
+      theme: localStorage.getItem('theme') || 'dark',   //侧边栏主题
     };
 }
 componentDidMount() {
@@ -53,40 +59,34 @@ componentWillUnmount() {
     this.setState({ collapsed });
   };
 
+  _setState = (obj) => {
+    this.setState(obj)
+}
+
   render() {
+    const { collapsed, panes, activeMenu, theme } = this.state
     return (
       <Layout style={{ minHeight: '100vh' }}>
-        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-          <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1">
-            <WechatOutlined />
-              <span>聊天</span>
-            </Menu.Item>
-            <Menu.Item key="2">  
-            <GlobalOutlined />
-              <span>朋友动态</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-            <SolutionOutlined />
-             <span>通讯录</span>
-            </Menu.Item>
-            <Menu.Item key="4">
-            <UserOutlined />
-             <span>个人信息</span>
-            </Menu.Item>
-          </Menu>
-        </Sider>
+        <Sider trigger={null} collapsible collapsed={collapsed} theme={theme}>
+                   <MySider
+                    theme={theme}
+                    panes={panes}
+                    activeMenu={activeMenu}
+                    onChangeState={this._setState}
+                   />
+                </Sider>
         <Layout className="site-layout">
-        <Header style={{ background: '#fff', padding: 0 }}>
-            <LoginUser/>
-          </Header>
-          <Content style={{ margin: '0 16px' }}>
-            <br/>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              test.
-            </div>
-          </Content>
+        <Header style={{ padding: 0 }}>
+                       <MyHeader
+                             theme={theme}
+                             collapsed={collapsed}
+                             onChangeState={this._setState}
+                       />
+                    </Header>
+         <MyContent 
+              panes={panes}
+              activeMenu={activeMenu}
+              onChangeState={this._setState}/>
           <Footer style={{ textAlign: 'center' }}>©2020 Created by linjianpeng</Footer>
         </Layout>
       </Layout>

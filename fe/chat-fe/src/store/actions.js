@@ -21,10 +21,14 @@ export function initWebSocket(userId) {
         }
         //监听服务端的消息事件
         websocket.onmessage = function (event) {
-           // const data = JSON.parse(event.data)
-            console.log(event.data)
             heartCheck.reset();
             //接收到服务端发回的心跳
+            if (event.data == "pong"){
+                return;
+            }
+            const data = JSON.parse(event.data)
+            console.log(event.data)
+            
             
         }
         websocket.onclose = function () {
@@ -47,7 +51,6 @@ export function initWebSocket(userId) {
             start: function () {
                 var self = this;
                 this.timeoutObj = setTimeout(function () {
-                    console.log("test")
                     websocket.send("ping");
                     self.serverTimeoutObj = setTimeout(function () {
                         websocket.close(); //如果onclose会执行reconnect，我们执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次

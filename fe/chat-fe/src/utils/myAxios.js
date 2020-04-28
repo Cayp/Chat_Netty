@@ -6,7 +6,7 @@ myAxios.defaults.timeout = 10000;
 myAxios.defaults.withCredentials = true;
 
 myAxios.interceptors.request.use(config => {
-    //发送请求操作，统一再请求里加上userId 
+    //发送请求操作，统一再请求里加上authorization
     config.headers['authorization'] = Cookies.get("authorization");
     return config;
 }, error => {
