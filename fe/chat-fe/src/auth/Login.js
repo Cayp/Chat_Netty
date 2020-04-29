@@ -1,17 +1,10 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, message} from 'antd';
+import { Form, Input, Button, Checkbox, message, Icon} from 'antd';
 import { Route, Link, Switch, withRouter, Redirect, } from "react-router-dom"; 
 import { myAxios } from '../utils/myAxios'
 import '../App.css'
 
-const layout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
-  };
-  const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
-  };
- 
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -23,8 +16,11 @@ class Login extends React.Component {
         }
     }
 
-    onFinish = values => {
-      console.log(values)
+    handleSubmit = e => {
+      e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log(values)
       if (values.remember) {
         localStorage.setItem("values", JSON.stringify(values))
       } else {
@@ -35,60 +31,62 @@ class Login extends React.Component {
                let json = respone.data
                if (json.code == 20000) {
                 message.success(json.message)
-                window.sessionStorage.setItem("userId", json.data.account);
-                window.sessionStorage.setItem("userName", json.data.name);
+                let user = {id: json.data.account, name: json.data.name, avator: json.data.avator}
+                sessionStorage.setItem("user", JSON.stringify(user))
                 this.props.history.push("/home")
                } else {
                 message.error(json.message)
                }
            })
-  };
-
-    onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
+      }
+    });
+      
   };
     
     render() {
-        return (  
-             <Form
-              {...layout}
-              name="basic"
-              initialValues={{account: this.state.account, password: this.state.password, remember: this.state.remember}}
-              onFinish={this.onFinish}
-              onFinishFailed={this.onFinishFailed}
-            >
-              
-              <Form.Item
-                label="账号"
-                name="account"
-                rules={[{ required: true, message: '请输入邮箱名!' }]}
-              >
-                <Input placeholder="请输入邮箱"/>
-              </Form.Item>
-        
-              <Form.Item
-                label="密码"
-                name="password"
-                rules={[{ required: true, message: '请输入密码!' }]}
-              >
-                <Input.Password placeholder="请输入密码"/>
-              </Form.Item>
-        
-              <Form.Item {...tailLayout} name="remember" valuePropName="checked" >
-                <Checkbox>记住账号密码</Checkbox>
-              </Form.Item>
-        
-              <Form.Item {...tailLayout}>
-                <Button type="primary" htmlType="submit">
-                  登录
-                </Button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <Link to="/auth/register">去注册</Link>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <Link to="/auth/findPassword">忘记密码</Link>
-              </Form.Item>
-            </Form> 
+        const { getFieldDecorator } = this.props.form;
+        let { account, password, remember } = this.state;
+        return ( 
+          <Form onSubmit={this.handleSubmit} className="login-form">
+          <Form.Item>
+            {getFieldDecorator('account', {
+              initialValue: account,
+              rules: [{ required: true, message: '请输入邮箱名!' }],
+            })(
+              <Input
+                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                placeholder="请输入邮箱名"
+              />,
+            )}
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator('password', {
+              initialValue: password,
+              rules: [{ required: true, message: '请输入密码!' }],
+            })(
+              <Input
+                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                type="password"
+                placeholder="请输入密码"
+              />,
+            )}
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator('remember', {
+              valuePropName: 'checked',
+              initialValue: remember,
+            })(<Checkbox>记住账号密码</Checkbox>)}
+            <Link to="/auth/findPassword" className="login-form-forgot">
+            &nbsp;&nbsp;忘记密码&nbsp;&nbsp;&nbsp;&nbsp;</Link>
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              登录
+            </Button>
+            &nbsp;&nbsp;Or <Link to="/auth/register">去注册</Link>
+          </Form.Item>
+        </Form>
      );
     }
 }
-export default withRouter(Login);
+
+const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(withRouter(Login));
+export default WrappedNormalLoginForm

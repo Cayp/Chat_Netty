@@ -1,8 +1,11 @@
 package com.NettyClasses;
 
 import com.Dao.GetGroupDao;
+import com.Entity.User;
 import com.Service.ServiceImp.UnReadServiceImp;
+import com.Service.ServiceImp.UserServiceImp;
 import com.Service.UnReadService;
+import com.Service.UserService;
 import com.Utils.SpringUtil;
 import com.alibaba.fastjson.JSONObject;
 import io.netty.buffer.ByteBuf;
@@ -30,6 +33,8 @@ public class ServerHandler extends SimpleChannelInboundHandler {
 
 
     private UnReadService unReadService;
+
+    private UserService userService;
 
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -81,7 +86,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
                 if (unReadService == null) {
                     unReadService = SpringUtil.getBean(UnReadServiceImp.class);
                 }
-                unReadService.setUnRead(Long.parseLong(toid), Long.parseLong(fromid), time, Integer.parseInt(type), jsonObject.get("textone").toString());
+                unReadService.setUnRead(Long.parseLong(toid), Long.parseLong(fromid), time, Integer.parseInt(type), jsonObject.get("content").toString(), jsonObject.get("name").toString(), jsonObject.get("avator").toString());
 
             } else {
                 channel.writeAndFlush(new TextWebSocketFrame(requset));
@@ -93,7 +98,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
             if (chatgroup != null) {
                 GetGroupDao bean = SpringUtil.getBean(GetGroupDao.class);
                 //信息持久化到数据库
-                bean.addChatRecGroup(Integer.parseInt(toid), time, Long.parseLong(fromid), jsonObject.get("textone").toString(), Integer.parseInt(type));
+                bean.addChatRecGroup(Integer.parseInt(toid), time, Long.parseLong(fromid), jsonObject.get("content").toString(), Integer.parseInt(type), jsonObject.get("name").toString(), jsonObject.get("avator").toString());
                 chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
             } else {
                 //不是群聊中的成员返回处理
@@ -122,7 +127,11 @@ public class ServerHandler extends SimpleChannelInboundHandler {
             String uri = msg.getUri();
             String userid = uri.substring(11, uri.length());
             System.out.println("已上线userId:" + userid);
-            ChannelMessage.getChannelMessage().saveAccount(userid, ctx.channel());
+            if (userService == null) {
+                userService = SpringUtil.getBean(UserService.class);
+            }
+            User user = userService.findUser(Integer.parseInt(userid));
+            ChannelMessage.getChannelMessage().saveAccount(user, ctx.channel());
         }
     }
 

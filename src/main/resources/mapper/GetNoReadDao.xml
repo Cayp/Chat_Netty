@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.Dao.GetNoReadDao">
     <update id="setUnRead">
-        INSERT INTO noreadme VALUES (#{toid},#{fromid},#{type},#{text},#{time});
+        INSERT INTO noreadme VALUES (#{toid},#{fromid},#{type},#{text},#{time},#{name},#{avator});
     </update>
     <delete id="deleteUnRead">
         DELETE FROM noreadme WHERE recvid = #{recvid};
@@ -14,6 +14,6 @@
         SELECT fromid FROM noreadme WHERE toid = #{toid} group by fromid;
     </select>
     <select id="getUnReadGroup" resultType="com.Entity.UnReadGroup">
-        SELECT * FROM unread_group where groupid = #{groupid} and time >= #{lastime};
+        SELECT * FROM unread_group;
     </select>
 </mapper>

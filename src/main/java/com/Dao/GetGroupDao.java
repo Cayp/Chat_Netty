@@ -1,12 +1,10 @@
 package com.Dao;
 
 
-import com.Entity.Groupchat;
+import com.Entity.GroupChat;
 import com.Entity.UnReadGroup;
-import com.Entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -39,34 +37,10 @@ public interface GetGroupDao {
      * @param type
      * @return
      */
-    int addChatRecGroup(@Param("groupid") int groupid,@Param("time") int time,@Param("sendid") long sendid,@Param("message") String message,@Param("type") int type);
+    int addChatRecGroup(@Param("groupid") int groupid,@Param("time") int time,@Param("sendid") long sendid,@Param("message") String message,@Param("type") int type, @Param("name") String name, @Param("avator") String avator);
 
-    /**
-     * 转移群主
-     * @param groupid
-     * @param changeUserid
-     * @return
-     */
-    int changeOwner(@Param("groupid") int groupid,@Param("changeUserid") long changeUserid);
 
-    /**
-     * 删除群
-     * @param groupid
-     * @return
-     */
-    int deleteGroup(@Param("groupid") int groupid);
 
-    /**
-     * 返回该群聊的群主
-     * @param groupid
-     * @return
-     */
-    int getGroupOwner(@Param("groupid") int groupid);
-
-    /**
-     * 创建一个群聊
-     * @return
-     */
-    int buildGroup(Groupchat groupchat);
+    List<GroupChat> getGroupList(long userId);
 
 }

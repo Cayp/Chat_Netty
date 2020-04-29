@@ -6,7 +6,7 @@ import {
   UserOutlined
 } from '@ant-design/icons';
 import { myAxios } from '../utils/myAxios';
-
+import { getUser } from '../utils/util'
 const SubMenu = Menu.SubMenu;
 
 
@@ -16,28 +16,18 @@ class LoginUser extends React.Component {
     }
 
 logout = () => {
-   myAxios.get('/chat/user/logout')
-          .then((response) => {
-            let json = response.data;
-            if (json.code == 20000) {
-              message.success(json.message)
-              this.props.history.push('/auth/login')
-            } else {
-              message.error(json.message)
-            }
-        })
+ 
 }
 
 render()　{
-      const userName = window.sessionStorage.getItem("userName")
-      const userId = window.sessionStorage.getItem("userId")
+      const user = getUser()
       return (
         <Row type="flex" justify="end">
           <Col>
             <Menu mode="horizontal" style={{ lineHeight: '64px' }}>
-              {userName && userId
-                ? (
-                  <SubMenu title={<span className="submenu-title-wrapper"><UserOutlined/>Hi, {userName}</span>}>
+              {user ? 
+               (
+                  <SubMenu title={<span className="submenu-title-wrapper"><UserOutlined/>Hi, {user.name}</span>}>
                     <Menu.Item >
                       <Button type="link" htmlType="button" onClick={this.logout}>退出登录</Button>
                     </Menu.Item>

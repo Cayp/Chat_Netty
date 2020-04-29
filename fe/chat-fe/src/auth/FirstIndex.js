@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox, Card} from 'antd';
 import { Route, Link, Switch, withRouter, Redirect, } from "react-router-dom"; 
 import '../App.css'
 import { Register } from './Register';
-import Login from './Login';
+import WrappedNormalLoginForm from './Login';
 export class FirstIndex extends React.Component {
     constructor(props) {
         super(props);
@@ -17,9 +17,9 @@ export class FirstIndex extends React.Component {
     render() {
         return (   
             <div className="login" style={{ minHeight: '100vh'}}> 
-             <Card title={this.state.title} className="login-form">
+             <Card title={this.state.title} className="login-form1">
                 <Switch>
-                    <Route exact path={`/auth/login`} render={() => <Login/>}/>
+                    <Route exact path={`/auth/login`} render={() => <WrappedNormalLoginForm/>}/>
                     <Route exact path={`/auth/register`} render={() => <Register/>}/>
                 </Switch>
             </Card>

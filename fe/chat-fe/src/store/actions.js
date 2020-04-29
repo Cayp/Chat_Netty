@@ -1,5 +1,62 @@
 import React from 'react'
 import { notification, message } from 'antd'
+import { myAxios } from '../utils/myAxios'
+import { handleChatListToMap } from '../utils/util'
+
+
+
+//聊天对象list
+export const SET_LEFTITEMLIST = 'SET_LEFTITEMLIST'
+export function setLeftItemList(leftItemList) {
+    return {
+        type: SET_LEFTITEMLIST,
+        leftItemList
+    }
+}
+/**
+ * 初始化聊天对象list
+ */
+export function initLeftItemList(userId) {
+    return async function (dispatch) {
+        myAxios.get(`/chat/relation/leftItemList?userId=${userId}`)
+               .then((response) => {
+                   let json = response.data;
+                   if (json.code == 20000) {
+                       dispatch(setLeftItemList(json.dataList))
+                   } else {
+                       message.error(json.message)
+                   }
+           })
+    }
+}
+
+//聊天对象与聊天记录的对应的map
+export const SET_CHATLISTSMAP = 'SET_CHATLISTSMAP'
+export function setChatListsMap(chatListsMap) {
+     return {
+         type: SET_CHATLISTSMAP,
+         chatListsMap
+     }
+}
+
+/**
+ * 初始化聊天对象与聊天记录的对应的map
+ * @param {*} userId 
+ */
+export function initChatListsMap(userId) {
+    return async function (dispatch) {
+        myAxios.get(`/chat/relation/unReadChatList?userId=${userId}`)
+               .then((response) => {
+                   let json = response.data;
+                   if (json.code == 20000) {
+                    let chatListsMap = handleChatListToMap(json.dataList)   
+                    dispatch(setChatListsMap(chatListsMap))
+                   } else {
+                    message.error(json.message)
+                   }
+               })
+    }
+}
 
 
 //设置websocket对象
@@ -10,6 +67,18 @@ export function setWebsocket(websocket) {
         websocket
     }
 }
+
+/**
+ * 添加聊天信息
+ */
+export const ADD_CHAT = 'ADD_CHAT'
+export function addChat(chat) {
+    return {
+        type: ADD_CHAT,
+        chat
+    }
+}
+
 
 export function initWebSocket(userId) {
     return async function (dispatch) {
@@ -27,9 +96,7 @@ export function initWebSocket(userId) {
                 return;
             }
             const data = JSON.parse(event.data)
-            console.log(event.data)
-            
-            
+            dispatch(addChat(data))
         }
         websocket.onclose = function () {
 
@@ -58,5 +125,6 @@ export function initWebSocket(userId) {
                 }, this.timeout)
             }
     }
+    dispatch(setWebsocket(websocket))
   }
 }

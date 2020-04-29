@@ -1,10 +1,8 @@
 package com.Controller;
 
 
-import com.Entity.Groupchat;
 import com.NettyClasses.ChannelMessage;
 import com.Service.GroupService;
-import com.Utils.Const;
 import com.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,37 +46,5 @@ public class ChatGroup {
         ChannelMessage.getChannelMessage().addToGroup(String.valueOf(addid), String.valueOf(groupid));
         return response.success("邀请成功");
 
-    }
-
-
-    @RequestMapping(value = "/deleteGroup", method = RequestMethod.GET)
-    public Response deleteGroup(int groupid, long userid) {
-        int i = groupService.deleteGroup(groupid, userid);
-        ChannelMessage.getChannelMessage().deleteGroup(String.valueOf(groupid));
-        if (i == Const.NORIGHT) {
-            return response.error("你没有权限");
-        } else {
-            return response.success("删除成功!");
-        }
-    }
-
-    @RequestMapping(value = "/changeOwner", method = RequestMethod.GET)
-    public Response changeOwner(int groupid, long ownerid) {
-        int i = groupService.changeOwner(groupid, ownerid);
-        if (i == Const.NORIGHT) {
-            return response.error("你没有权限");
-        } else {
-            return response.success("移交成功!");
-        }
-    }
-
-    @RequestMapping(value = "/buildGroup", method = RequestMethod.POST)
-    public Response buildGroup(long userid, String groupname) {
-        Groupchat groupchat = groupService.buildGroup(userid, groupname);
-        if (groupchat == null) {
-            return response.error("创建失败");
-        }
-        ChannelMessage.getChannelMessage().addGroup(String.valueOf(groupchat.getGroupid()));
-        return response.successWithData("创建成功", groupchat);
     }
 }

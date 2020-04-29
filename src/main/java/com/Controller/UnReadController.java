@@ -49,8 +49,8 @@ public class UnReadController {
     }
 
     @RequestMapping(value = "/getGroupUnRead", method = RequestMethod.GET)
-    public Response getGroupUnRead(long userid, int groupid) {
-        List<UnReadGroup> groupUnReads = unReadService.getGroupUnRead(userid, groupid);
+    public Response getGroupUnRead() {
+        List<UnReadGroup> groupUnReads = unReadService.getGroupUnRead();
         return response.successWithDataList("获取群未读信息成功", groupUnReads);
     }
 }

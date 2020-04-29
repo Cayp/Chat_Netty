@@ -6,11 +6,11 @@
  * @LastEditors: Please set LastEditors
  */
 import React, { Component } from 'react';
-import { message, Avatar, Divider } from 'antd'
+import { message, Avatar, Divider, List as AntdList } from 'antd'
 import {  initWebSocket } from '../store/actions'
 import { connect, } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { replaceImg, throttle } from '../utils/util'
+import { replaceImg, throttle, getUser } from '../utils/util'
 import moment from 'moment'
 import { ContentUtils } from 'braft-utils'
 import BraftEditor from 'braft-editor'
@@ -19,7 +19,7 @@ import 'braft-editor/dist/index.css'
 import './style.less'
 
 const store = connect(
-    (state) => ({ websocket: state.websocket }),
+    (state) => ({ websocket: state.websocket, leftItemList: state.leftItemList, chatListsMap: state.chatListsMap}),
     (dispatch) => bindActionCreators({ initWebSocket }, dispatch)
 )
 
@@ -34,11 +34,10 @@ class Chat extends Component {
     state = {
         editorState: BraftEditor.createEditorState(null),
         userList: [], //所有用户列表
+        selectLeftItem: '',
     }
     componentDidMount() {
-        if (this.props.websocket && this.props.websocket.readyState !== 1) {
-            this.props.initWebSocket(this.props.user)
-        }
+        
         this.scrollToRow()
         this.getUserList()
         window.onmouseup = this.onMouseUp
@@ -60,6 +59,34 @@ class Chat extends Component {
         window.onmouseup = null
     }
 
+    chatLeftItems = () => {
+        let { selectLeftItem} = this.state;
+        let leftItemList = this.props.leftItemList;
+        return (
+            <AntdList
+               dataSource={leftItemList}
+               style={{ overflowY: "scroll", height: "100%"}}
+               renderItem={item => <AntdList.Item style={{padding: "0px"}}>
+                   <div className='left-item' 
+                        style={{background: `${item.type}-${item.id}` === selectLeftItem ? '#f3f3f3' : ''}}
+                        onClick={() =>this.setState({selectLeftItem: `${item.type}_${item.id}`})}>
+                                <div><Avatar size='large' src={require('./imgs/react.png')} /></div>
+                                <div className='left-item-text'>
+                                    <div className='group-name'>
+                                        <span>{item.name}</span>
+                                        <span>{item.type}</span>
+                                    </div>
+                                    <div className='group-message' style={{ display: 1 ? 'flex' : 'none' }}>
+                                        <div style={{ flexFlow: 1, flexShrink: 0 }}>{item.id}:&nbsp;</div>
+                                        <div className='ellipsis' dangerouslySetInnerHTML={{ __html: replaceImg("11111") }} />
+                                    </div>
+                                </div>
+                            </div>
+               </AntdList.Item>}
+           />
+        )
+    }
+
     scrollToRow = () => {
         // 页面首次进入时并没有滚动到最底部，用下面这种方法进行处理
     //    const rowIndex = this.props.chatList.length - 1
@@ -78,6 +105,7 @@ class Chat extends Component {
     getUserList = () => {
         this.handleUserList()
     }
+
     /**
      * 处理用户列表(管理员、在线用户放在数组前面)
      */
@@ -214,9 +242,10 @@ class Chat extends Component {
 
     }
     render() {
-        const { editorState, userList } = this.state
-        const chatList = []
-        const user = {}
+        const { editorState, userList, selectLeftItem } = this.state
+        const chatListsMap = this.props.chatListsMap
+        const chatList = chatListsMap.get(selectLeftItem) || [];
+        const user = getUser()
         const onlineList = []
         const controls = ['emoji', 'italic', 'text-color', 'separator', 'link', 'separator', 'media']
         // 禁止上传video、audio
@@ -244,7 +273,6 @@ class Chat extends Component {
                 return false
             }
         }
-        const lastChat = chatList && chatList[chatList.length - 1] || {}
         return (
             <div className='chat-container' ref={el => this.chatContainer = el}>
                 <div className='chat-box' ref={el => this.chatBox = el}>
@@ -252,19 +280,7 @@ class Chat extends Component {
                     </div>
                     <div className='chat-body'>
                         <div className='left'>
-                            <div className='left-item'>
-                                <div><Avatar size='large' src={require('./imgs/react.png')} /></div>
-                                <div className='left-item-text'>
-                                    <div className='group-name'>
-                                        <span>聊天室01</span>
-                                        <span>{this.handleTime(lastChat.createTime, true).split(' ')[0]}</span>
-                                    </div>
-                                    <div className='group-message' style={{ display: lastChat.userId ? 'flex' : 'none' }}>
-                                        <div style={{ flexFlow: 1, flexShrink: 0 }}>{lastChat.username}:&nbsp;</div>
-                                        <div className='ellipsis' dangerouslySetInnerHTML={{ __html: replaceImg(lastChat.content) }} />
-                                    </div>
-                                </div>
-                            </div>
+                            {this.chatLeftItems()}
                         </div>
                         <div className='main'>
                             <List
@@ -272,7 +288,7 @@ class Chat extends Component {
                                 width={443}
                                 height={328}
                                 style={{ outline: 'none' }}
-                                rowCount={chatList ? chatList.length: 1}
+                                rowCount={chatList.length}
                                 deferredMeasurementCache={cache}
                                 rowHeight={cache.rowHeight}
                                 rowRenderer={({ index, isScrolling, key, parent, style }) => (
@@ -285,13 +301,13 @@ class Chat extends Component {
                                     >
                                         <div style={style} className='chat-item'>
                                             {/* 两条消息记录间隔超过3分钟就显示时间 */}
-                                            {(index === 0 || chatList[index].createTime - chatList[index - 1].createTime > 3 * 60 * 1000) && (
-                                                <div className='time'>{this.handleTime(chatList[index].createTime)}</div>
+                                            {(index === 0 || chatList[index].time - chatList[index - 1].time > 3 * 60 * 1000) && (
+                                                <div className='time'>{this.handleTime(chatList[index].time)}</div>
                                             )}
                                             <div className={`chat-item-info ${user.id === chatList[index].userId ? 'chat-right' : ''}`}>
-                                                <div><Avatar src={chatList[index].userAvatar} /></div>
+                                                <div><Avatar src={chatList[index].avatar} /></div>
                                                 <div className='chat-main'>
-                                                    <div className='username'>{chatList[index].username}</div>
+                                                    <div className='username'>{chatList[index].name}</div>
                                                     <div className='chat-content' dangerouslySetInnerHTML={{ __html: chatList[index].content }} />
                                                 </div>
                                             </div>

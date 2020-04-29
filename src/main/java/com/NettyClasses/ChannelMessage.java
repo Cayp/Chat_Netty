@@ -37,6 +37,9 @@ public class ChannelMessage {
     private static ConcurrentHashMap<String, ChannelGroup> chatgroupmap = new ConcurrentHashMap<>();
     //存channelid与userid对应关系,为了解决remove
     private static ConcurrentHashMap<ChannelId, String> channeluserid = new ConcurrentHashMap<>();
+    //user对象容器
+    private static ConcurrentHashMap<String, User> userMap = new ConcurrentHashMap<>();
+
     private static Logger logger = LoggerFactory.getLogger(ChannelMessage.class);
     public final static String SINGLE_CHAT = "1";
     public final static String GROUP_CHAT = "2";
@@ -61,6 +64,7 @@ public class ChannelMessage {
         String userid = channeluserid.get(channel.id());
         group.remove(channel);
         channelIds.remove(userid);
+        userMap.remove(userid);
         deleteUserAllGroup(userid, channel);
     }
 
@@ -83,15 +87,17 @@ public class ChannelMessage {
     /**
      * 第一次添加到channel总集合中
      *
-     * @param userId
+     * @param user
      * @param channel
      */
-    public void saveAccount(String userId, Channel channel) {
+    public void saveAccount(User user, Channel channel) {
         logger.info("client from {} 已连接", channel.remoteAddress());
+        String userId = String.valueOf(user.getAccount());
         //若用户不存在,添加到集合中
         if (!channelIds.containsValue(channel.id())) {
             channelIds.put(userId, channel.id());
-            channeluserid.put(channel.id(),userId );
+            channeluserid.put(channel.id(), userId);
+            userMap.put(userId, user);
             group.add(channel);
             initUserToGroup(userId, channel);
         }
@@ -139,6 +145,44 @@ public class ChannelMessage {
     }
 
     /**
+     * 群聊通知上线
+     * @param userId
+     * @param groupId
+     */
+    public void onlineToGroup(String userId, String groupId) {
+        User user = userMap.get(userId);
+        if (user != null) {
+            ChannelGroup chatgroup = getChatgroup(groupId);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("type", ONLINE);
+            jsonObject.put("name", user.getName());
+            jsonObject.put("userId", user.getAccount());
+            jsonObject.put("avator", user.getIcon());
+            jsonObject.put("time", System.currentTimeMillis() / 1000);
+            chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
+        }
+    }
+
+    /**
+     * 群聊通知下线
+     * @param userId
+     * @param groupId
+     */
+    public void offlineToGroup(String userId, String groupId) {
+        User user = userMap.get(userId);
+        if (user != null) {
+            ChannelGroup chatgroup = getChatgroup(groupId);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("type", OFFLINE);
+            jsonObject.put("name", user.getName());
+            jsonObject.put("userId", user.getAccount());
+            jsonObject.put("avator", user.getIcon());
+            jsonObject.put("time", System.currentTimeMillis() / 1000);
+            chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
+        }
+    }
+
+    /**
      * 初始化群聊的channelgroup
      *
      * @param groupids
@@ -164,14 +208,15 @@ public class ChannelMessage {
     /**
      * 第一次登录用户初始化加入他所属的群聊Group
      *
-     * @param userid
+     * @param userId
      */
-    private void initUserToGroup(String userid, Channel channel) {
+    private void initUserToGroup(String userId, Channel channel) {
         GetGroupDao bean = SpringUtil.getBean(GetGroupDao.class);
-        List<Integer> groups = bean.getGroup(userid);
+        List<Integer> groups = bean.getGroup(userId);
         for (int groupid : groups) {
-            String groupids = String.valueOf(groupid);
-            chatgroupmap.get(groupids).add(channel);
+            String groupidStr = String.valueOf(groupid);
+            chatgroupmap.get(groupidStr).add(channel);
+            onlineToGroup(userId, groupidStr);
         }
 
     }
@@ -179,14 +224,15 @@ public class ChannelMessage {
     /**
      * 选定用户退出所有群的channel集合
      *
-     * @param userid
+     * @param userId
      */
-    private void deleteUserAllGroup(String userid, Channel channel) {
+    private void deleteUserAllGroup(String userId, Channel channel) {
         GetGroupDao bean = SpringUtil.getBean(GetGroupDao.class);
-        List<Integer> groups = bean.getGroup(userid);
+        List<Integer> groups = bean.getGroup(userId);
         for (int groupid : groups) {
-            String groupids = String.valueOf(groupid);
-            chatgroupmap.get(groupids).remove(channel);
+            String groupidStr = String.valueOf(groupid);
+            chatgroupmap.get(groupidStr).remove(channel);
+            offlineToGroup(userId, groupidStr);
         }
     }
 

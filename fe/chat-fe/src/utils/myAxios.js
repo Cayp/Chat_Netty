@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie'
 
 const myAxios = axios;
-myAxios.defaults.timeout = 10000;
+myAxios.defaults.timeout = 100000;
 myAxios.defaults.withCredentials = true;
 
 myAxios.interceptors.request.use(config => {

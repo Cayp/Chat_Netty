@@ -23,10 +23,10 @@
         SELECT * FROM user WHERE mailcrc = CRC32(#{mail}) and mail = #{mail};
     </select>
     <select id="getUserByIndex" resultType="com.Entity.User">
-        SELECT account,name FROM user  WHERE  account = #{index} or name = #{index};
+        SELECT account, name FROM user  WHERE  account = #{index} or name = #{index};
           </select>
     <select id="getFriends" resultType="com.Entity.User">
-        SELECT account,name FROM user,friend WHERE toid=#{account} and friendid = user.account;
+        SELECT account, name, icon FROM user,friend WHERE toid=#{account} and friendid = user.account;
     </select>
     <select id="checkFriend" resultType="com.Entity.Friend">
         SELECT * FROM friend WHERE toid = #{userid} and  friendid = #{toid};

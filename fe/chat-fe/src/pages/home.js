@@ -1,27 +1,21 @@
 import React from 'react';
 import { Route, Link, Switch, withRouter, Redirect} from "react-router-dom";
-import { Layout, Menu, Breadcrumb, Icon} from 'antd';
+import { Layout, Menu, Breadcrumb, Icon, Button} from 'antd';
 import '../App.css'
 import 'antd/dist/antd.css'
-import {
-  WechatOutlined,
-  GlobalOutlined,
-  UserOutlined,
-  SolutionOutlined,
-} from '@ant-design/icons';
-import LoginUser from '../auth/LoginUser';
-import { initWebSocket } from '../store/actions'
+import { initWebSocket, initChatListsMap, initLeftItemList} from '../store/actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import MySider from './MySider';
 import MyContent from './MyContent';
 import MyHeader from './MyHeader';
+import { getUser } from '../utils/util';
 const { Header, Content, Footer, Sider } = Layout;
 
 
 const store = connect(
-    (state) => ({  websocket: state.websocket }),
-    (dispatch) => bindActionCreators({initWebSocket }, dispatch)
+    (state) => ({  websocket: state.websocket, leftItemList: state.leftItemList, chatListsMap: state.chatListsMap}),
+    (dispatch) => bindActionCreators({initWebSocket, initChatListsMap, initLeftItemList}, dispatch)
 )
 
 @store
@@ -50,12 +44,13 @@ componentWillUnmount() {
      * 初始化用户信息和建立websocket连接
      */
     init = async () => {
-        const userId = sessionStorage.getItem('userId')
-        this.props.initWebSocket(userId)
+        const user = getUser()
+        this.props.initWebSocket(user.id)
+        this.props.initLeftItemList(user.id)
+        this.props.initChatListsMap(user.id)
     }
 
   onCollapse = collapsed => {
-    console.log(collapsed);
     this.setState({ collapsed });
   };
 

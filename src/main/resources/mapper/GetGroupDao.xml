@@ -5,21 +5,11 @@
         INSERT INTO groupmembers VALUES (#{userid},#{groupid});
     </insert>
     <insert id="addChatRecGroup">
-        INSERT INTO unread_group VALUES (#{groupid},#{time},#{sendid},#{message},#{type});
+        INSERT INTO unread_group VALUES (#{groupid},#{time},#{sendid},#{message},#{type},#{name},#{avator});
     </insert>
-    <insert id="buildGroup" keyProperty="groupid" useGeneratedKeys="true">
-        INSERT INTO groupchat(groupowner,groupname,peoplenum,picture) VALUES (#{userId},#{groupname},#{peoplenum},#{picture});
-    </insert>
-    <update id="changeOwner">
-        UPDATE groupmembers SET groupowner = #{changeUserid} where groupid = #{groupid};
-    </update>
     <delete id="deleteOneFromGroup">
         DELETE FROM groupmembers WHERE userid = #{userid} and groupid = #{groupid};
     </delete>
-    <delete id="deleteGroup">
-        DELETE FROM groupchat WHERE groupid = #{groupid};
-    </delete>
-
     <select id="getGroup" resultType="java.lang.Integer">
         SELECT groupid FROM groupmembers where userid = #{userid};
     </select>
@@ -29,8 +19,8 @@
     <select id="getUnReadFromGroup" resultType="com.Entity.UnReadGroup">
         SELECT * from unread_group where groupid in (SELECT groupid from groupmembers where userid = #{userid}) and time >= #{time} ;
     </select>
-    <select id="getGroupOwner" resultType="java.lang.Integer">
-        SELECT groupowner FROM groupchat WHERE groupid = #{groupid};
+    <select id="getGroupList" resultType="com.Entity.GroupChat">
+        SELECT b.groupid, b.groupname, b.picture FROM groupmembers as a LEFT JOIN groupchat as b ON a.groupid = b.groupid where userid = #{userId}
     </select>
 
 </mapper>

@@ -1,9 +1,10 @@
 import React from 'react'
 import { Icon, message, Menu, Avatar } from 'antd'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadableComponent from '../utils/LoadableComponent'
 import { myAxios } from '../utils/myAxios'
+import { getUser } from '../utils/util'
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -84,6 +85,7 @@ class MyHeader extends React.Component {
           let json = response.data;
           if (json.code == 20000) {
             message.success(json.message)
+            sessionStorage.clear()
             this.props.history.push('/auth/login')
           } else {
             message.error(json.message)
@@ -102,7 +104,7 @@ class MyHeader extends React.Component {
     render() {
         const {infoVisible, passwordVisible } = this.state
         const {  theme } = this.props
-        const userName = sessionStorage.getItem("userName")
+        const user = getUser()
         return (
             <div style={{ background: '#fff', padding: '0 16px' }}>
                 <Icon
@@ -117,13 +119,15 @@ class MyHeader extends React.Component {
                     </div>
                     <div style={styles.headerItem}>
                         <Menu mode="horizontal" selectable={false}>
-                            <SubMenu title={<div style={styles.avatarBox}><Avatar size='small' src={require("../images/user.jpg")} />&nbsp;<span>{userName}</span></div>}>
+                            { user ? 
+                            <SubMenu title={<div style={styles.avatarBox}><Avatar size='small' src={require("../images/user.jpg")} />&nbsp;<span>{user.name}</span></div>}>
                                 <MenuItemGroup title="用户中心">
                                    <Menu.Item key={1} onClick={() => {}}><Icon type="user" />编辑个人信息</Menu.Item>
                                    <Menu.Item key={77} onClick={() => {}}><Icon type="edit" />修改密码</Menu.Item>
                                     <Menu.Item key={2} onClick={this.onLogout}><Icon type="logout" />退出登录</Menu.Item>
                                 </MenuItemGroup>
                             </SubMenu>
+                            : <Link to="/auth/login">登录</Link>}
                         </Menu>
                     </div>
                 </div>

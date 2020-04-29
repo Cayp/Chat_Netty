@@ -36,14 +36,13 @@ public class UnReadServiceImp implements UnReadService {
     }
 
     @Override
-    public int setUnRead(long toid, long fromid, int time, int type, String text) {
-        return getNoReadDao.setUnRead(toid, fromid, type, text, time);
+    public int setUnRead(long toid, long fromid, int time, int type, String text, String name, String avator) {
+        return getNoReadDao.setUnRead(toid, fromid, type, text, time, name, avator);
     }
 
     @Override
-    public List<UnReadGroup> getGroupUnRead(long userid, int groupid) {
-        User userInfo = getUserInfoDao.findUser(userid);
-        return getNoReadDao.getUnReadGroup(userInfo.getLastime(), groupid);
+    public List<UnReadGroup> getGroupUnRead() {
+        return getNoReadDao.getUnReadGroup();
     }
 
     @Override

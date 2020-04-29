@@ -52,6 +52,28 @@ export function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
+export function handleChatListToMap(chatLists) {
+    let cacheMap = new Map()
+    let resultMap = new Map()
+    chatLists.forEach(function (chat) {
+        let key = `${chat.type}_${chat.id}`
+        let value = cacheMap.get(key)
+        if (value) {
+            cacheMap.set(key, [...value, chat])
+        } else {
+            cacheMap.set(key, [chat])
+        }
+      }
+    )
+    cacheMap.forEach(function (value, key, map) {
+        let newValue = value.sort(function (a, b) {
+            return a.time - b.time
+        })
+        resultMap.set(key, newValue)
+    })
+    return resultMap
+}
+
 /**
  * 加密函数，加密同一个字符串生成的都不相同
  * @param {*} str 
@@ -117,3 +139,11 @@ export function preloadingImages(arr) {
           })
     }
   }
+
+  /**
+   * 从sessionStorge取出user信息
+   */
+export function getUser() {
+    let userStr = sessionStorage.getItem("user")
+    return userStr ? JSON.parse(userStr) : undefined;
+}
