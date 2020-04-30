@@ -13,7 +13,7 @@ public class ChatListEntity {
     private long id;
     private long userId;
     private String name;
-    private String avator;
+    private String avatar;
     private long time;
     private String content;
 }

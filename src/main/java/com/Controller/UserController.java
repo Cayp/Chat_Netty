@@ -1,25 +1,26 @@
 package com.Controller;
 
 
-import com.Entity.Friend;
-import com.Entity.LoginData;
-import com.Entity.RegisterEntity;
-import com.Entity.User;
+import com.Entity.*;
 import com.Interceptor.MySessionListener;
 import com.Service.UserService;
 import com.Utils.Const;
+import com.Utils.FileUtils;
 import com.Utils.HashStrUtil;
 import com.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author ljp
@@ -172,14 +173,34 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/changePassWord", method = RequestMethod.POST)
-    public Response changePassWord(HttpSession httpSession, String newPassWord) {
+    @RequestMapping(value = "/changePassWord", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public Response changePassWord(HttpSession httpSession, @RequestBody LoginData loginData) {
         long userId = (long) httpSession.getAttribute("userId");
-        int i = userService.changePasswordByid(userId, newPassWord);
+        int i = userService.changePasswordByid(userId, loginData.getPassword());
         if (i > 0) {
             return response.success("密码修改成功");
         } else {
             return response.error("密码修改失败");
         }
+    }
+
+    @RequestMapping(value = "/avatar", method = RequestMethod.PUT)
+    public Response upLoadAvatar(MultipartFile picture, HttpSession httpSession) throws IOException {
+        long userId = (long) httpSession.getAttribute("userId");
+        String avatar = System.currentTimeMillis() + "_" + userId + ".jpg";
+        boolean upLoadResult = FileUtils.upLoadPicture(picture, UpLoadType.avatar, avatar);
+        if (upLoadResult) {
+            userService.updateAvatar(userId, avatar);
+            return  response.successWithData("上传成功!", new UpLoadEntity(avatar));
+        } else {
+            return  response.error("上传失败!");
+        }
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public Response getUsers() {
+        List<User> users = userService.getUsers();
+        List<PersonEntity> personEntityList = users.stream().map(user -> new PersonEntity(user.getAccount(), user.getName(), user.getIcon())).collect(Collectors.toList());
+        return response.successWithDataList("success", personEntityList);
     }
 }

@@ -58,6 +58,9 @@ class MyContent extends React.Component {
                                     <div className='tabpane-box'>
                                         {item.content}
                                     </div>
+                                    <Footer style={{ textAlign: 'center', background: '#fff' }}>
+                                     ©2020 Created by linjianpeng
+                                    </Footer>
                                 </TabPane>))
                             }
                         </Tabs>

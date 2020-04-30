@@ -6,6 +6,7 @@ import com.Entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import javax.annotation.security.PermitAll;
 import java.util.List;
 
 
@@ -25,10 +26,14 @@ public interface GetUserInfoDao {
      int logout(@Param("id")long id,@Param("lastime")int time);
      List<User> getUserByIndex(@Param("index") Object index);
      List<User> getFriends(@Param("account") long account);
+     List<User> getUsers();
      int addFriend(@Param("toid") long toid, @Param("friendid") long friendid);
      int deleteFriend(@Param("toid") long toid, @Param("friendid") long friendid);
      Friend checkFriend(@Param("userid") long userid, @Param("toid") long toid);
      int register(RegisterEntity registerEntity);
      int changePassWord(@Param("mail") String mail,@Param("password") String password);
      int changePassWordByid(@Param("userid")long id,@Param("password")String password);
+     int updateAvatar(@Param("userId") long userId, @Param("avatar") String avatar);
+
+
 }

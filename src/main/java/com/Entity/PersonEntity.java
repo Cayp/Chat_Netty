@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChatToEntity {
-    private String type;
+public class PersonEntity {
     private long id;
     private String name;
     private String avatar;

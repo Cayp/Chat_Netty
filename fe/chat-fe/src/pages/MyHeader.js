@@ -8,8 +8,8 @@ import { getUser } from '../utils/util'
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
-// const EditInfoModal = LoadableComponent(import('./EditInfoModal'))
-// const EditPasswordModal = LoadableComponent(import('./EditPasswordModal'))
+const EditInfoModal = LoadableComponent(import('./EditInfoModal'))
+const EditPasswordModal = LoadableComponent(import('./EditPasswordModal'))
 
 const store = connect(
     (state) => ({ user: state.user })
@@ -104,7 +104,7 @@ class MyHeader extends React.Component {
     render() {
         const {infoVisible, passwordVisible } = this.state
         const {  theme } = this.props
-        const user = getUser()
+        const user = this.props.user
         return (
             <div style={{ background: '#fff', padding: '0 16px' }}>
                 <Icon
@@ -120,10 +120,10 @@ class MyHeader extends React.Component {
                     <div style={styles.headerItem}>
                         <Menu mode="horizontal" selectable={false}>
                             { user ? 
-                            <SubMenu title={<div style={styles.avatarBox}><Avatar size='small' src={require("../images/user.jpg")} />&nbsp;<span>{user.name}</span></div>}>
+                            <SubMenu title={<div style={styles.avatarBox}><Avatar size='small' src={`/chat/images/avatar/${user.avatar}`}/>&nbsp;<span>{user.name}</span></div>}>
                                 <MenuItemGroup title="用户中心">
-                                   <Menu.Item key={1} onClick={() => {}}><Icon type="user" />编辑个人信息</Menu.Item>
-                                   <Menu.Item key={77} onClick={() => {}}><Icon type="edit" />修改密码</Menu.Item>
+                                   <Menu.Item key={1} onClick={() => this.toggleInfoVisible(true)}><Icon type="user" />编辑个人信息</Menu.Item>
+                                   <Menu.Item key={77} onClick={() => this.togglePasswordVisible(true)}><Icon type="edit" />修改密码</Menu.Item>
                                     <Menu.Item key={2} onClick={this.onLogout}><Icon type="logout" />退出登录</Menu.Item>
                                 </MenuItemGroup>
                             </SubMenu>
@@ -131,8 +131,8 @@ class MyHeader extends React.Component {
                         </Menu>
                     </div>
                 </div>
-                {/* <EditInfoModal toggleVisible={this.toggleInfoVisible} visible={infoVisible} />
-                <EditPasswordModal toggleVisible={this.togglePasswordVisible} visible={passwordVisible} /> */}
+                 <EditInfoModal toggleVisible={this.toggleInfoVisible} visible={infoVisible} />
+                 <EditPasswordModal toggleVisible={this.togglePasswordVisible} visible={passwordVisible} /> 
             </div>
         )
     }

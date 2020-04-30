@@ -1,7 +1,7 @@
 package com.NettyClasses;
 
 import com.Dao.GetGroupDao;
-import com.Dao.GetNoReadDao;
+import com.Entity.PersonEntity;
 import com.Entity.User;
 import com.Utils.SpringUtil;
 import com.alibaba.fastjson.JSONObject;
@@ -11,17 +11,12 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.Inet4Address;
-import java.net.InetSocketAddress;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 /**
  * 处理接收信息handler类
@@ -64,8 +59,9 @@ public class ChannelMessage {
         String userid = channeluserid.get(channel.id());
         group.remove(channel);
         channelIds.remove(userid);
-        userMap.remove(userid);
-        deleteUserAllGroup(userid, channel);
+        User user = userMap.remove(userid);
+        deleteUserAllGroup(user, channel);
+        ;
     }
 
     /**
@@ -153,31 +149,32 @@ public class ChannelMessage {
         User user = userMap.get(userId);
         if (user != null) {
             ChannelGroup chatgroup = getChatgroup(groupId);
+            Collection<User> onLineUsers = getOnLineUsers();
+            List<PersonEntity> onlineList = onLineUsers.stream().map(user1 -> new PersonEntity(user1.getAccount(), user1.getName(), user1.getIcon())).collect(Collectors.toList());
+            String onlineListStr = JSONObject.toJSONString(onlineList);
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("type", ONLINE);
-            jsonObject.put("name", user.getName());
-            jsonObject.put("userId", user.getAccount());
-            jsonObject.put("avator", user.getIcon());
-            jsonObject.put("time", System.currentTimeMillis() / 1000);
+            jsonObject.put("type", IN);
+            jsonObject.put("msg", user.getName() + "已上线");
+            jsonObject.put("onlineList", onlineListStr);
             chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
         }
     }
 
     /**
      * 群聊通知下线
-     * @param userId
+     * @param user
      * @param groupId
      */
-    public void offlineToGroup(String userId, String groupId) {
-        User user = userMap.get(userId);
+    public void offlineToGroup(User user, String groupId) {
         if (user != null) {
             ChannelGroup chatgroup = getChatgroup(groupId);
+            Collection<User> onLineUsers = getOnLineUsers();
+            List<PersonEntity> onlineList = onLineUsers.stream().map(user1 -> new PersonEntity(user1.getAccount(), user1.getName(), user1.getIcon())).collect(Collectors.toList());
+            String onlineListStr = JSONObject.toJSONString(onlineList);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("type", OFFLINE);
-            jsonObject.put("name", user.getName());
-            jsonObject.put("userId", user.getAccount());
-            jsonObject.put("avator", user.getIcon());
-            jsonObject.put("time", System.currentTimeMillis() / 1000);
+            jsonObject.put("msg", user.getName() + "已下线");
+            jsonObject.put("onlineList", onlineListStr);
             chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
         }
     }
@@ -224,15 +221,15 @@ public class ChannelMessage {
     /**
      * 选定用户退出所有群的channel集合
      *
-     * @param userId
+     * @param user
      */
-    private void deleteUserAllGroup(String userId, Channel channel) {
+    private void deleteUserAllGroup(User user, Channel channel) {
         GetGroupDao bean = SpringUtil.getBean(GetGroupDao.class);
-        List<Integer> groups = bean.getGroup(userId);
+        List<Integer> groups = bean.getGroup(String.valueOf(user.getAccount()));
         for (int groupid : groups) {
             String groupidStr = String.valueOf(groupid);
             chatgroupmap.get(groupidStr).remove(channel);
-            offlineToGroup(userId, groupidStr);
+            offlineToGroup(user, groupidStr);
         }
     }
 
@@ -255,6 +252,10 @@ public class ChannelMessage {
         chatgroupmap.remove(groupid);
     }
 
+
+    public Collection<User> getOnLineUsers() {
+        return userMap.values();
+    }
     /**
      * 单例对象,静态内部类
      */

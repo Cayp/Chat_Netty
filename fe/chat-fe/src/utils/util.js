@@ -147,3 +147,8 @@ export function getUser() {
     let userStr = sessionStorage.getItem("user")
     return userStr ? JSON.parse(userStr) : undefined;
 }
+
+export function storeUser(user) {
+    const userStr = JSON.stringify(user)
+    sessionStorage.setItem("user", userStr)
+}

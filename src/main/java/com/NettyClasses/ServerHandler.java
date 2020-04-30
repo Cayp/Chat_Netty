@@ -75,9 +75,9 @@ public class ServerHandler extends SimpleChannelInboundHandler {
         JSONObject jsonObject = JSONObject.parseObject(requset);
         int time = (int) (System.currentTimeMillis() / 1000);
         jsonObject.put("time", time);
-        String toid = jsonObject.get("toid").toString();
+        String toid = jsonObject.get("id").toString();
         String type = jsonObject.get("type").toString();
-        String fromid = jsonObject.get("fromid").toString();
+        String fromid = jsonObject.get("userId").toString();
         //判断是否是群聊 singlechat为一对一
         if (ChannelMessage.SINGLE_CHAT.equals(type)) {
             Channel channel = ChannelMessage.getChannelMessage().getChannel(toid);
@@ -86,7 +86,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
                 if (unReadService == null) {
                     unReadService = SpringUtil.getBean(UnReadServiceImp.class);
                 }
-                unReadService.setUnRead(Long.parseLong(toid), Long.parseLong(fromid), time, Integer.parseInt(type), jsonObject.get("content").toString(), jsonObject.get("name").toString(), jsonObject.get("avator").toString());
+                unReadService.setUnRead(Long.parseLong(toid), Long.parseLong(fromid), time, Integer.parseInt(type), jsonObject.get("content").toString(), jsonObject.get("name").toString(), jsonObject.get("avatar").toString());
 
             } else {
                 channel.writeAndFlush(new TextWebSocketFrame(requset));
@@ -98,7 +98,7 @@ public class ServerHandler extends SimpleChannelInboundHandler {
             if (chatgroup != null) {
                 GetGroupDao bean = SpringUtil.getBean(GetGroupDao.class);
                 //信息持久化到数据库
-                bean.addChatRecGroup(Integer.parseInt(toid), time, Long.parseLong(fromid), jsonObject.get("content").toString(), Integer.parseInt(type), jsonObject.get("name").toString(), jsonObject.get("avator").toString());
+                bean.addChatRecGroup(Integer.parseInt(toid), time, Long.parseLong(fromid), jsonObject.get("content").toString(), Integer.parseInt(type), jsonObject.get("name").toString(), jsonObject.get("avatar").toString());
                 chatgroup.writeAndFlush(new TextWebSocketFrame(jsonObject.toString()));
             } else {
                 //不是群聊中的成员返回处理

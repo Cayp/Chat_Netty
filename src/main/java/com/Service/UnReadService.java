@@ -15,7 +15,7 @@ public interface UnReadService {
 
     List<Noreadme> getNoRead(long toid);
     List<Integer> getUnReadAcc(long toid);
-    int setUnRead(long toid, long fromid,int time,int type, String text, String name, String avator);
+    int setUnRead(long toid, long fromid,long time,int type, String text, String name, String avator);
     int deleteUnRead(long toid);
     List<UnReadGroup> getGroupUnRead();
 }

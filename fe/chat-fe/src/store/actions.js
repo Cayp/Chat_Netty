@@ -1,10 +1,18 @@
 import React from 'react'
-import { notification, message } from 'antd'
+import { notification, message, Avatar, } from 'antd'
 import { myAxios } from '../utils/myAxios'
-import { handleChatListToMap } from '../utils/util'
+import { handleChatListToMap, getUser, replaceImg } from '../utils/util'
 
 
 
+// 虽然用户信息放在localStorage也可以全局使用，但是如果放在localStorage中，用户信息改变时页面不会实时更新
+export const SET_USER = 'SET_USER'
+export function setUser(user) {
+    return {
+        type: SET_USER,
+        user
+    }
+}
 //聊天对象list
 export const SET_LEFTITEMLIST = 'SET_LEFTITEMLIST'
 export function setLeftItemList(leftItemList) {
@@ -71,14 +79,36 @@ export function setWebsocket(websocket) {
 /**
  * 添加聊天信息
  */
-export const ADD_CHAT = 'ADD_CHAT'
-export function addChat(chat) {
+export const SET_CHAT = 'SET_CHAT'
+export function setChat(chat) {
     return {
-        type: ADD_CHAT,
+        type: SET_CHAT,
         chat
     }
 }
 
+export const REV_CHAT = 'REV_CHAT'
+export function revChat(chat) {
+    return {
+        type: REV_CHAT,
+        chat
+    }
+}
+
+
+export function addChat(chat) {
+    return async function (dispatch) {
+        dispatch(setChat(chat))
+    }
+}
+
+export const SET_ONLINELIST = 'SET_ONLINELIST'   //设置在线列表
+export function setOnlinelist(onlineList) {
+    return {
+        type: SET_ONLINELIST,
+        onlineList
+    }
+}
 
 export function initWebSocket(userId) {
     return async function (dispatch) {
@@ -96,7 +126,38 @@ export function initWebSocket(userId) {
                 return;
             }
             const data = JSON.parse(event.data)
-            dispatch(addChat(data))
+            const user = getUser() 
+            console.log(data)
+            if (data.type === "1") {
+                dispatch(revChat(data))
+                notification.open({
+                    message: data.name,
+                    description: <div style={{wordBreak:'break-all'}} dangerouslySetInnerHTML={{ __html: replaceImg(data.content) }} />,
+                    icon: <Avatar src={`/chat/images/avatar/${data.avatar}`} />
+                })
+            } else if (data.type === "2") {
+                if (data.userId !== user.id) {
+                dispatch(revChat(data))   
+                notification.open({
+                    message: "聊天广场",
+                    description:
+                            <div>
+                                <div className='username'>{data.name} :</div>
+                                <div className='chat-content' dangerouslySetInnerHTML={{ __html: replaceImg(data.content) }} />
+                            </div>
+                       ,
+                    icon: <Avatar src={`/chat/images/avatar/${data.avatar}`}/>
+                })
+               }
+            } else if (data.type === "6" || data.type === "9") {
+                dispatch(setOnlinelist(JSON.parse(data.onlineList)))
+                notification.info({
+                    message: '提示',
+                    description: data.msg,
+                    icon: <Avatar src={'/chat/images/avatar/group.jpg'}/>
+                })
+            }
+        
         }
         websocket.onclose = function () {
 

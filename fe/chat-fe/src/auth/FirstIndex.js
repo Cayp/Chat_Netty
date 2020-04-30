@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Button, Checkbox, Card} from 'antd';
 import { Route, Link, Switch, withRouter, Redirect, } from "react-router-dom"; 
 import '../App.css'
-import { Register } from './Register';
+import Register from './Register';
 import WrappedNormalLoginForm from './Login';
 export class FirstIndex extends React.Component {
     constructor(props) {

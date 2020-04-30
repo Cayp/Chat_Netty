@@ -2,6 +2,7 @@ package com.Controller;
 
 
 import com.Entity.RegisterEntity;
+import com.Entity.SendMailEntity;
 import com.Entity.User;
 import com.Service.SendMailSerivce;
 import com.Service.UserService;
@@ -12,6 +13,7 @@ import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,9 +37,12 @@ public class VerifyController {
     @Resource(name = "sendMailSeriveImpl")
     private SendMailSerivce sendMailSerivce;
 
-    @RequestMapping(value = "/sendMail", method = RequestMethod.POST)
-    public Response sendMail(HttpSession session, String pictureCode, String mail, int type) {
-        String code = (String) session.getAttribute(Const.PICTURECODEKEY);
+    @RequestMapping(value = "/sendMail", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public Response sendMail(HttpSession session, @RequestBody SendMailEntity sendMailEntity) {
+        User login = userService.login(sendMailEntity.getMail());
+        if (login != null) {
+            return response.error("existed");
+        }
         session.removeAttribute(Const.PICTURECODEKEY);
         Integer lastSendTime = (Integer) session.getAttribute(Const.MAILTIME);
         //判断上次发送邮箱成功的时间是否过了设置期限
@@ -47,22 +52,17 @@ public class VerifyController {
                 return response.error("你发送频率太快");
             }
         }
-        //判断图片验证码是否一致,一致则允许发送
-        if (code != null && code.toLowerCase().equals(pictureCode.toLowerCase())) {
             String mailcode = RandomVerifyCode.randomCode();
             session.setAttribute(Const.MAILCODEKEY, mailcode);
             session.setAttribute(Const.MAILTIME, (int) (System.currentTimeMillis() / 1000));
-            sendMailSerivce.sendMail(mail, mailcode, type);
+            sendMailSerivce.sendMail(sendMailEntity.getMail(), mailcode, sendMailEntity.getType());
             return response.success("发送成功");
-        } else {
-            return response.error("验证码错误");
-        }
 
     }
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Response register(RegisterEntity registerEntity, HttpSession session) {
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public Response register(@RequestBody RegisterEntity registerEntity, HttpSession session) {
         String code = (String) session.getAttribute(Const.MAILCODEKEY);
         session.removeAttribute(Const.MAILCODEKEY);
         if (code != null && code.equals(registerEntity.getVerifycode())) {
@@ -73,7 +73,7 @@ public class VerifyController {
                 return response.error("邮箱已注册");
             }
         } else {
-            return response.error("验证码错误");
+            return response.error("注册失败");
         }
     }
 

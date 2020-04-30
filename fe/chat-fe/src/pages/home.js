@@ -14,7 +14,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 
 const store = connect(
-    (state) => ({  websocket: state.websocket, leftItemList: state.leftItemList, chatListsMap: state.chatListsMap}),
+    (state) => ({  user: state.user, websocket: state.websocket, leftItemList: state.leftItemList, chatListsMap: state.chatListsMap}),
     (dispatch) => bindActionCreators({initWebSocket, initChatListsMap, initLeftItemList}, dispatch)
 )
 
@@ -44,7 +44,11 @@ componentWillUnmount() {
      * 初始化用户信息和建立websocket连接
      */
     init = async () => {
-        const user = getUser()
+        const user = this.props.user
+        if (user) {
+          this.props.history.push("/auth/login")
+          return
+        }
         this.props.initWebSocket(user.id)
         this.props.initLeftItemList(user.id)
         this.props.initChatListsMap(user.id)
@@ -82,7 +86,6 @@ componentWillUnmount() {
               panes={panes}
               activeMenu={activeMenu}
               onChangeState={this._setState}/>
-          <Footer style={{ textAlign: 'center' }}>©2020 Created by linjianpeng</Footer>
         </Layout>
       </Layout>
     )

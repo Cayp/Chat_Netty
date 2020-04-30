@@ -37,7 +37,7 @@ public interface GetGroupDao {
      * @param type
      * @return
      */
-    int addChatRecGroup(@Param("groupid") int groupid,@Param("time") int time,@Param("sendid") long sendid,@Param("message") String message,@Param("type") int type, @Param("name") String name, @Param("avator") String avator);
+    int addChatRecGroup(@Param("groupid") int groupid,@Param("time")long time,@Param("sendid") long sendid,@Param("message") String message,@Param("type") int type, @Param("name") String name, @Param("avator") String avator);
 
 
 

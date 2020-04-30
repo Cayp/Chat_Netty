@@ -5,7 +5,7 @@
         INSERT INTO friend VALUES (#{toid},#{friendid});
     </insert>
     <insert id="register">
-        INSERT INTO user(name,password,mail,icon,lastime,mailcrc) VALUES (#{name},#{password},#{mail},#{icon},0,CRC32(#{mail}));
+        INSERT INTO user(name,password,mail,lastime,mailcrc) VALUES (#{name},#{password},#{mail},0,CRC32(#{mail}));
     </insert>
     <update id="logout">
         UPDATE user SET lastime = #{lastime} WHERE account = #{id};
@@ -15,6 +15,9 @@
     </update>
     <update id="changePassWordByid">
         UPDATE user SET password = #{password} where account = #{userid};
+    </update>
+    <update id="updateAvatar">
+        UPDATE user SET icon = #{avatar} where account = #{userId};
     </update>
     <delete id="deleteFriend">
         DELETE FROM friend WHERE toid = #{toid} and friendid = #{friendid};
@@ -33,5 +36,8 @@
     </select>
     <select id="findUser" resultType="com.Entity.User">
         SELECT * FROM user where account = #{id};
+    </select>
+    <select id="getUsers" resultType="com.Entity.User">
+        SELECT * FROM user;
     </select>
 </mapper>

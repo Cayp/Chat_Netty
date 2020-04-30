@@ -86,5 +86,15 @@ public class UserServiceImp implements UserService {
     public int changePasswordByid(long userid, String password) {
         return getUserInfoDao.changePassWordByid(userid,password );
     }
+
+    @Override
+    public int updateAvatar(long userId, String avatar) {
+        return getUserInfoDao.updateAvatar(userId, avatar);
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return getUserInfoDao.getUsers();
+    }
 }
 

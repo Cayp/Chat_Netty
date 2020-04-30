@@ -47,9 +47,10 @@
   background: #fff;
 }
 .login-form1 {
-  width: 300px;
-  transform: translate3d(200%, 50%, 0);
+  width: 400px;
+  transform: translate3d(150%, 30%, 0);
 }
+
 .login-form {
   max-width: 100%;
 }

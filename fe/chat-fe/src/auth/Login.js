@@ -3,8 +3,18 @@ import { Form, Input, Button, Checkbox, message, Icon} from 'antd';
 import { Route, Link, Switch, withRouter, Redirect, } from "react-router-dom"; 
 import { myAxios } from '../utils/myAxios'
 import '../App.css'
+import { storeUser } from '../utils/util';
 
+import { setUser, initWebSocket } from '../store/actions'
+import { connect, } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
+const store = connect(
+    (state) => ({ user: state.user }),
+    (dispatch) => bindActionCreators({ setUser }, dispatch)
+)
+
+@store
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -20,7 +30,6 @@ class Login extends React.Component {
       e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log(values)
       if (values.remember) {
         localStorage.setItem("values", JSON.stringify(values))
       } else {
@@ -31,8 +40,9 @@ class Login extends React.Component {
                let json = respone.data
                if (json.code == 20000) {
                 message.success(json.message)
-                let user = {id: json.data.account, name: json.data.name, avator: json.data.avator}
-                sessionStorage.setItem("user", JSON.stringify(user))
+                let user = {id: json.data.account, name: json.data.name, avatar: json.data.icon}
+                storeUser(user)
+                this.props.setUser(user)
                 this.props.history.push("/home")
                } else {
                 message.error(json.message)

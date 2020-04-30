@@ -25,7 +25,7 @@ public class SendMailUtils {
     /**
      * 授权码
      */
-    public static final String TOKEN = "meizhuo411";
+    public static final String TOKEN = "OSITTRZNRSFWKUWO";
     /**
      * smtp服务器
      */

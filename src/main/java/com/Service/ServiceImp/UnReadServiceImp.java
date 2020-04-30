@@ -36,7 +36,7 @@ public class UnReadServiceImp implements UnReadService {
     }
 
     @Override
-    public int setUnRead(long toid, long fromid, int time, int type, String text, String name, String avator) {
+    public int setUnRead(long toid, long fromid, long time, int type, String text, String name, String avator) {
         return getNoReadDao.setUnRead(toid, fromid, type, text, time, name, avator);
     }
 
