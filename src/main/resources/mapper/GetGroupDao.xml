@@ -5,7 +5,7 @@
         INSERT INTO groupmembers VALUES (#{userid},#{groupid});
     </insert>
     <insert id="addChatRecGroup">
-        INSERT INTO unread_group VALUES (#{groupid},#{time},#{sendid},#{message},#{type},#{name},#{avator});
+        INSERT INTO unread_group VALUES (#{groupid},#{time},#{sendid},#{message},#{type});
     </insert>
     <delete id="deleteOneFromGroup">
         DELETE FROM groupmembers WHERE userid = #{userid} and groupid = #{groupid};

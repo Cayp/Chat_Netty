@@ -17,5 +17,5 @@ public class UnReadGroup {
     private String message;
     private int type;
     private String sendName;
-    private String sendAvator;
+    private String sendAvatar;
 }

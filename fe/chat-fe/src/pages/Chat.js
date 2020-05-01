@@ -20,7 +20,7 @@ import 'braft-editor/dist/index.css'
 import './style.less'
 
 const store = connect(
-    (state) => ({ websocket: state.websocket, leftItemList: state.leftItemList, chatListsMap: state.chatListsMap, onlineList: state.onlineList}),
+    (state) => ({ websocket: state.websocket, leftItemList: state.leftItemList, chatListsMap: state.chatListsMap, onlineList: state.onlineList }),
     (dispatch) => bindActionCreators({ initWebSocket, addChat }, dispatch)
 )
 
@@ -114,7 +114,7 @@ class Chat extends Component {
     }
 
     /**
-     * 处理用户列表(管理员、在线用户放在数组前面)
+     * 处理用户列表(在线用户放在数组前面)
      */
     handleUserList = () => {
         const userList = this.state.userList

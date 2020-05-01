@@ -4,8 +4,8 @@
     <insert id="addFriend">
         INSERT INTO friend VALUES (#{toid},#{friendid});
     </insert>
-    <insert id="register">
-        INSERT INTO user(name,password,mail,lastime,mailcrc) VALUES (#{name},#{password},#{mail},0,CRC32(#{mail}));
+    <insert id="register" keyProperty="register.account" useGeneratedKeys="true">
+        INSERT INTO user(name,password,mail,lastime,mailcrc) VALUES (#{register.name},#{register.password},#{register.mail},0,CRC32(#{register.mail}));
     </insert>
     <update id="logout">
         UPDATE user SET lastime = #{lastime} WHERE account = #{id};

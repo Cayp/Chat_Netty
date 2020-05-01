@@ -84,7 +84,6 @@ public class Response<T> {
         return DataListResponseHolder.dataListResponse;
     }
 
-
     private static class GeneralResponseHolder {
         private static final Response generalResponse = new Response();
     }
@@ -98,6 +97,10 @@ public class Response<T> {
     }
 
     private static class ResponseHolder {
+        private static final Response response = new Response();
+    }
+
+    private static class DataAndListResponseHolder {
         private static final Response response = new Response();
     }
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Dao.BlogDao">
+    <insert id="createBlog">
+        INSERT INTO blog(content, userId, createTime) VALUES (#{blog.content}, #{blog.userId}, #{blog.createTime});
+    </insert>
+    <insert id="addComment">
+        INSERT INTO blog_comment(content, userId, createTime, targetUserId, blogId)
+         VALUES (#{blogComment.content}, #{blogComment.userId}, #{blogComment.createTime}, #{blogComment.targetUserId}, #{blogComment.blogId});
+    </insert>
+    <delete id="deleteBlog">
+        DELETE FROM blog WHERE id = #{id};
+    </delete>
+    <delete id="deleteBlogComment">
+        DELETE FROM blog_comment WHERE blogId = #{blogId};
+    </delete>
+    <delete id="deleteComment">
+        DELETE FROM blog_comment WHERE id = #{commentId};
+    </delete>
+    <select id="getBlogs" resultType="com.Entity.Blog">
+        SELECT b.id as id, b.content as content, b.userId as userId, b.createTime as createTime, u.name as userName, u.icon as userAvatar                     FROM blog AS b
+         LEFT JOIN user AS u on b.userId = u.account ORDER BY b.createTime desc LIMIT #{startNum}, #{pageSize} ;
+    </select>
+    <select id="getBlogComments" resultType="com.Entity.Blog">
+        SELECT
+        c.id as id, c.content as content, c.userId as userId, u1.name as userName, u1.icon as userAvatar, c.createTime as createTime,
+        c.targetUserId as targetUserId, u2.name as targetUserName, c.blogId as blogId
+        FROM blog_comment as c
+        LEFT JOIN user as u1 ON c.userId = u1.account LEFT JOIN user as u2 ON c.targetUserId = u2.account WHERE c.blogId IN
+        <foreach collection="blogIds" index="index" item="blogId" open="(" separator="," close=")">
+            #{blogId}
+        </foreach>
+    </select>
+    <select id="getBlogComment" resultType="com.Entity.Blog">
+        SELECT * FROM blog_comment WHERE id = #{commentId};
+    </select>
+    <select id="getBlog" resultType="com.Entity.Blog">
+        SELECT * FROM blog WHERE id = #{blogId};
+    </select>
+    <select id="getBlogsTotal" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM blog;
+    </select>
+
+
+</mapper>

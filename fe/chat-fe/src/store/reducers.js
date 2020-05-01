@@ -8,7 +8,7 @@ import {  SET_USER, SET_WEBSOCKET, SET_CHATLISTSMAP, SET_LEFTITEMLIST, SET_CHAT,
  * @param {*} state 
  * @param {*} action 
  */
-function user(state = {}, action) {
+function user(state = null, action) {
     switch (action.type) {
         case SET_USER: {
             return action.user

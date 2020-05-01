@@ -45,13 +45,14 @@ componentWillUnmount() {
      */
     init = async () => {
         const user = this.props.user
+        console.log(user)
         if (user) {
-          this.props.history.push("/auth/login")
+          this.props.initWebSocket(user.id)
+          this.props.initLeftItemList(user.id)
+          this.props.initChatListsMap(user.id)
           return
         }
-        this.props.initWebSocket(user.id)
-        this.props.initLeftItemList(user.id)
-        this.props.initChatListsMap(user.id)
+        this.props.history.push("/auth/login")
     }
 
   onCollapse = collapsed => {

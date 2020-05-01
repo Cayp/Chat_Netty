@@ -49,8 +49,8 @@ public class ChatController {
     public Response getUnReadChatList(long userId) {
         List<Noreadme> noRead = unReadService.getNoRead(userId);
         List<UnReadGroup> groupUnRead = unReadService.getGroupUnRead();
-        List<ChatListEntity> signalChats = noRead.stream().map(noreadme -> new ChatListEntity(ChannelMessage.SINGLE_CHAT, noreadme.getSendid(), noreadme.getSendid(), noreadme.getSendName(), noreadme.getSendAvator(), noreadme.getTime(), noreadme.getMessage())).collect(Collectors.toList());
-        List<ChatListEntity> groupList = groupUnRead.stream().map(unReadGroup -> new ChatListEntity(ChannelMessage.GROUP_CHAT, unReadGroup.getGroupId(), unReadGroup.getSendId(), unReadGroup.getSendName(), unReadGroup.getSendAvator(), unReadGroup.getTime(), unReadGroup.getMessage())).collect(Collectors.toList());
+        List<ChatListEntity> signalChats = noRead.stream().map(noreadme -> new ChatListEntity(ChannelMessage.SINGLE_CHAT, noreadme.getSendid(), noreadme.getSendid(), noreadme.getSendName(), noreadme.getSendAvatar(), noreadme.getTime(), noreadme.getMessage())).collect(Collectors.toList());
+        List<ChatListEntity> groupList = groupUnRead.stream().map(unReadGroup -> new ChatListEntity(ChannelMessage.GROUP_CHAT, unReadGroup.getGroupId(), unReadGroup.getSendId(), unReadGroup.getSendName(), unReadGroup.getSendAvatar(), unReadGroup.getTime(), unReadGroup.getMessage())).collect(Collectors.toList());
         groupList.addAll(signalChats);
         return response.successWithDataList("获取未读信息列表成功", groupList);
     }

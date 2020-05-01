@@ -12,7 +12,7 @@ public class Noreadme {
   private long recvid;
   private long sendid;
   private String sendName;
-  private String sendAvator;
+  private String sendAvatar;
   private int type;
   private String message;
   private long time;

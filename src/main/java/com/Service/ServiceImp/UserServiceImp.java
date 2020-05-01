@@ -1,9 +1,11 @@
 package com.Service.ServiceImp;
 
+import com.Dao.GetGroupDao;
 import com.Dao.GetUserInfoDao;
 import com.Entity.Friend;
 import com.Entity.RegisterEntity;
 import com.Entity.User;
+import com.Service.GroupService;
 import com.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,9 @@ public class UserServiceImp implements UserService {
 
     @Resource
     private GetUserInfoDao getUserInfoDao;
+
+    @Resource
+    private GetGroupDao getGroupDao;
 
     @Override
     public User login(String mail) {
@@ -48,13 +53,13 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public int addFriend(long userId, long toid) {
         return getUserInfoDao.addFriend(toid, userId) + getUserInfoDao.addFriend(userId, toid);
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public int deleteFriend(long userId, long toid) {
         return getUserInfoDao.deleteFriend(toid, userId) + getUserInfoDao.deleteFriend(userId, toid);
     }
@@ -72,6 +77,7 @@ public class UserServiceImp implements UserService {
         }
         int register = getUserInfoDao.register(registerEntity);
         if (register > 0) {
+            getGroupDao.addOneToGroup(registerEntity.getAccount(), 1);
             return true;
         }
         return false;

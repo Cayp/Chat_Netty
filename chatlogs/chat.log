@@ -26819,3 +26819,1262 @@ java.lang.NullPointerException
 2020-05-01 02:04:26 INFO RabbitTemplate:36-send to Exchange success,id:1
 2020-05-01 02:05:51 INFO RabbitTemplate:36-send to Exchange success,id:1
 2020-05-01 02:08:40 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-01 19:46:41 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 19:46:42 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 19756 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 19:46:42 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 19:46:45 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$3cca74c5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 19:46:46 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 19:46:46 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 4017 ms
+2020-05-01 19:46:48 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 19:46:48 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 19:46:48 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 19:46:49 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#4a03bb68:0/SimpleConnection@387bf2d9 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 57298]
+2020-05-01 19:46:49 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 19:46:49 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 19:46:49 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 19:46:49 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 19:46:49 INFO ChatApplication:59-Started ChatApplication in 8.342 seconds (JVM running for 10.714)
+2020-05-01 19:46:50 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 19:46:50 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 19:46:50 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 19:49:24 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 19:49:24 INFO DispatcherServlet:546-Completed initialization in 9 ms
+2020-05-01 19:52:28 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 19:52:28 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 12356 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 19:52:28 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 19:52:30 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$d7cfe559] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 19:52:30 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 19:52:31 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2472 ms
+2020-05-01 19:52:31 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 19:52:31 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 19:52:32 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 19:52:32 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#37a64f9d:0/SimpleConnection@58ec7116 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 57692]
+2020-05-01 19:52:32 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 19:52:32 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 19:52:32 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 19:52:32 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 19:52:32 INFO ChatApplication:59-Started ChatApplication in 4.317 seconds (JVM running for 5.458)
+2020-05-01 19:52:32 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 19:52:32 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 19:52:32 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 19:52:55 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 19:52:55 INFO DispatcherServlet:546-Completed initialization in 8 ms
+2020-05-01 19:56:49 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 19:56:49 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 19928 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 19:56:49 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 19:56:51 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$e9a4ceb3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 19:56:52 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 19:56:52 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2324 ms
+2020-05-01 19:56:52 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 19:56:53 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 19:56:53 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 19:56:53 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#6f099cef:0/SimpleConnection@5533dc72 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 58011]
+2020-05-01 19:56:53 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 19:56:53 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 19:56:53 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 19:56:53 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 19:56:53 INFO ChatApplication:59-Started ChatApplication in 4.107 seconds (JVM running for 5.24)
+2020-05-01 19:56:53 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 19:56:53 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 19:56:53 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 19:57:03 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 19:57:03 INFO DispatcherServlet:546-Completed initialization in 7 ms
+2020-05-01 20:00:06 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 20:00:06 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 9468 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 20:00:06 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 20:00:08 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$e9a4ceb3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 20:00:09 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 20:00:09 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2613 ms
+2020-05-01 20:00:10 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 20:00:10 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 20:00:10 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 20:00:10 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#6f099cef:0/SimpleConnection@5533dc72 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 58264]
+2020-05-01 20:00:10 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 20:00:10 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 20:00:10 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 20:00:10 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 20:00:10 INFO ChatApplication:59-Started ChatApplication in 4.334 seconds (JVM running for 5.418)
+2020-05-01 20:00:10 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 20:00:10 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 20:00:11 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 20:00:20 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 20:00:20 INFO DispatcherServlet:546-Completed initialization in 10 ms
+2020-05-01 20:04:47 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 20:04:47 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 15768 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 20:04:47 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 20:04:49 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$d1c3d8b5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 20:04:50 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 20:04:50 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2582 ms
+2020-05-01 20:04:51 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 20:04:51 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 20:04:51 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 20:04:51 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#52a36910:0/SimpleConnection@7cb8437d [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 58604]
+2020-05-01 20:04:51 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 20:04:51 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 20:04:51 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 20:04:51 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 20:04:51 INFO ChatApplication:59-Started ChatApplication in 4.485 seconds (JVM running for 5.668)
+2020-05-01 20:04:51 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 20:04:51 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 20:04:51 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 20:05:32 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 20:05:32 INFO DispatcherServlet:546-Completed initialization in 8 ms
+2020-05-01 20:24:19 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 20:24:19 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 18796 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 20:24:19 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 20:24:22 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$2faae157] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 20:24:23 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 20:24:23 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 3699 ms
+2020-05-01 20:24:25 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 20:24:25 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 20:24:25 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 20:24:25 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#69cac930:0/SimpleConnection@e48bf9a [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 59790]
+2020-05-01 20:24:25 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 20:24:25 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 20:24:25 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 20:24:26 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 20:24:26 INFO ChatApplication:59-Started ChatApplication in 7.663 seconds (JVM running for 11.104)
+2020-05-01 20:24:26 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 20:24:26 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 20:24:26 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 20:55:57 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 20:55:57 INFO DispatcherServlet:546-Completed initialization in 49 ms
+2020-05-01 21:03:17 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:62511 已连接
+2020-05-01 21:06:05 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:62511 退出连接
+2020-05-01 21:06:06 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "undefined"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.NettyClasses.ServerHandler.handleHttpRequest(ServerHandler.java:133)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:42)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:06:06 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 21:06:06 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 21:06:08 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:62752 退出连接
+2020-05-01 21:06:08 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:52)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:06:18 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:62802 已连接
+2020-05-01 21:06:25 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:62802 退出连接
+2020-05-01 21:06:33 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:62853 已连接
+2020-05-01 21:06:37 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:62853 退出连接
+2020-05-01 21:08:42 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:63016 已连接
+2020-05-01 21:08:45 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63016 退出连接
+2020-05-01 21:08:53 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:63059 已连接
+2020-05-01 21:08:56 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63059 退出连接
+2020-05-01 21:10:13 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:63171 已连接
+2020-05-01 21:10:16 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63171 退出连接
+2020-05-01 21:12:00 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:63308 已连接
+2020-05-01 21:12:04 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63308 退出连接
+2020-05-01 21:12:07 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "undefined"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.NettyClasses.ServerHandler.handleHttpRequest(ServerHandler.java:133)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:42)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:12:07 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 21:12:07 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 21:12:13 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63343 退出连接
+2020-05-01 21:12:13 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:52)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:12:43 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63343 退出连接
+2020-05-01 21:12:43 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.userEventTriggered(ServerHandler.java:170)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeUserEventTriggeredNow(ChannelHandlerInvokerUtil.java:66)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeUserEventTriggered(DefaultChannelHandlerInvoker.java:120)
+	at io.netty.channel.DefaultChannelHandlerContext.fireUserEventTriggered(DefaultChannelHandlerContext.java:313)
+	at io.netty.handler.timeout.IdleStateHandler.channelIdle(IdleStateHandler.java:321)
+	at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:353)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:123)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:318)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:13:13 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63343 退出连接
+2020-05-01 21:13:13 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.userEventTriggered(ServerHandler.java:170)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeUserEventTriggeredNow(ChannelHandlerInvokerUtil.java:66)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeUserEventTriggered(DefaultChannelHandlerInvoker.java:120)
+	at io.netty.channel.DefaultChannelHandlerContext.fireUserEventTriggered(DefaultChannelHandlerContext.java:313)
+	at io.netty.handler.timeout.IdleStateHandler.channelIdle(IdleStateHandler.java:321)
+	at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:353)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:123)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:318)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:13:18 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:63444 已连接
+2020-05-01 21:14:03 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63444 退出连接
+2020-05-01 21:14:18 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:63547 已连接
+2020-05-01 21:14:20 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63547 退出连接
+2020-05-01 21:15:52 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:63679 已连接
+2020-05-01 21:18:27 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63679 退出连接
+2020-05-01 21:18:30 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:63889 已连接
+2020-05-01 21:31:52 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:63889 退出连接
+2020-05-01 21:31:53 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "undefined"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.NettyClasses.ServerHandler.handleHttpRequest(ServerHandler.java:133)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:42)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:31:53 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 21:31:53 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 21:32:03 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:64906 退出连接
+2020-05-01 21:32:03 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:52)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:32:05 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:64933 已连接
+2020-05-01 21:32:33 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:64906 退出连接
+2020-05-01 21:32:33 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.userEventTriggered(ServerHandler.java:170)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeUserEventTriggeredNow(ChannelHandlerInvokerUtil.java:66)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeUserEventTriggered(DefaultChannelHandlerInvoker.java:120)
+	at io.netty.channel.DefaultChannelHandlerContext.fireUserEventTriggered(DefaultChannelHandlerContext.java:313)
+	at io.netty.handler.timeout.IdleStateHandler.channelIdle(IdleStateHandler.java:321)
+	at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:353)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:123)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:318)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:33:03 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:64906 退出连接
+2020-05-01 21:33:03 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.userEventTriggered(ServerHandler.java:170)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeUserEventTriggeredNow(ChannelHandlerInvokerUtil.java:66)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeUserEventTriggered(DefaultChannelHandlerInvoker.java:120)
+	at io.netty.channel.DefaultChannelHandlerContext.fireUserEventTriggered(DefaultChannelHandlerContext.java:313)
+	at io.netty.handler.timeout.IdleStateHandler.channelIdle(IdleStateHandler.java:321)
+	at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:353)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:123)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:318)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 21:36:09 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:64933 退出连接
+2020-05-01 21:36:10 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:65226 已连接
+2020-05-01 21:37:22 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:65226 退出连接
+2020-05-01 21:37:26 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:65335 已连接
+2020-05-01 21:39:36 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 21:39:36 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 11620 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 21:39:36 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 21:39:38 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$940b1c1b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 21:39:39 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 21:39:39 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2956 ms
+2020-05-01 21:39:41 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 21:39:41 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 21:39:41 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 21:39:41 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#40021799:0/SimpleConnection@2e23c180 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 65518]
+2020-05-01 21:39:41 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 21:39:41 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 21:39:41 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 21:39:42 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 21:39:42 INFO ChatApplication:59-Started ChatApplication in 6.618 seconds (JVM running for 10.607)
+2020-05-01 21:39:42 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 21:39:42 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 21:39:42 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 21:39:46 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 21:39:46 INFO DispatcherServlet:546-Completed initialization in 21 ms
+2020-05-01 21:39:46 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:1086 已连接
+2020-05-01 21:41:02 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 21:41:02 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 16976 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 21:41:02 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 21:41:05 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$7cb5b7fb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 21:41:05 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 21:41:05 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2861 ms
+2020-05-01 21:41:06 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 21:41:06 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 21:41:07 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 21:41:07 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#afb5821:0/SimpleConnection@64fc097e [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 1220]
+2020-05-01 21:41:07 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 21:41:07 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 21:41:07 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 21:41:07 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 21:41:07 INFO ChatApplication:59-Started ChatApplication in 4.89 seconds (JVM running for 6.458)
+2020-05-01 21:41:07 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 21:41:07 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 21:41:07 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 21:41:22 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 21:41:22 INFO DispatcherServlet:546-Completed initialization in 12 ms
+2020-05-01 21:41:25 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:1291 已连接
+2020-05-01 21:58:04 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 21:58:04 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 17836 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 21:58:04 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 21:58:07 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$89d96a7a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 21:58:07 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 21:58:08 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 3179 ms
+2020-05-01 21:58:08 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 21:58:09 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 21:58:09 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 21:58:09 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#59712875:0/SimpleConnection@6869a3b3 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 2227]
+2020-05-01 21:58:09 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 21:58:09 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 21:58:09 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 21:58:09 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 21:58:09 INFO ChatApplication:59-Started ChatApplication in 4.919 seconds (JVM running for 6.059)
+2020-05-01 21:58:09 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 21:58:09 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 21:58:09 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 22:00:23 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 22:00:23 INFO DispatcherServlet:546-Completed initialization in 6 ms
+2020-05-01 22:00:23 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:2430 已连接
+2020-05-01 22:02:47 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:2430 退出连接
+2020-05-01 22:02:50 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:2628 已连接
+2020-05-01 22:09:25 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 22:09:26 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 6980 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 22:09:26 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 22:09:27 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$569db883] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 22:09:28 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 22:09:28 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2311 ms
+2020-05-01 22:09:29 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 22:09:29 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 22:09:29 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 22:09:29 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#5ecba515:0/SimpleConnection@514cd540 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 3087]
+2020-05-01 22:09:29 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 22:09:29 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:09:29 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:09:29 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 22:09:29 INFO ChatApplication:59-Started ChatApplication in 4.285 seconds (JVM running for 5.257)
+2020-05-01 22:09:30 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 22:09:30 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 22:09:30 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 22:10:28 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 22:10:28 INFO DispatcherServlet:546-Completed initialization in 7 ms
+2020-05-01 22:10:28 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-01 22:10:40 ERRORRabbitMqLReceiver:68-1187484628@qq.com Unknown SMTP host: smtp.163.com
+2020-05-01 22:11:24 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:3280 已连接
+2020-05-01 22:28:40 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 22:28:40 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 1940 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 22:28:40 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 22:28:42 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$b994481f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 22:28:43 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 22:28:43 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2516 ms
+2020-05-01 22:28:44 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 22:28:44 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 22:28:44 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 22:28:44 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#9a7a808:0/SimpleConnection@53a5e217 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 4354]
+2020-05-01 22:28:44 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 22:28:44 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:28:44 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:28:44 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 22:28:44 INFO ChatApplication:59-Started ChatApplication in 4.434 seconds (JVM running for 5.657)
+2020-05-01 22:28:44 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 22:28:44 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 22:28:45 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 22:29:05 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 22:29:05 INFO DispatcherServlet:546-Completed initialization in 14 ms
+2020-05-01 22:29:05 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:4455 已连接
+2020-05-01 22:36:30 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 22:36:31 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 1948 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 22:36:31 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 22:36:33 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$8b5740e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 22:36:34 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 22:36:34 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2754 ms
+2020-05-01 22:36:35 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 22:36:35 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 22:36:35 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 22:36:35 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#1e6308a9:0/SimpleConnection@10bd9df0 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 4887]
+2020-05-01 22:36:35 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 22:36:35 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:36:35 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:36:35 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 22:36:35 INFO ChatApplication:59-Started ChatApplication in 5.104 seconds (JVM running for 6.062)
+2020-05-01 22:36:35 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 22:36:35 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 22:36:36 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 22:36:56 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 22:36:56 INFO DispatcherServlet:546-Completed initialization in 10 ms
+2020-05-01 22:36:56 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:4986 已连接
+2020-05-01 22:37:12 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:4986 退出连接
+2020-05-01 22:37:13 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "undefined"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.NettyClasses.ServerHandler.handleHttpRequest(ServerHandler.java:133)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:42)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:37:13 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:37:13 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:37:50 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:5042 退出连接
+2020-05-01 22:37:50 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:52)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:37:52 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:5105 已连接
+2020-05-01 22:38:20 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:5042 退出连接
+2020-05-01 22:38:20 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.userEventTriggered(ServerHandler.java:170)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeUserEventTriggeredNow(ChannelHandlerInvokerUtil.java:66)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeUserEventTriggered(DefaultChannelHandlerInvoker.java:120)
+	at io.netty.channel.DefaultChannelHandlerContext.fireUserEventTriggered(DefaultChannelHandlerContext.java:313)
+	at io.netty.handler.timeout.IdleStateHandler.channelIdle(IdleStateHandler.java:321)
+	at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:353)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:123)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:318)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:38:34 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: INSERT INTO unread_group VALUES (?,?,?,?,?,?,?);
+### Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+; bad SQL grammar []; nested exception is java.sql.SQLException: Column count doesn't match value count at row 1
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:101)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+	at com.sun.proxy.$Proxy60.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:57)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy67.addChatRecGroup(Unknown Source)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:101)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:964)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3973)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3909)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2527)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2501)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1197)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:46)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	... 26 more
+2020-05-01 22:38:51 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: INSERT INTO unread_group VALUES (?,?,?,?,?,?,?);
+### Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+; bad SQL grammar []; nested exception is java.sql.SQLException: Column count doesn't match value count at row 1
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:101)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+	at com.sun.proxy.$Proxy60.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:57)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy67.addChatRecGroup(Unknown Source)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:101)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:964)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3973)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3909)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2527)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2501)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1197)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:46)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	... 26 more
+2020-05-01 22:38:57 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:5105 退出连接
+2020-05-01 22:39:01 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:5189 已连接
+2020-05-01 22:40:00 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 22:40:00 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 18560 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 22:40:00 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 22:40:03 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$caab77f4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 22:40:03 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 22:40:03 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2330 ms
+2020-05-01 22:40:04 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 22:40:04 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 22:40:04 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 22:40:04 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#72ed9aad:0/SimpleConnection@7bc6d27a [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 5263]
+2020-05-01 22:40:04 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 22:40:04 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:40:04 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:40:04 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 22:40:04 INFO ChatApplication:59-Started ChatApplication in 4.224 seconds (JVM running for 5.321)
+2020-05-01 22:40:04 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 22:40:04 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 22:40:04 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 22:40:14 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 22:40:15 INFO DispatcherServlet:546-Completed initialization in 7 ms
+2020-05-01 22:40:15 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:5325 已连接
+2020-05-01 22:40:24 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: INSERT INTO unread_group VALUES (?,?,?,?,?,?,?);
+### Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+; bad SQL grammar []; nested exception is java.sql.SQLException: Column count doesn't match value count at row 1
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:101)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+	at com.sun.proxy.$Proxy60.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:57)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy67.addChatRecGroup(Unknown Source)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:101)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:964)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3973)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3909)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2527)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2501)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1197)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:46)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	... 26 more
+2020-05-01 22:45:27 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: INSERT INTO unread_group VALUES (?,?,?,?,?,?,?);
+### Cause: java.sql.SQLException: Column count doesn't match value count at row 1
+; bad SQL grammar []; nested exception is java.sql.SQLException: Column count doesn't match value count at row 1
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:101)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+	at com.sun.proxy.$Proxy60.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:57)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy67.addChatRecGroup(Unknown Source)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:101)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:964)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3973)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3909)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2527)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2501)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1197)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:46)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	... 26 more
+2020-05-01 22:47:19 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-01 22:47:19 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 15256 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-01 22:47:19 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-01 22:47:21 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$e9a4ceb3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-01 22:47:21 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-01 22:47:21 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2143 ms
+2020-05-01 22:47:22 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-01 22:47:22 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-01 22:47:22 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-01 22:47:22 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#afb5821:0/SimpleConnection@7c447c76 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 6097]
+2020-05-01 22:47:22 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-01 22:47:22 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:47:22 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-01 22:47:22 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-01 22:47:22 INFO ChatApplication:59-Started ChatApplication in 3.692 seconds (JVM running for 4.678)
+2020-05-01 22:47:22 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-01 22:47:22 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-01 22:47:23 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-01 22:47:30 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-01 22:47:30 INFO DispatcherServlet:546-Completed initialization in 9 ms
+2020-05-01 22:47:30 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:6158 已连接
+2020-05-01 22:50:37 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6158 退出连接
+2020-05-01 22:50:41 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:6386 已连接
+2020-05-01 22:55:19 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6386 退出连接
+2020-05-01 22:55:27 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "undefined"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.NettyClasses.ServerHandler.handleHttpRequest(ServerHandler.java:133)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:42)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:55:27 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:55:27 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:55:27 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6737 退出连接
+2020-05-01 22:55:27 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:52)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:55:57 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6737 退出连接
+2020-05-01 22:55:57 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.userEventTriggered(ServerHandler.java:170)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeUserEventTriggeredNow(ChannelHandlerInvokerUtil.java:66)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeUserEventTriggered(DefaultChannelHandlerInvoker.java:120)
+	at io.netty.channel.DefaultChannelHandlerContext.fireUserEventTriggered(DefaultChannelHandlerContext.java:313)
+	at io.netty.handler.timeout.IdleStateHandler.channelIdle(IdleStateHandler.java:321)
+	at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:353)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:123)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:318)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:56:06 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "undefined"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.NettyClasses.ServerHandler.handleHttpRequest(ServerHandler.java:133)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:42)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:56:06 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:56:06 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:56:07 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6806 退出连接
+2020-05-01 22:56:07 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:52)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:56:18 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "undefined"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.NettyClasses.ServerHandler.handleHttpRequest(ServerHandler.java:133)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:42)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:56:18 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:56:18 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:56:19 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6863 退出连接
+2020-05-01 22:56:19 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:52)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:56:49 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6863 退出连接
+2020-05-01 22:56:49 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.userEventTriggered(ServerHandler.java:170)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeUserEventTriggeredNow(ChannelHandlerInvokerUtil.java:66)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeUserEventTriggered(DefaultChannelHandlerInvoker.java:120)
+	at io.netty.channel.DefaultChannelHandlerContext.fireUserEventTriggered(DefaultChannelHandlerContext.java:313)
+	at io.netty.handler.timeout.IdleStateHandler.channelIdle(IdleStateHandler.java:321)
+	at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:353)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:123)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:318)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:56:51 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "undefined"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.NettyClasses.ServerHandler.handleHttpRequest(ServerHandler.java:133)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:42)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:56:52 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6911 退出连接
+2020-05-01 22:56:52 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:52)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:57:07 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "undefined"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.NettyClasses.ServerHandler.handleHttpRequest(ServerHandler.java:133)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:42)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:57:07 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:57:07 WARN DefaultHandlerExceptionResolver:194-Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"]
+2020-05-01 22:57:08 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6953 退出连接
+2020-05-01 22:57:08 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.handleWebsocketFrame(ServerHandler.java:52)
+	at com.NettyClasses.ServerHandler.messageReceived(ServerHandler.java:44)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:253)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:154)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:138)
+	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:320)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:127)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:57:38 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:6953 退出连接
+2020-05-01 22:57:38 WARN DefaultChannelPipeline:151-An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at java.util.concurrent.ConcurrentHashMap.replaceNode(ConcurrentHashMap.java:1106)
+	at java.util.concurrent.ConcurrentHashMap.remove(ConcurrentHashMap.java:1097)
+	at com.NettyClasses.ChannelMessage.removeChannel(ChannelMessage.java:61)
+	at com.NettyClasses.ServerHandler.userEventTriggered(ServerHandler.java:170)
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeUserEventTriggeredNow(ChannelHandlerInvokerUtil.java:66)
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeUserEventTriggered(DefaultChannelHandlerInvoker.java:120)
+	at io.netty.channel.DefaultChannelHandlerContext.fireUserEventTriggered(DefaultChannelHandlerContext.java:313)
+	at io.netty.handler.timeout.IdleStateHandler.channelIdle(IdleStateHandler.java:321)
+	at io.netty.handler.timeout.IdleStateHandler$ReaderIdleTimeoutTask.run(IdleStateHandler.java:353)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:123)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:318)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-01 22:58:16 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:7115 已连接
+2020-05-01 23:00:32 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:7341 已连接
+2020-05-01 23:05:50 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:7341 退出连接
+2020-05-01 23:05:52 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:7883 已连接
