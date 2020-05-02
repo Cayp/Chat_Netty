@@ -2,19 +2,20 @@ package com.Service.ServiceImp;
 
 import com.Dao.RedPacketBySqlDao;
 import com.Entity.PubRedPacket;
+import com.Entity.RedPacketLog;
 import com.Entity.UserRedPacket;
+import com.Entity.Wallet;
 import com.Service.RedPacketBySqlService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.Utils.Const;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Consumer;
 
 /**
  * 红包相关信息操作Service类
@@ -28,13 +29,18 @@ public class RedPacketBySqlServiceImpl implements RedPacketBySqlService {
     RedPacketBySqlDao redPacketBySqlDao;
 
     @Override
-    public int deductRedPacketMoney(long userId, double money) {
+    @Transactional(rollbackFor = {Exception.class})
+    public int deductRedPacketMoney(long userId, double money, long time) {
+        redPacketBySqlDao.addRedPacketLog(new RedPacketLog(userId, Const.PUBLISH, String.valueOf(money), time));
         return redPacketBySqlDao.deductRedPacketMoney(userId, money);
     }
 
     @Override
-    public int addMoneyToUser(long userId, double money) {
-        return redPacketBySqlDao.addMoneyToUser(userId, money);
+    @Transactional(rollbackFor = {Exception.class})
+    public int backMoneyToUser(long userId, double money) {
+        int res = redPacketBySqlDao.addMoneyToUser(userId, money);
+        int res1 = redPacketBySqlDao.addRedPacketLog(new RedPacketLog(userId, Const.REBACK, String.valueOf(money), System.currentTimeMillis() / 1000));
+        return res + res1;
     }
 
 
@@ -62,5 +68,39 @@ public class RedPacketBySqlServiceImpl implements RedPacketBySqlService {
     @Override
     public int addRedPacketMessage(PubRedPacket redPacket) {
         return redPacketBySqlDao.addRedPacketMessage(redPacket);
+    }
+
+    @Override
+    @Transactional(rollbackFor = {Exception.class})
+    public int addRedPacketDetail(UserRedPacket userRedPacket) {
+        redPacketBySqlDao.addMoneyToUser(userRedPacket.userId, Double.valueOf(userRedPacket.money));
+        int res = redPacketBySqlDao.addRedPacketDetail(userRedPacket);
+        int res1 = redPacketBySqlDao.addRedPacketLog(new RedPacketLog(userRedPacket.userId, Const.GRAP, userRedPacket.money, userRedPacket.time));
+        return res + res1;
+    }
+
+    @Override
+    public List<PubRedPacket> getRedPackets() {
+        return redPacketBySqlDao.getRedPackets();
+    }
+
+    @Override
+    public List<RedPacketLog> getRedPacketLogByUserId(long userId) {
+        return redPacketBySqlDao.getRedPacketLogByUserId(userId);
+    }
+
+    @Override
+    public int addRedPacketLog(RedPacketLog redPacketLog) {
+        return redPacketBySqlDao.addRedPacketLog(redPacketLog);
+    }
+
+    @Override
+    public List<UserRedPacket> getRedPacketGraps(long redpacketId) {
+        return redPacketBySqlDao.getRedPacketGraps(redpacketId);
+    }
+
+    @Override
+    public Wallet getWallet(long userId) {
+        return redPacketBySqlDao.getWallet(userId);
     }
 }

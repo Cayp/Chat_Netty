@@ -12,10 +12,37 @@
         INSERT INTO redpacket_table(userid_pub,total_money,redpacket_type,size,time)
         VALUES (#{redPacket.userId},#{redPacket.total_money},#{redPacket.redPacket_type},#{redPacket.redPacket_size},#{redPacket.publish_time});
     </insert>
+    <insert id="addRedPacketDetail">
+        INSERT INTO redpacket_detail(redpacket_id, userid, money, time) VALUES (#{redPacket.redpacketId}, #{redPacket.userId}, #{redPacket.money}, #{redPacket.time})
+    </insert>
+    <insert id="addRedPacketLog">
+        INSERT INTO redpacket_log(userId, type, money, time) VALUES (#{log.userId}, #{log.type}, #{log.money} , #{log.time})
+    </insert>
     <update id="addMoneyToUser">
         UPDATE wallet AS w SET w.money = w.money + #{money} where w.userId = #{userId};
     </update>
     <update id="deductRedPacketMoney">
        UPDATE wallet AS w SET w.money = w.money - #{money} where w.userId = #{userId} and w.money >= #{money};
     </update>
+    <select id="getRedPackets" resultType="com.Entity.PubRedPacket">
+        SELECT
+        r.redpacket_id AS  redPacketId, r.userid_pub AS userId, r.total_money AS total_money, r.redpacket_type AS redPacket_type, r.size AS redPacket_size,
+        r.time AS public_time, u.name AS userName, u.icon AS avatar
+        FROM redpacket_table AS r LEFT JOIN user AS u ON r.userid_pub = u.account ORDER BY r.time DESC
+    </select>
+    <select id="getRedPacketLogByUserId" resultType="com.Entity.RedPacketLog">
+        SELECT
+        *
+        FROM redpacket_log
+        ORDER BY time DESC
+    </select>
+    <select id="getRedPacketGraps" resultType="com.Entity.UserRedPacket">
+        SELECT
+        r.redpacket_id AS redpacketId, r.userid AS userId, r.money AS money, r.time AS time, u.name AS userName, u.icon AS avatar
+        FROM redpacket_detail AS r LEFT JOIN user AS u on r.userid = u.account
+        WHERE redpacket_id = #{redpacketId}
+    </select>
+    <select id="getWallet" resultType="com.Entity.Wallet">
+        SELECT * FROM wallet WHERE userId = #{userId};
+    </select>
 </mapper>

@@ -58,15 +58,13 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
      * @param userId
      * @param money
      * @param redPacketType
-     * @param groupId
      * @param size
      * @return
      */
 
     @Override
-    public PubRedPacket publishRedPacket(long userId, double money, int redPacketType, int groupId, int size) {
+    public PubRedPacket publishRedPacket(long userId, double money, int redPacketType, int size, long time) {
         ArrayList<String> parts = CutPointUtils.getRedPacketPartsByTypeId(money, size, redPacketType);
-        long time = System.currentTimeMillis()/1000;
         PubRedPacket pubRedPacket = new PubRedPacket(userId, redPacketType, size, money, parts, time);
         //保存红包信息进mysql,获取自增红包id
         redPacketBySqlService.addRedPacketMessage(pubRedPacket);
@@ -109,7 +107,7 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
      */
     @Override
     public UserRedPacket getRedPacket(long redPacketId, long userId) {
-        long time = System.currentTimeMillis()/1000;
+        long time = System.currentTimeMillis() / 1000;
         Jedis jedis = jedisPool.getResource();
         String respo;
         if (sha1_Get == null || jedis.scriptExists(sha1_Get)) {
@@ -139,8 +137,10 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
                 break;
             //抢到成功 200
             case Const.SUCCESS:
-            default:
                 userRedPacket = new UserRedPacket(redPacketId, userId, split[1], time, Const.SUCCESS);
+                break;
+            default:
+                userRedPacket = null;
                 break;
         }
 
@@ -171,9 +171,8 @@ public class RedPacketByRedisServiceImpl implements RedPacketByRedisService {
                     .mapToInt(Integer::intValue).sum();
             surplus = (double) (money - sum) / 100;
             //退还剩余红包钱给用户
-            redPacketBySqlService.addMoneyToUser(userid, surplus);
+            redPacketBySqlService.backMoneyToUser(userid, surplus);
         }
-        redPacketBySqlService.insertRedPacketDetail(map, redPacketId);
     }
 
 

@@ -28078,3 +28078,561 @@ java.lang.NullPointerException
 2020-05-01 23:00:32 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:7341 已连接
 2020-05-01 23:05:50 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:7341 退出连接
 2020-05-01 23:05:52 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:7883 已连接
+2020-05-02 01:30:39 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 01:30:39 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 6248 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 01:30:39 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 01:30:42 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$4a8e6a6e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 01:30:43 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 01:30:43 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 3827 ms
+2020-05-02 01:30:44 WARN AnnotationConfigServletWebServerApplicationContext:554-Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'blogController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'blogServiceImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'blogDao' defined in file [E:\javaWebWorkPlace\chat\target\classes\com\Dao\BlogDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\javaWebWorkPlace\chat\target\classes\mapper\RedPacketBySqlDao.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Parsing error was found in mapping #{redPacket.userId, #{redPacket.money}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} 
+2020-05-02 01:30:44 INFO ConditionEvaluationReportLoggingListener:142-
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-05-02 01:30:44 ERRORSpringApplication:858-Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'blogController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'blogServiceImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'blogDao' defined in file [E:\javaWebWorkPlace\chat\target\classes\com\Dao\BlogDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\javaWebWorkPlace\chat\target\classes\mapper\RedPacketBySqlDao.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Parsing error was found in mapping #{redPacket.userId, #{redPacket.money}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} 
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:846)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:863)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.meizhuobycayp.chat.ChatApplication.main(ChatApplication.java:28)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'blogServiceImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'blogDao' defined in file [E:\javaWebWorkPlace\chat\target\classes\com\Dao\BlogDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\javaWebWorkPlace\chat\target\classes\mapper\RedPacketBySqlDao.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Parsing error was found in mapping #{redPacket.userId, #{redPacket.money}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} 
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:525)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:496)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:630)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:180)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:321)
+	... 17 more
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'blogDao' defined in file [E:\javaWebWorkPlace\chat\target\classes\com\Dao\BlogDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\javaWebWorkPlace\chat\target\classes\mapper\RedPacketBySqlDao.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Parsing error was found in mapping #{redPacket.userId, #{redPacket.money}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} 
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1482)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1362)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:525)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:496)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:630)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:180)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:321)
+	... 30 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\javaWebWorkPlace\chat\target\classes\mapper\RedPacketBySqlDao.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Parsing error was found in mapping #{redPacket.userId, #{redPacket.money}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} 
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:627)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1288)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:273)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1237)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1164)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1467)
+	... 43 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\javaWebWorkPlace\chat\target\classes\mapper\RedPacketBySqlDao.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Parsing error was found in mapping #{redPacket.userId, #{redPacket.money}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} 
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:622)
+	... 56 more
+Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\javaWebWorkPlace\chat\target\classes\mapper\RedPacketBySqlDao.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Parsing error was found in mapping #{redPacket.userId, #{redPacket.money}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} 
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:523)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:380)
+	at org.mybatis.spring.SqlSessionFactoryBean.getObject(SqlSessionFactoryBean.java:547)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration.sqlSessionFactory(MybatisAutoConfiguration.java:153)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$b6f6fd70.CGLIB$sqlSessionFactory$1(<generated>)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$b6f6fd70$$FastClassBySpringCGLIB$$6ce603e9.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$b6f6fd70.sqlSessionFactory(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 57 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Parsing error was found in mapping #{redPacket.userId, #{redPacket.money}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} 
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:92)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:521)
+	... 70 more
+Caused by: org.apache.ibatis.builder.BuilderException: Parsing error was found in mapping #{redPacket.userId, #{redPacket.money}.  Check syntax #{property|(expression), var1=value1, var2=value2, ...} 
+	at org.apache.ibatis.builder.SqlSourceBuilder$ParameterMappingTokenHandler.parseParameterMapping(SqlSourceBuilder.java:132)
+	at org.apache.ibatis.builder.SqlSourceBuilder$ParameterMappingTokenHandler.buildParameterMapping(SqlSourceBuilder.java:72)
+	at org.apache.ibatis.builder.SqlSourceBuilder$ParameterMappingTokenHandler.handleToken(SqlSourceBuilder.java:67)
+	at org.apache.ibatis.parsing.GenericTokenParser.parse(GenericTokenParser.java:78)
+	at org.apache.ibatis.builder.SqlSourceBuilder.parse(SqlSourceBuilder.java:45)
+	at org.apache.ibatis.scripting.defaults.RawSqlSource.<init>(RawSqlSource.java:46)
+	at org.apache.ibatis.scripting.defaults.RawSqlSource.<init>(RawSqlSource.java:40)
+	at org.apache.ibatis.scripting.xmltags.XMLScriptBuilder.parseScriptNode(XMLScriptBuilder.java:58)
+	at org.apache.ibatis.scripting.xmltags.XMLLanguageDriver.createSqlSource(XMLLanguageDriver.java:44)
+	at org.apache.ibatis.builder.xml.XMLStatementBuilder.parseStatementNode(XMLStatementBuilder.java:94)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:135)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildStatementFromContext(XMLMapperBuilder.java:128)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:118)
+	... 72 more
+Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: 36
+	at java.lang.String.charAt(String.java:658)
+	at org.apache.ibatis.builder.ParameterExpression.trimmedStr(ParameterExpression.java:131)
+	at org.apache.ibatis.builder.ParameterExpression.option(ParameterExpression.java:124)
+	at org.apache.ibatis.builder.ParameterExpression.jdbcTypeOpt(ParameterExpression.java:99)
+	at org.apache.ibatis.builder.ParameterExpression.property(ParameterExpression.java:70)
+	at org.apache.ibatis.builder.ParameterExpression.parse(ParameterExpression.java:47)
+	at org.apache.ibatis.builder.ParameterExpression.<init>(ParameterExpression.java:39)
+	at org.apache.ibatis.builder.SqlSourceBuilder$ParameterMappingTokenHandler.parseParameterMapping(SqlSourceBuilder.java:128)
+	... 84 more
+2020-05-02 01:31:45 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 01:31:45 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 20332 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 01:31:45 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 01:31:46 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$1b727019] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 01:31:47 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 01:31:47 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 1856 ms
+2020-05-02 01:31:48 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 01:31:48 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 01:31:48 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 01:31:49 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#458544e0:0/SimpleConnection@11ebb1b6 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 11760]
+2020-05-02 01:31:49 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 01:31:49 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 01:31:49 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 01:31:49 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 01:31:49 INFO ChatApplication:59-Started ChatApplication in 4.959 seconds (JVM running for 5.956)
+2020-05-02 01:31:49 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 01:31:49 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 01:31:50 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 01:31:54 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 01:31:54 INFO DispatcherServlet:546-Completed initialization in 6 ms
+2020-05-02 01:31:55 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:11818 已连接
+2020-05-02 01:40:22 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:11818 退出连接
+2020-05-02 01:40:24 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12127 已连接
+2020-05-02 01:40:26 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12127 退出连接
+2020-05-02 01:40:33 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12163 已连接
+2020-05-02 01:40:36 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12163 退出连接
+2020-05-02 01:41:22 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12261 已连接
+2020-05-02 01:41:24 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12261 退出连接
+2020-05-02 01:41:34 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12307 已连接
+2020-05-02 01:41:36 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12307 退出连接
+2020-05-02 01:43:04 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12468 已连接
+2020-05-02 01:43:07 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12468 退出连接
+2020-05-02 01:43:13 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12513 已连接
+2020-05-02 01:43:16 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12513 退出连接
+2020-05-02 01:43:42 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12585 已连接
+2020-05-02 01:44:07 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12585 退出连接
+2020-05-02 01:44:11 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12636 已连接
+2020-05-02 01:44:47 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12636 退出连接
+2020-05-02 01:45:01 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12692 已连接
+2020-05-02 01:49:17 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12692 退出连接
+2020-05-02 01:49:20 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12854 已连接
+2020-05-02 01:49:23 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12854 退出连接
+2020-05-02 01:51:12 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:12973 已连接
+2020-05-02 01:51:18 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:12973 退出连接
+2020-05-02 01:53:30 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:13202 已连接
+2020-05-02 01:53:32 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:13202 退出连接
+2020-05-02 01:53:33 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:13229 已连接
+2020-05-02 05:00:51 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:13229 退出连接
+2020-05-02 05:00:51 INFO ServerHandler:171-client from /0:0:0:0:0:0:0:1:13229 已断线
+2020-05-02 05:01:02 WARN HikariPool:766-HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h12s590ms434µs999ns).
+2020-05-02 12:42:24 WARN ForgivingExceptionHandler:115-An unexpected connection driver error occured (Exception message: Connection reset)
+2020-05-02 12:42:25 ERRORCachingConnectionFactory:1468-Channel shutdown: connection error
+2020-05-02 12:42:25 INFO SimpleMessageListenerContainer:1243-Restarting Consumer@2e3f79a2: tags=[[amq.ctag-Ed-_a_nIr81aJ6ty331rlQ]], channel=Cached Rabbit Channel: PublisherCallbackChannelImpl: AMQChannel(amqp://ljp@127.0.0.1:5672/,2), conn: Proxy@7bc6d27a Shared Rabbit Connection: SimpleConnection@11ebb1b6 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 11760], acknowledgeMode=MANUAL local queue size=0
+2020-05-02 12:42:26 ERRORCachingConnectionFactory:1468-Channel shutdown: connection error
+2020-05-02 12:42:26 ERRORCachingConnectionFactory:1468-Channel shutdown: connection error
+2020-05-02 12:42:26 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 12:42:27 INFO SimpleMessageListenerContainer:1243-Restarting Consumer@6fa69af7: tags=[[amq.ctag-9Xg5_xGPHvGZToQkdCitaQ]], channel=Cached Rabbit Channel: PublisherCallbackChannelImpl: AMQChannel(amqp://ljp@127.0.0.1:5672/,1), conn: Proxy@7bc6d27a Shared Rabbit Connection: null, acknowledgeMode=MANUAL local queue size=0
+2020-05-02 12:42:27 INFO SimpleMessageListenerContainer:1243-Restarting Consumer@38b5f25: tags=[[amq.ctag-56C4N6TRb6VjJPdIJNafvw]], channel=Cached Rabbit Channel: PublisherCallbackChannelImpl: AMQChannel(amqp://ljp@127.0.0.1:5672/,3), conn: Proxy@7bc6d27a Shared Rabbit Connection: null, acknowledgeMode=MANUAL local queue size=0
+2020-05-02 12:42:31 ERRORForgivingExceptionHandler:119-An unexpected connection driver error occured
+java.net.SocketException: Socket Closed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:171)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:288)
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91)
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:164)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:596)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-02 12:42:36 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#458544e0:1/SimpleConnection@d38da44 [delegate=amqp://ljp@0:0:0:0:0:0:0:1:5672/, localPort= 13549]
+2020-05-02 12:42:36 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 12:42:36 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 12:42:36 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 12:42:48 WARN HikariPool:766-HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7h41m56s768ms927µs514ns).
+2020-05-02 12:57:53 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 12:57:54 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 20008 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 12:57:54 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 12:57:56 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$6bb60545] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 12:57:56 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 12:57:57 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 3058 ms
+2020-05-02 12:57:58 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 12:57:59 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 12:57:59 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 12:57:59 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#71c905a3:0/SimpleConnection@387bf2d9 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 13735]
+2020-05-02 12:57:59 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 12:57:59 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 12:57:59 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 12:57:59 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 12:57:59 INFO ChatApplication:59-Started ChatApplication in 6.087 seconds (JVM running for 8.263)
+2020-05-02 12:57:59 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 12:57:59 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 12:57:59 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 13:00:09 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:13836 已连接
+2020-05-02 13:00:10 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 13:00:10 INFO DispatcherServlet:546-Completed initialization in 80 ms
+2020-05-02 13:00:10 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:13836 退出连接
+2020-05-02 13:00:12 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:13869 已连接
+2020-05-02 15:05:35 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:05:35 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 14684 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:05:35 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:05:38 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$475742] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:05:38 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:05:39 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2951 ms
+2020-05-02 15:05:40 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:05:40 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:05:40 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:05:40 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#7e8a46b7:0/SimpleConnection@1ac45389 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 14751]
+2020-05-02 15:05:40 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:05:40 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:05:40 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:05:40 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:05:40 INFO ChatApplication:59-Started ChatApplication in 5.045 seconds (JVM running for 6.211)
+2020-05-02 15:05:40 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:05:40 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:05:40 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:10:58 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:10:59 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 7596 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:10:59 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:11:00 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$84a0b5e1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:11:01 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:11:01 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2263 ms
+2020-05-02 15:11:02 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:11:02 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:11:02 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:11:02 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#6079cf5:0/SimpleConnection@fca387 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 14833]
+2020-05-02 15:11:02 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:11:02 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:11:02 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:11:02 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:11:02 INFO ChatApplication:59-Started ChatApplication in 3.798 seconds (JVM running for 4.793)
+2020-05-02 15:11:02 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:11:02 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:11:02 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:11:37 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:11:37 INFO DispatcherServlet:546-Completed initialization in 6 ms
+2020-05-02 15:12:24 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:12:25 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 14068 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:12:25 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:12:26 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$5fb4512d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:12:27 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:12:27 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2095 ms
+2020-05-02 15:12:27 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:12:28 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:12:28 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:12:28 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#1e6308a9:0/SimpleConnection@10bd9df0 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 14903]
+2020-05-02 15:12:28 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:12:28 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:12:28 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:12:28 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:12:28 INFO ChatApplication:59-Started ChatApplication in 3.833 seconds (JVM running for 4.979)
+2020-05-02 15:12:28 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:12:28 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:12:28 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:13:04 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:13:04 INFO DispatcherServlet:546-Completed initialization in 7 ms
+2020-05-02 15:13:47 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:13:48 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 10308 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:13:48 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:13:49 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$6fffd72d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:13:50 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:13:50 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2523 ms
+2020-05-02 15:13:51 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:13:51 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:13:51 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:13:51 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#66bfd864:0/SimpleConnection@5ae95707 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 14972]
+2020-05-02 15:13:51 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:13:51 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:13:51 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:13:51 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:13:51 INFO ChatApplication:59-Started ChatApplication in 4.31 seconds (JVM running for 5.299)
+2020-05-02 15:13:52 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:13:52 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:13:52 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:13:54 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:13:54 INFO DispatcherServlet:546-Completed initialization in 7 ms
+2020-05-02 15:15:36 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:15:37 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 12396 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:15:37 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:15:38 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$6cc9bb11] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:15:39 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:15:39 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2114 ms
+2020-05-02 15:15:40 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:15:40 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:15:40 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:15:40 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#488b50ec:0/SimpleConnection@431f1eaf [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 15042]
+2020-05-02 15:15:40 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:15:40 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:15:40 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:15:40 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:15:40 INFO ChatApplication:59-Started ChatApplication in 3.926 seconds (JVM running for 5.074)
+2020-05-02 15:15:40 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:15:40 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:15:41 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:15:45 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:15:45 INFO DispatcherServlet:546-Completed initialization in 8 ms
+2020-05-02 15:20:34 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:20:35 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 4664 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:20:35 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:20:36 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$475742] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:20:37 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:20:37 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2127 ms
+2020-05-02 15:20:38 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:20:38 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:20:38 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:20:38 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#7e8a46b7:0/SimpleConnection@1ac45389 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 15139]
+2020-05-02 15:20:38 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:20:38 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:20:38 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:20:38 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:20:38 INFO ChatApplication:59-Started ChatApplication in 3.901 seconds (JVM running for 4.897)
+2020-05-02 15:20:38 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:20:38 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:20:38 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:21:17 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:21:17 INFO DispatcherServlet:546-Completed initialization in 7 ms
+2020-05-02 15:22:28 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:22:28 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 14968 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:22:28 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:22:30 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$c9d3cf2f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:22:30 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:22:31 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2598 ms
+2020-05-02 15:22:31 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:22:31 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:22:32 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:22:32 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#46c00568:0/SimpleConnection@6107165 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 15213]
+2020-05-02 15:22:32 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:22:32 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:22:32 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:22:32 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:22:32 INFO ChatApplication:59-Started ChatApplication in 4.393 seconds (JVM running for 5.534)
+2020-05-02 15:22:32 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:22:32 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:22:32 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:22:35 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:22:35 INFO DispatcherServlet:546-Completed initialization in 8 ms
+2020-05-02 15:26:45 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:26:46 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 22360 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:26:46 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:26:47 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$fda9fba9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:26:48 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:26:48 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2066 ms
+2020-05-02 15:26:48 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:26:49 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:26:49 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:26:49 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#5d58c727:0/SimpleConnection@7026b7ee [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 15291]
+2020-05-02 15:26:49 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:26:49 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:26:49 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:26:49 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:26:49 INFO ChatApplication:59-Started ChatApplication in 3.64 seconds (JVM running for 4.687)
+2020-05-02 15:26:49 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:26:49 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:26:49 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:29:51 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:29:51 INFO DispatcherServlet:546-Completed initialization in 7 ms
+2020-05-02 15:34:08 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:34:09 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 8668 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:34:09 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:34:11 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$fe3dcbf2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:34:11 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:34:11 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2696 ms
+2020-05-02 15:34:12 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:34:12 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:34:12 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:34:12 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#afb5821:0/SimpleConnection@5533dc72 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 15381]
+2020-05-02 15:34:12 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:34:12 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:34:12 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:34:13 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:34:13 INFO ChatApplication:59-Started ChatApplication in 4.385 seconds (JVM running for 5.381)
+2020-05-02 15:34:13 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:34:13 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:34:13 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:34:17 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:34:17 INFO DispatcherServlet:546-Completed initialization in 8 ms
+2020-05-02 15:34:43 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 15:35:43 INFO RabbitMqLReceiver:45-redpacketid:7 已处理
+2020-05-02 15:38:13 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:38:14 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 13600 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:38:14 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:38:15 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$b0971c46] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:38:16 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:38:16 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2370 ms
+2020-05-02 15:38:17 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:38:17 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:38:17 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:38:17 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#6090f3ca:0/SimpleConnection@cb03411 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 15462]
+2020-05-02 15:38:17 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:38:17 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:38:17 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:38:17 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:38:17 INFO ChatApplication:59-Started ChatApplication in 4.3 seconds (JVM running for 5.211)
+2020-05-02 15:38:18 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:38:18 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:38:18 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:38:43 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:38:43 INFO DispatcherServlet:546-Completed initialization in 7 ms
+2020-05-02 15:38:51 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 15:39:51 INFO RabbitMqLReceiver:45-redpacketid:8 已处理
+2020-05-02 15:41:04 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 15:41:04 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 8152 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 15:41:04 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 15:41:06 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$af90886] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 15:41:07 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 15:41:07 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2704 ms
+2020-05-02 15:41:08 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 15:41:08 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 15:41:08 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 15:41:08 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#2d66530f:0/SimpleConnection@4aaae508 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 15539]
+2020-05-02 15:41:08 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 15:41:08 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:41:08 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 15:41:08 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 15:41:08 INFO ChatApplication:59-Started ChatApplication in 4.497 seconds (JVM running for 5.538)
+2020-05-02 15:41:08 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 15:41:08 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 15:41:08 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 15:43:29 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 15:43:29 INFO DispatcherServlet:546-Completed initialization in 8 ms
+2020-05-02 15:43:35 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 15:44:35 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 15:44:35 INFO RabbitMqLReceiver:45-redpacketid:9 已处理
+2020-05-02 15:45:35 INFO RabbitMqLReceiver:45-redpacketid:10 已处理
+2020-05-02 15:47:44 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 15:48:44 INFO RabbitMqLReceiver:45-redpacketid:11 已处理
+2020-05-02 15:50:22 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 15:51:22 INFO RabbitMqLReceiver:45-redpacketid:12 已处理
+2020-05-02 16:00:47 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 16:00:47 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 9560 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 16:00:47 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 16:00:49 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$33f2a534] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 16:00:49 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 16:00:49 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2560 ms
+2020-05-02 16:00:50 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 16:00:50 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 16:00:50 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 16:00:50 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#18324f97:0/SimpleConnection@86733 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 15695]
+2020-05-02 16:00:50 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 16:00:50 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 16:00:50 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 16:00:51 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 16:00:51 INFO ChatApplication:59-Started ChatApplication in 4.192 seconds (JVM running for 5.229)
+2020-05-02 16:00:51 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 16:00:51 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 16:00:51 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 16:04:22 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 16:04:22 INFO DispatcherServlet:546-Completed initialization in 7 ms
+2020-05-02 16:16:49 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:15805 已连接
+2020-05-02 16:17:48 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:15805 退出连接
+2020-05-02 16:17:50 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:15820 已连接
+2020-05-02 16:20:44 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:15820 退出连接
+2020-05-02 16:20:46 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:15951 已连接
+2020-05-02 16:25:17 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:15951 退出连接
+2020-05-02 16:25:18 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:16030 已连接
+2020-05-02 16:26:06 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:16030 退出连接
+2020-05-02 16:26:06 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:16068 已连接
+2020-05-02 16:46:29 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:16068 退出连接
+2020-05-02 16:46:31 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:16529 已连接
+2020-05-02 16:46:34 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:16529 退出连接
+2020-05-02 16:46:35 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:16563 已连接
+2020-05-02 16:46:58 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:16563 退出连接
+2020-05-02 16:46:59 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:16602 已连接
+2020-05-02 16:53:59 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:16602 退出连接
+2020-05-02 16:54:00 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:17079 已连接
+2020-05-02 16:56:58 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:17079 退出连接
+2020-05-02 16:56:58 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:17222 已连接
+2020-05-02 16:57:15 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:17222 退出连接
+2020-05-02 16:57:16 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:17253 已连接
+2020-05-02 16:57:48 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:17253 退出连接
+2020-05-02 16:57:48 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:17292 已连接
+2020-05-02 17:17:57 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:17292 退出连接
+2020-05-02 17:17:58 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:17814 已连接
+2020-05-02 17:18:47 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:17814 退出连接
+2020-05-02 17:19:03 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:17891 已连接
+2020-05-02 17:29:37 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:17891 退出连接
+2020-05-02 17:29:38 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:18131 已连接
+2020-05-02 17:30:30 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:18131 退出连接
+2020-05-02 17:30:30 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:18195 已连接
+2020-05-02 17:32:34 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:18195 退出连接
+2020-05-02 17:32:34 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:18262 已连接
+2020-05-02 17:40:55 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:18262 退出连接
+2020-05-02 17:40:56 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:18485 已连接
+2020-05-02 17:45:26 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:18485 退出连接
+2020-05-02 17:45:27 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:18601 已连接
+2020-05-02 17:52:30 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:18601 退出连接
+2020-05-02 17:52:31 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:19034 已连接
+2020-05-02 17:53:04 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 17:53:17 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:19034 退出连接
+2020-05-02 17:53:18 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:19096 已连接
+2020-05-02 17:53:49 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 17:54:04 INFO RabbitMqLReceiver:45-redpacketid:13 已处理
+2020-05-02 17:54:49 INFO RabbitMqLReceiver:45-redpacketid:14 已处理
+2020-05-02 17:55:10 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:19096 退出连接
+2020-05-02 17:55:10 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:19152 已连接
+2020-05-02 17:55:26 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:19152 退出连接
+2020-05-02 17:55:26 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:19190 已连接
+2020-05-02 17:55:34 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 17:56:56 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 17:56:57 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 3244 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 17:56:57 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 17:56:59 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$8bc8c8ce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 17:56:59 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 17:56:59 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 2672 ms
+2020-05-02 17:57:01 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 17:57:01 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 17:57:01 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 17:57:01 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#4690f583:0/SimpleConnection@7bc6d27a [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 19238]
+2020-05-02 17:57:01 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 17:57:01 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 17:57:01 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 17:57:02 INFO RabbitMqLReceiver:45-redpacketid:15 已处理
+2020-05-02 17:57:02 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 17:57:02 INFO ChatApplication:59-Started ChatApplication in 5.612 seconds (JVM running for 7.629)
+2020-05-02 17:57:02 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 17:57:02 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 17:57:02 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 17:57:26 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:19320 已连接
+2020-05-02 17:57:26 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-02 17:57:26 INFO DispatcherServlet:546-Completed initialization in 34 ms
+2020-05-02 17:57:27 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:19320 退出连接
+2020-05-02 17:57:29 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:19350 已连接
+2020-05-02 17:57:51 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 17:58:18 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 17:58:51 INFO RabbitMqLReceiver:45-redpacketid:16 已处理
+2020-05-02 17:59:18 INFO RabbitMqLReceiver:45-redpacketid:17 已处理
+2020-05-02 17:59:41 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:19350 退出连接
+2020-05-02 17:59:42 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:19458 已连接
+2020-05-02 17:59:55 INFO RabbitTemplate:36-send to Exchange success,id:1

@@ -1,21 +1,21 @@
 import React from 'react';
-import { Route, Link, Switch, withRouter, Redirect} from "react-router-dom";
-import { Layout, Menu, Breadcrumb, Icon, Button} from 'antd';
+import { withRouter} from "react-router-dom";
+import { Layout} from 'antd';
 import '../App.css'
 import 'antd/dist/antd.css'
-import { initWebSocket, initChatListsMap, initLeftItemList} from '../store/actions'
+import { initWebSocket, initChatListsMap, initLeftItemList,setUser} from '../store/actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import MySider from './MySider';
 import MyContent from './MyContent';
 import MyHeader from './MyHeader';
 import { getUser } from '../utils/util';
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Sider } = Layout;
 
 
 const store = connect(
     (state) => ({  user: state.user, websocket: state.websocket, leftItemList: state.leftItemList, chatListsMap: state.chatListsMap}),
-    (dispatch) => bindActionCreators({initWebSocket, initChatListsMap, initLeftItemList}, dispatch)
+    (dispatch) => bindActionCreators({initWebSocket, initChatListsMap, initLeftItemList, setUser}, dispatch)
 )
 
 @store
@@ -45,11 +45,15 @@ componentWillUnmount() {
      */
     init = async () => {
         const user = this.props.user
-        console.log(user)
-        if (user) {
-          this.props.initWebSocket(user.id)
-          this.props.initLeftItemList(user.id)
-          this.props.initChatListsMap(user.id)
+        const user1 = getUser()
+        const userInfo = user == null ? user1 : user
+        if (userInfo) {
+          if (user == null) {
+           this.props.setUser(userInfo)
+          }
+          this.props.initWebSocket(userInfo.id)
+          this.props.initLeftItemList(userInfo.id)
+          this.props.initChatListsMap(userInfo.id)
           return
         }
         this.props.history.push("/auth/login")

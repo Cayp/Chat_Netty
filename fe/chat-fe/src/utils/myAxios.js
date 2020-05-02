@@ -16,7 +16,14 @@ myAxios.interceptors.request.use(config => {
 })
 
 myAxios.interceptors.response.use(response => {
-        return response  
+    if (response.data.code !== 40001) {
+        console.log("success")
+        return response
+    }
+    if (response.data.code === 40001) {
+        window.location.href = '/auth/login';
+        return Promise.reject(response);
+    } 
 }, error => {
     //对响应数据错误做操作
     console.log('请求error', error.message);

@@ -3,7 +3,8 @@ import LoadableComponent from './LoadableComponent'
 //const Test = React.lazy(() => import('./Test'));   //报错，就没用React.lazy了
 const Chat = LoadableComponent(import('../pages/Chat'), true);
 const Blog = LoadableComponent(import('../pages/Blog'), true)
-
+const About = LoadableComponent(import('../pages/About'), true);
+const RedBacketSquare = LoadableComponent(import('../pages/RedPacketSquare'), true);
 const menu = [
     {
         name: '聊天',
@@ -21,6 +22,11 @@ const menu = [
         key: 'friends'
     },
     {
+        name: '红包广场',
+        icon: "transaction",
+        key: 'RedBacketSquare'
+    },
+    {
         name: '红包详情',
         icon: "transaction",
         key: 'RedBacket'
@@ -36,7 +42,9 @@ const tabs = {
  
    
     Chat: <Chat />,
-    Blog: <Blog />
+    Blog: <Blog />,
+    RedBacketSquare: <RedBacketSquare />,
+    About: <About />
 }
 
 export {

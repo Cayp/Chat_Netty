@@ -1,7 +1,9 @@
 package com.Dao;
 
 import com.Entity.PubRedPacket;
+import com.Entity.RedPacketLog;
 import com.Entity.UserRedPacket;
+import com.Entity.Wallet;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,4 +25,16 @@ public  interface RedPacketBySqlDao {
 
     //将红包信息持久化到Mysql
     int addRedPacketMessage(@Param("redPacket") PubRedPacket redPacket);
+
+    int addRedPacketDetail(@Param("redPacket") UserRedPacket userRedPacket);
+
+    List<PubRedPacket> getRedPackets();
+
+    List<RedPacketLog> getRedPacketLogByUserId(@Param("userId") long userId);
+
+    int addRedPacketLog(@Param("log") RedPacketLog redPacketLog);
+
+    List<UserRedPacket> getRedPacketGraps(@Param("redpacketId") long redpacketId);
+
+    Wallet getWallet(long userId);
 }
