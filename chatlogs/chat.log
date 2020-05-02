@@ -28636,3 +28636,155 @@ java.net.SocketException: Socket Closed
 2020-05-02 17:59:41 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:19350 退出连接
 2020-05-02 17:59:42 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:19458 已连接
 2020-05-02 17:59:55 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-02 22:54:13 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-02 22:54:14 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 3436 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-02 22:54:14 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-02 22:54:17 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$fda9fba9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-02 22:54:17 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-02 22:54:17 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 3140 ms
+2020-05-02 22:54:19 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-02 22:54:19 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-02 22:54:20 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-02 22:54:20 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#52a36910:0/SimpleConnection@2d23faef [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 19953]
+2020-05-02 22:54:20 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-02 22:54:20 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 22:54:20 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-02 22:54:20 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-02 22:54:20 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-02 22:54:20 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-02 22:54:20 INFO ChatApplication:59-Started ChatApplication in 7.394 seconds (JVM running for 10.535)
+2020-05-02 22:54:21 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-02 22:54:22 INFO RabbitMqLReceiver:45-redpacketid:18 已处理
+2020-05-03 00:30:04 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-03 00:30:04 INFO DispatcherServlet:546-Completed initialization in 9 ms
+2020-05-03 00:30:05 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:20650 已连接
+2020-05-03 00:31:50 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:20650 退出连接
+2020-05-03 00:31:50 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:20699 已连接
+2020-05-03 00:32:41 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:20699 退出连接
+2020-05-03 00:32:42 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:20765 已连接
+2020-05-03 00:33:47 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:20765 退出连接
+2020-05-03 00:33:47 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:20805 已连接
+2020-05-03 00:34:02 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:20805 退出连接
+2020-05-03 00:34:03 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:20837 已连接
+2020-05-03 00:35:05 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:20837 退出连接
+2020-05-03 00:35:05 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:20877 已连接
+2020-05-03 00:35:22 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:20877 退出连接
+2020-05-03 00:35:23 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:20910 已连接
+2020-05-03 01:08:26 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:20910 退出连接
+2020-05-03 01:08:27 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22069 已连接
+2020-05-03 01:08:34 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22069 退出连接
+2020-05-03 01:08:35 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22108 已连接
+2020-05-03 01:11:04 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22108 退出连接
+2020-05-03 01:11:05 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22278 已连接
+2020-05-03 01:11:32 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22278 退出连接
+2020-05-03 01:11:33 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22319 已连接
+2020-05-03 01:13:48 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22319 退出连接
+2020-05-03 01:13:49 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22363 已连接
+2020-05-03 01:14:26 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22363 退出连接
+2020-05-03 01:14:26 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22425 已连接
+2020-05-03 01:14:42 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22425 退出连接
+2020-05-03 01:14:43 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22468 已连接
+2020-05-03 01:15:44 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22468 退出连接
+2020-05-03 01:15:45 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22561 已连接
+2020-05-03 01:19:26 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22561 退出连接
+2020-05-03 01:19:27 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22615 已连接
+2020-05-03 01:20:04 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22615 退出连接
+2020-05-03 01:20:05 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22651 已连接
+2020-05-03 01:20:22 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22651 退出连接
+2020-05-03 01:20:23 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22685 已连接
+2020-05-03 01:20:41 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22685 退出连接
+2020-05-03 01:20:42 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22734 已连接
+2020-05-03 01:23:30 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22734 退出连接
+2020-05-03 01:23:31 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22799 已连接
+2020-05-03 01:23:46 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22799 退出连接
+2020-05-03 01:23:47 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22834 已连接
+2020-05-03 01:24:00 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22834 退出连接
+2020-05-03 01:24:00 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22868 已连接
+2020-05-03 01:24:23 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22868 退出连接
+2020-05-03 01:24:24 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22901 已连接
+2020-05-03 01:24:46 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22901 退出连接
+2020-05-03 01:24:46 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22942 已连接
+2020-05-03 01:24:58 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22942 退出连接
+2020-05-03 01:24:58 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:22982 已连接
+2020-05-03 01:25:09 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:22982 退出连接
+2020-05-03 01:25:10 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23017 已连接
+2020-05-03 01:27:30 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23017 退出连接
+2020-05-03 01:27:31 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23145 已连接
+2020-05-03 01:32:49 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23145 退出连接
+2020-05-03 01:32:50 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23212 已连接
+2020-05-03 01:34:28 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23212 退出连接
+2020-05-03 01:34:29 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23253 已连接
+2020-05-03 01:34:32 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23253 退出连接
+2020-05-03 01:34:34 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23267 已连接
+2020-05-03 01:34:41 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23267 退出连接
+2020-05-03 01:34:42 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23298 已连接
+2020-05-03 01:37:56 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23298 退出连接
+2020-05-03 01:37:57 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23358 已连接
+2020-05-03 01:38:03 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23358 退出连接
+2020-05-03 01:38:03 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23391 已连接
+2020-05-03 01:38:38 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-03 01:39:39 INFO RabbitMqLReceiver:45-redpacketid:19 已处理
+2020-05-03 01:42:53 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23391 退出连接
+2020-05-03 01:42:54 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23466 已连接
+2020-05-03 01:47:11 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23466 退出连接
+2020-05-03 01:47:12 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23531 已连接
+2020-05-03 01:47:22 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23531 退出连接
+2020-05-03 01:47:23 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23565 已连接
+2020-05-03 01:47:45 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23565 退出连接
+2020-05-03 01:47:46 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23599 已连接
+2020-05-03 01:48:26 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:23599 退出连接
+2020-05-03 01:48:27 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:23640 已连接
+2020-05-03 01:53:09 INFO Version:21-HV000001: Hibernate Validator 6.0.13.Final
+2020-05-03 01:53:10 INFO ChatApplication:50-Starting ChatApplication on DESKTOP-S2J2FFL with PID 19396 (E:\javaWebWorkPlace\chat\target\classes started by ljp in E:\javaWebWorkPlace\chat)
+2020-05-03 01:53:10 INFO ChatApplication:675-No active profile set, falling back to default profiles: default
+2020-05-03 01:53:12 INFO PostProcessorRegistrationDelegate$BeanPostProcessorChecker:330-Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$efecb94c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-03 01:53:12 INFO TomcatWebServer:90-Tomcat initialized with port(s): 9001 (http)
+2020-05-03 01:53:13 INFO ContextLoader:296-Root WebApplicationContext: initialization completed in 3101 ms
+2020-05-03 01:53:14 INFO ThreadPoolTaskExecutor:171-Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-03 01:53:14 INFO WelcomePageHandlerMapping:56-Adding welcome page: class path resource [static/index.html]
+2020-05-03 01:53:14 INFO CachingConnectionFactory:460-Attempting to connect to: [localhost:5672]
+2020-05-03 01:53:15 INFO CachingConnectionFactory:496-Created new connection: rabbitConnectionFactory#69cac930:0/SimpleConnection@3a5c2626 [delegate=amqp://ljp@127.0.0.1:5672/, localPort= 24010]
+2020-05-03 01:53:15 INFO RabbitAdmin:558-Auto-declaring a non-durable or auto-delete Exchange (Test_DEADLETTER_EXCHANGE) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2020-05-03 01:53:15 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_DEADLETTER_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-03 01:53:15 INFO RabbitAdmin:568-Auto-declaring a non-durable, auto-delete, or exclusive Queue (Test_REDIRECT_QUEUE) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2020-05-03 01:53:15 INFO TomcatWebServer:204-Tomcat started on port(s): 9001 (http) with context path '/chat'
+2020-05-03 01:53:15 INFO ChatApplication:59-Started ChatApplication in 6.296 seconds (JVM running for 9.413)
+2020-05-03 01:53:15 WARN HikariConfig:978-HikariPool-1 - idleTimeout is less than 10000ms, setting to default 600000ms.
+2020-05-03 01:53:15 INFO HikariDataSource:110-HikariPool-1 - Starting...
+2020-05-03 01:53:15 INFO HikariDataSource:123-HikariPool-1 - Start completed.
+2020-05-03 01:53:32 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:24102 已连接
+2020-05-03 01:53:32 INFO DispatcherServlet:524-Initializing Servlet 'dispatcherServlet'
+2020-05-03 01:53:32 INFO DispatcherServlet:546-Completed initialization in 10 ms
+2020-05-03 01:53:32 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:24102 退出连接
+2020-05-03 01:53:36 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:24136 已连接
+2020-05-03 01:54:06 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:24136 退出连接
+2020-05-03 01:54:07 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:24171 已连接
+2020-05-03 01:54:21 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:24171 退出连接
+2020-05-03 01:54:22 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:24211 已连接
+2020-05-03 01:54:55 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:24211 退出连接
+2020-05-03 01:54:56 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:24276 已连接
+2020-05-03 02:07:02 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:24276 退出连接
+2020-05-03 02:07:03 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:24578 已连接
+2020-05-03 02:07:34 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:24578 退出连接
+2020-05-03 02:07:35 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:24640 已连接
+2020-05-03 02:12:39 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:24640 退出连接
+2020-05-03 02:12:40 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:24942 已连接
+2020-05-03 02:12:57 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-03 02:13:57 INFO RabbitMqLReceiver:45-redpacketid:20 已处理
+2020-05-03 02:15:07 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-03 02:15:33 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:24942 退出连接
+2020-05-03 02:15:33 INFO ServerHandler:171-client from /0:0:0:0:0:0:0:1:24942 已断线
+2020-05-03 02:16:07 INFO RabbitMqLReceiver:45-redpacketid:21 已处理
+2020-05-03 02:16:40 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:25185 已连接
+2020-05-03 02:16:52 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-03 02:17:21 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:25185 退出连接
+2020-05-03 02:17:21 INFO ServerHandler:171-client from /0:0:0:0:0:0:0:1:25185 已断线
+2020-05-03 02:17:52 INFO RabbitMqLReceiver:45-redpacketid:22 已处理
+2020-05-03 02:18:37 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:25265 已连接
+2020-05-03 02:19:17 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:25265 退出连接
+2020-05-03 02:19:17 INFO ServerHandler:171-client from /0:0:0:0:0:0:0:1:25265 已断线
+2020-05-03 02:24:09 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:25393 已连接
+2020-05-03 02:24:24 INFO RabbitTemplate:36-send to Exchange success,id:1
+2020-05-03 02:25:24 INFO RabbitMqLReceiver:45-redpacketid:23 已处理
+2020-05-03 02:27:00 INFO ChannelMessage:58-client from /0:0:0:0:0:0:0:1:25393 退出连接
+2020-05-03 02:27:01 INFO ChannelMessage:90-client from /0:0:0:0:0:0:0:1:25463 已连接

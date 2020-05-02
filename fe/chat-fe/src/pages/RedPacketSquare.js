@@ -1,7 +1,9 @@
 import React from 'react';
-import { List, Card, Divider, Button, Modal, Form, Input, Radio, message} from 'antd';
-import { render } from '@testing-library/react';
+import { List, Card, Divider, Button, Modal, Form, Input, Radio, message,Avatar} from 'antd';
+import qs from 'qs'
 import { myAxios } from '../utils/myAxios';
+import Meta from 'antd/lib/card/Meta';
+import moment from 'moment'
 const RadioGroup = Radio.Group;
 const form = Form.create({})
 
@@ -80,6 +82,24 @@ handleOk = () => {
     });
   };
 
+  grapRedpacket = (redpacketId) => {
+    myAxios.post('/chat/redpacket/grap', qs.stringify({redPacketId: redpacketId}))
+           .then((response) => {
+             let json = response.data;
+             if (json.code === 20000) {
+              Modal.success({
+                content: `抢到${json.data.money}元~`,
+                okText: '知道了'
+              });
+             } else {
+              Modal.info({               
+                content: json.message,
+                okText: '知道了'
+              });
+             }
+           })
+           
+  }
 render() {
     const { redpacketList, visible, confirmLoading } = this.state
     const { getFieldDecorator } = this.props.form;
@@ -125,14 +145,36 @@ render() {
       </Form>
         </Modal>
          <Divider/>
+         <h1>红包列表:</h1>
+         <br/>
        <List
-         grid={{ gutter: 16, column: 10 }}
+         grid={{ gutter: 15, column: 4}}
          dataSource={redpacketList}
          locale={{emptyText: "暂无红包"}}
          style={{ outline: 'none' }}
          renderItem={item => (
       <List.Item>
-        <Card title={item.title}>Card content</Card>
+        <Card 
+        hoverable={true}
+        cover={
+          <img
+            alt="example"
+            src={item.redPacket_type === 0 ? require('./imgs/pinshouqi.png') :require("./imgs/putong.jpg")}
+          />
+        }
+        actions={[
+
+          <Button type="danger" onClick={() => this.grapRedpacket(item.redPacketId)}>抢</Button>,
+          <Button type="primary">查看</Button>
+        ]
+        }
+        >
+        <Meta
+         avatar={<Avatar src={`/chat/images/avatar/${item.avatar}`} />}
+         title={item.userName}
+         description={moment(item.publish_time * 1000).format('YYYY-MM-DD HH:mm:ss')}
+        />
+        </Card>
       </List.Item>
     )}
   />

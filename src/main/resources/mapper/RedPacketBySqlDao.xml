@@ -27,7 +27,7 @@
     <select id="getRedPackets" resultType="com.Entity.PubRedPacket">
         SELECT
         r.redpacket_id AS  redPacketId, r.userid_pub AS userId, r.total_money AS total_money, r.redpacket_type AS redPacket_type, r.size AS redPacket_size,
-        r.time AS public_time, u.name AS userName, u.icon AS avatar
+        r.time AS publish_time, u.name AS userName, u.icon AS avatar
         FROM redpacket_table AS r LEFT JOIN user AS u ON r.userid_pub = u.account ORDER BY r.time DESC
     </select>
     <select id="getRedPacketLogByUserId" resultType="com.Entity.RedPacketLog">
