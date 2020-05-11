@@ -62,30 +62,6 @@ public class UserController {
         }
     }
 
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    @SuppressWarnings("unchecked")
-//    public Response login(String mail, String password, HttpSession session, HttpServletResponse servletResponse) {
-//        User login = userService.login(mail);
-//        if (login == null) {
-//            return response.error("没有这账号!");
-//        } else {
-//            if (login.getPassword().equals(password)) {
-//                session.setAttribute("userId", login.getAccount());
-//                //写入验证字段,防止csrf攻击
-//                int authorizationNum = (int) (Math.random() * 10000000);
-//                String authorization = HashStrUtil.hash(String.valueOf(authorizationNum), "MD5");
-//                session.setAttribute("authorization", authorization);
-//                Cookie cookie = new Cookie("authorization", authorization);
-//                cookie.setPath("/");
-//                cookie.setHttpOnly(false);
-//                servletResponse.addCookie(cookie);
-//                return response.successWithData("登录成功", login);
-//            } else {
-//                return response.error("登录失败");
-//            }
-//        }
-//    }
-
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     @SuppressWarnings("unchecked")
     public Response getUser(String index) {
@@ -160,12 +136,11 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/deleteFriend", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteFriend", method = RequestMethod.POST)
     @SuppressWarnings("unchecked")
-    public Response deleteFriend(HttpSession httpSession, String id) {
+    public Response deleteFriend(HttpSession httpSession, long friendId) {
         Long userId = (Long) httpSession.getAttribute("userId");
-        long toid = Long.parseLong(id);
-        int i = userService.deleteFriend(userId, toid);
+        int i = userService.deleteFriend(userId, friendId);
         if (i > 1) {
             return response.success("删除成功！");
         } else {
@@ -191,9 +166,9 @@ public class UserController {
         boolean upLoadResult = FileUtils.upLoadPicture(picture, UpLoadType.avatar, avatar);
         if (upLoadResult) {
             userService.updateAvatar(userId, avatar);
-            return  response.successWithData("上传成功!", new UpLoadEntity(avatar));
+            return response.successWithData("上传成功!", new UpLoadEntity(avatar));
         } else {
-            return  response.error("上传失败!");
+            return response.error("上传失败!");
         }
     }
 
@@ -203,4 +178,53 @@ public class UserController {
         List<PersonEntity> personEntityList = users.stream().map(user -> new PersonEntity(user.getAccount(), user.getName(), user.getIcon())).collect(Collectors.toList());
         return response.successWithDataList("success", personEntityList);
     }
+
+    @RequestMapping(value = "/request/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public Response addRequest(@RequestBody AddRequest addRequest, HttpSession httpSession) {
+        long userId = (long) httpSession.getAttribute("userId");
+        addRequest.setUserId(userId);
+        addRequest.setTime(System.currentTimeMillis() / 1000);
+        Friend friend = userService.checkFriend(addRequest.getUserId(), addRequest.getToId());
+        if (friend !=null) {
+            return response.error("已经是你的好友");
+        }
+        if (addRequest.getToId() == addRequest.getUserId()) {
+            return response.error("你不能添加自己");
+        }
+        AddRequest request = userService.findRequest(userId, addRequest.getToId());
+        if (request != null) {
+            return response.error("该好友申请正在待处理");
+        } else {
+            int res = userService.addRequest(addRequest);
+            if (res > 0) {
+                return response.success("发送好友申请成功!");
+            } else {
+                return response.error("发送好友申请失败");
+            }
+        }
+    }
+
+    @RequestMapping(value = "/request/operate", method = RequestMethod.POST)
+    public Response operateRequest(long requestId, int type) {
+        boolean res = userService.operateRequest(requestId, type);
+        if (res) {
+            return response.success("操作成功");
+        }
+        return response.error("操作失败");
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public Response searchUser(String searchString, HttpSession httpSession) {
+        long userId = (long) httpSession.getAttribute("userId");
+        List<User> users = userService.searchUsers(searchString, userId);
+        return response.successWithDataList("获取成功", users);
+    }
+
+    @RequestMapping(value = "/requests", method = RequestMethod.GET)
+    public Response getRequests(HttpSession httpSession) {
+        long userId = (long) httpSession.getAttribute("userId");
+        List<AddRequest> addRequest = userService.getAddRequest(userId);
+        return response.successWithDataList("获取成功", addRequest);
+    }
+
 }

@@ -21,7 +21,7 @@ public class Const {
     public static final String DLEXCHANE = "DEADLETTER_EXCHANGE";
     public static final String DLQUEUEROUTINGKEY = "DIRECT_ROUTING_KEY";
     //设置过期红包时间 单位为毫秒
-    public static final String REDPACKETOUTTIME = "60000";
+    public static final String REDPACKETOUTTIME = "86400000";
     public static final String SUCCESS = "200";
     public static final String EXIST = "0";
     public static final String LOOT = "100";
@@ -30,6 +30,8 @@ public class Const {
     public static final int GRAP = 501;
     public static final int PUBLISH = 502;
     public static final int NORIGHT = 1000;
+    public static final int REQUEST_AGREE = 600;
+    public static final int REQUEST_DISAGREE = 601;
     public static final String DEFAULT_PICTURE = "moren.jpg";
     public static final String HREDPACKEKEY = "HRedPacket_";
     public static final String LREDPACKETKEY = "RedPacket_";

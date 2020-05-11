@@ -12,7 +12,7 @@ const EditInfoModal = LoadableComponent(import('./EditInfoModal'))
 const EditPasswordModal = LoadableComponent(import('./EditPasswordModal'))
 
 const store = connect(
-    (state) => ({ user: state.user })
+    (state) => ({ user: state.user, websocket: state.websocket })
 )
 
 @withRouter @store
@@ -85,6 +85,7 @@ class MyHeader extends React.Component {
           let json = response.data;
           if (json.code == 20000) {
             message.success(json.message)
+            this.props.websocket.close()
             sessionStorage.clear()
             this.props.history.push('/auth/login')
           } else {

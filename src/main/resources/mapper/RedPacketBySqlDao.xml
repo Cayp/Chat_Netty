@@ -34,11 +34,12 @@
         SELECT
         *
         FROM redpacket_log
+        WHERE userId = #{userId}
         ORDER BY time DESC
     </select>
     <select id="getRedPacketGraps" resultType="com.Entity.UserRedPacket">
         SELECT
-        r.redpacket_id AS redpacketId, r.userid AS userId, r.money AS money, r.time AS time, u.name AS userName, u.icon AS avatar
+        r.redpacket_id AS redpacketId, r.userid AS userId, r.money AS money, r.time AS time, u.name AS userName, u.icon AS userAvatar
         FROM redpacket_detail AS r LEFT JOIN user AS u on r.userid = u.account
         WHERE redpacket_id = #{redpacketId}
     </select>

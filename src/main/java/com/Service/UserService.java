@@ -1,5 +1,6 @@
 package com.Service;
 
+import com.Entity.AddRequest;
 import com.Entity.Friend;
 import com.Entity.RegisterEntity;
 import com.Entity.User;
@@ -23,4 +24,9 @@ public interface UserService {
     int changePassword(String mail,String password);
     int changePasswordByid(long userid,String password);
     int updateAvatar(long userId, String avatar);
+    List<AddRequest> getAddRequest(long toId);
+    boolean operateRequest(long requestId, int type);
+    AddRequest findRequest(long userId, long toId);
+    int addRequest(AddRequest addRequest);
+    List<User> searchUsers(String searchString, long userId);
 }

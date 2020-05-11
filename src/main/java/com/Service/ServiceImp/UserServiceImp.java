@@ -2,11 +2,13 @@ package com.Service.ServiceImp;
 
 import com.Dao.GetGroupDao;
 import com.Dao.GetUserInfoDao;
+import com.Entity.AddRequest;
 import com.Entity.Friend;
 import com.Entity.RegisterEntity;
 import com.Entity.User;
 import com.Service.GroupService;
 import com.Service.UserService;
+import com.Utils.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -101,6 +103,38 @@ public class UserServiceImp implements UserService {
     @Override
     public List<User> getUsers() {
         return getUserInfoDao.getUsers();
+    }
+
+    @Override
+    public List<AddRequest> getAddRequest(long toId) {
+        return getUserInfoDao.getAddRequest(toId);
+    }
+
+    @Override
+    @Transactional(rollbackFor = {Exception.class})
+    public boolean operateRequest(long requestId, int type) {
+        AddRequest request = getUserInfoDao.getAddRequestById(requestId);
+        getUserInfoDao.deleteAddRequest(request.getId());
+        if (type == Const.REQUEST_AGREE) {
+            getUserInfoDao.addFriend(request.getToId(), request.getUserId());
+            getUserInfoDao.addFriend(request.getUserId(), request.getToId());
+        }
+        return true;
+    }
+
+    @Override
+    public AddRequest findRequest(long userId, long toId) {
+        return getUserInfoDao.findRequest(userId, toId);
+    }
+
+    @Override
+    public int addRequest(AddRequest addRequest) {
+        return getUserInfoDao.insertAddRequest(addRequest);
+    }
+
+    @Override
+    public List<User> searchUsers(String searchString, long userId) {
+        return getUserInfoDao.searchUsers(searchString, userId);
     }
 }
 

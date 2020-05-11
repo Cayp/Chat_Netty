@@ -5,6 +5,8 @@ const Chat = LoadableComponent(import('../pages/Chat'), true);
 const Blog = LoadableComponent(import('../pages/Blog'), true)
 const About = LoadableComponent(import('../pages/About'), true);
 const RedBacketSquare = LoadableComponent(import('../pages/RedPacketSquare'), true);
+const Wallet = LoadableComponent(import('../pages/Wallet'), true);
+const Contacts = LoadableComponent(import('../pages/Contacts'), true);
 const menu = [
     {
         name: '聊天',
@@ -19,7 +21,7 @@ const menu = [
     {
         name: '通讯录',
         icon: "solution",
-        key: 'friends'
+        key: 'Contacts'
     },
     {
         name: '红包广场',
@@ -27,9 +29,9 @@ const menu = [
         key: 'RedBacketSquare'
     },
     {
-        name: '红包详情',
-        icon: "transaction",
-        key: 'RedBacket'
+        name: '钱包',
+        icon: "wallet",
+        key: 'Wallet'
     },
     {
         name: '关于',
@@ -43,7 +45,9 @@ const tabs = {
    
     Chat: <Chat />,
     Blog: <Blog />,
+    Contacts: <Contacts />,
     RedBacketSquare: <RedBacketSquare />,
+    Wallet: <Wallet />,
     About: <About />
 }
 

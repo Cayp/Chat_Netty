@@ -1,6 +1,8 @@
 import CryptoJS from 'crypto-js'
 import { Form } from 'antd'
 const SECRETKEY = 'front_666666'
+export const REQUEST_AGREE = 600;
+export const REQUEST_DISAGREE = 601;
 /**
  * 防抖函数
  * @param {*} func 

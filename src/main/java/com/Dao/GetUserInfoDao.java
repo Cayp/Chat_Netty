@@ -1,5 +1,6 @@
 package com.Dao;
 
+import com.Entity.AddRequest;
 import com.Entity.Friend;
 import com.Entity.RegisterEntity;
 import com.Entity.User;
@@ -34,6 +35,11 @@ public interface GetUserInfoDao {
      int changePassWord(@Param("mail") String mail,@Param("password") String password);
      int changePassWordByid(@Param("userid")long id,@Param("password")String password);
      int updateAvatar(@Param("userId") long userId, @Param("avatar") String avatar);
-
+     List<AddRequest> getAddRequest(@Param("toId")long toId);
+     int insertAddRequest(@Param("request")AddRequest request);
+     int deleteAddRequest(@Param("requestId")long requestId);
+     AddRequest findRequest(@Param("userId")long userId, @Param("toId")long toId);
+     AddRequest getAddRequestById(@Param("id")long requestId);
+     List<User> searchUsers(@Param("searchString")String searchString, @Param("userId")long userId);
 
 }

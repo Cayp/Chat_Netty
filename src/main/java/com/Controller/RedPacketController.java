@@ -89,7 +89,7 @@ public class RedPacketController {
         return response.successWithDataList("获取红包已抢信息", redPacketGraps);
     }
 
-    @RequestMapping(value = "/Logs", method = RequestMethod.GET)
+    @RequestMapping(value = "/logs", method = RequestMethod.GET)
     public Response getRedPacketLogs(HttpSession httpSession) {
         long userId = (long) httpSession.getAttribute("userId");
         List<RedPacketLog> logs = redPacketBySqlService.getRedPacketLogByUserId(userId);

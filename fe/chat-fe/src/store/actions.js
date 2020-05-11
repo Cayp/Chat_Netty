@@ -115,7 +115,6 @@ export function initWebSocket(userId) {
         const websocket = new WebSocket(`ws://localhost:10000/webSocket/${userId}`)
          //建立连接时触发
          websocket.onopen = function () {
-            message.success("连接成功")
             heartCheck.start();
         }
         //监听服务端的消息事件
@@ -160,7 +159,7 @@ export function initWebSocket(userId) {
         
         }
         websocket.onclose = function () {
-
+            
         } 
         //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
         window.onbeforeunload = function () {

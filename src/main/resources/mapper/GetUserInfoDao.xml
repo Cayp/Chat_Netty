@@ -7,6 +7,9 @@
     <insert id="register" keyProperty="register.account" useGeneratedKeys="true">
         INSERT INTO user(name,password,mail,lastime,mailcrc) VALUES (#{register.name},#{register.password},#{register.mail},0,CRC32(#{register.mail}));
     </insert>
+    <insert id="insertAddRequest">
+        INSERT INTO add_request(userId, toId, time) VALUES (#{request.userId}, #{request.toId}, #{request.time})
+    </insert>
     <update id="logout">
         UPDATE user SET lastime = #{lastime} WHERE account = #{id};
     </update>
@@ -22,6 +25,9 @@
     <delete id="deleteFriend">
         DELETE FROM friend WHERE toid = #{toid} and friendid = #{friendid};
     </delete>
+    <delete id="deleteAddRequest">
+        DELETE FROM add_request WHERE id = #{requestId};
+    </delete>
     <select id="getUserInfo" resultType="com.Entity.User">
         SELECT * FROM user WHERE mailcrc = CRC32(#{mail}) and mail = #{mail};
     </select>
@@ -29,7 +35,10 @@
         SELECT account, name FROM user  WHERE  account = #{index} or name = #{index};
           </select>
     <select id="getFriends" resultType="com.Entity.User">
-        SELECT account, name, icon FROM user,friend WHERE toid=#{account} and friendid = user.account;
+        SELECT u.account, u.name, u.icon, u.mail
+        FROM friend AS f LEFT JOIN user AS u
+        ON f.friendid = u.account
+        WHERE toid=#{account};
     </select>
     <select id="checkFriend" resultType="com.Entity.Friend">
         SELECT * FROM friend WHERE toid = #{userid} and  friendid = #{toid};
@@ -39,5 +48,29 @@
     </select>
     <select id="getUsers" resultType="com.Entity.User">
         SELECT * FROM user;
+    </select>
+    <select id="getAddRequest" resultType="com.Entity.AddRequest">
+        SELECT
+        a.id AS id, a.userId AS userId, a.toId AS toId, a.time AS time, u.name AS userName, u.icon AS userAvatar
+        FROM add_request AS a LEFT JOIN user AS u
+        ON a.userId = u.account
+        WHERE toId = #{toId}
+    </select>
+    <select id="findRequest" resultType="com.Entity.AddRequest">
+        SELECT * FROM add_request
+        WHERE (userId = #{userId} AND toId = #{toId}) OR (userId = #{toId} AND toId = #{userId})
+    </select>
+    <select id="getAddRequestById" resultType="com.Entity.AddRequest">
+        SELECT
+        a.id AS id, a.userId AS userId, a.toId AS toId, a.time AS time, u.name AS userName, u.icon AS userAvatar
+        FROM add_request AS a LEFT JOIN user AS u
+        ON a.userId = u.account
+        WHERE id = #{id};
+    </select>
+    <select id="searchUsers" resultType="com.Entity.User">
+        SELECT
+         account, name, mail, icon
+        FROM user
+        WHERE (mail LIKE concat(concat("%",#{searchString}),"%") OR name LIKE concat(concat("%",#{searchString}),"%")) AND account != #{userId};
     </select>
 </mapper>

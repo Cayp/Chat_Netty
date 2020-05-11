@@ -3,17 +3,30 @@ import { List, Card, Divider, Button, Modal, Form, Input, Radio, message,Avatar}
 import qs from 'qs'
 import { myAxios } from '../utils/myAxios';
 import Meta from 'antd/lib/card/Meta';
+import { connect, } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import LoadableComponent from '../utils/LoadableComponent'
 import moment from 'moment'
+
 const RadioGroup = Radio.Group;
 const form = Form.create({})
+const RedpacketDetailModal = LoadableComponent(import('./RedpacketDetailModal'))
+const store = connect(
+  (state) => ({user: state.user}),
+  (dispatch) => bindActionCreators({  }, dispatch)
+)
 
-@form
+
+@form@store
 class RedPacketSquare extends React.Component {
     constructor(props) {
         super(props);  
         this.state = {
             redpacketList: [],
             visible: false,
+            grapsList: [],
+            selectItem: {},
+            detailVisible: false,
             confirmLoading: false,
             redpacketType: undefined,
             redpacketMoney: undefined,
@@ -36,6 +49,16 @@ getRedPacketList = () => {
                   this.setState({redpacketList: json.dataList || []})
               }            
            })
+}
+
+getRedpacketGraps = (redpacketId) => {
+  myAxios.get(`/chat/redpacket/graps?redpacketId=${redpacketId}`)
+         .then((response) => {
+             let json = response.data;
+             if (json.code === 20000) {
+                 this.setState({grapsList: json.dataList})
+             }
+ })
 }
 
 publishRedpacke = () => {
@@ -75,12 +98,21 @@ handleOk = () => {
     });
   };
 
+  handleDetailBack = (detailVisible) => {
+      this.setState({detailVisible: detailVisible})
+  }
+
   handleCancel = () => {
     this.props.form.resetFields();
     this.setState({
       visible: false,
     });
   };
+
+  handleDetail = (item) => {
+    this.getRedpacketGraps(item.redPacketId)
+    this.setState({selectItem: item, detailVisible: true})
+  }
 
   grapRedpacket = (redpacketId) => {
     myAxios.post('/chat/redpacket/grap', qs.stringify({redPacketId: redpacketId}))
@@ -101,8 +133,9 @@ handleOk = () => {
            
   }
 render() {
-    const { redpacketList, visible, confirmLoading } = this.state
+    const { redpacketList, visible, confirmLoading, detailVisible, grapsList, selectItem} = this.state
     const { getFieldDecorator } = this.props.form;
+    const user = this.props.user
     return ( 
     <div style={{ padding: 24 }}>
          <Button type="danger"onClick={this.publishRedpacke}>发红包</Button>
@@ -123,12 +156,12 @@ render() {
           <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} >
           <Form.Item label="红包类型">
           {getFieldDecorator('redPacket_type', {
-            initialValue: 0,
+            initialValue: 1,
             rules: [{ required: true, message: '请输入红包金额!'}],
           })(
             <RadioGroup>
-            <Radio value={0}>拼手气</Radio>
-            <Radio value={1}>平均</Radio>
+            <Radio value={1}>拼手气</Radio>
+            <Radio value={0}>平均</Radio>
         </RadioGroup>
           )}
         </Form.Item>
@@ -148,7 +181,7 @@ render() {
          <h1>红包列表:</h1>
          <br/>
        <List
-         grid={{ gutter: 15, column: 4}}
+         grid={{ gutter: 10, column: 5}}
          dataSource={redpacketList}
          locale={{emptyText: "暂无红包"}}
          style={{ outline: 'none' }}
@@ -159,13 +192,13 @@ render() {
         cover={
           <img
             alt="example"
-            src={item.redPacket_type === 0 ? require('./imgs/pinshouqi.png') :require("./imgs/putong.jpg")}
+            src={item.redPacket_type === 1 ? require('./imgs/pinshouqi.png') :require("./imgs/putong.jpg")}
           />
         }
         actions={[
 
           <Button type="danger" onClick={() => this.grapRedpacket(item.redPacketId)}>抢</Button>,
-          <Button type="primary">查看</Button>
+          <Button type="primary" onClick={() => this.handleDetail(item)}>查看</Button>
         ]
         }
         >
@@ -175,12 +208,11 @@ render() {
          description={moment(item.publish_time * 1000).format('YYYY-MM-DD HH:mm:ss')}
         />
         </Card>
+        
       </List.Item>
     )}
   />
-    
-    
-    
+    <RedpacketDetailModal handleDetailBack={this.handleDetailBack} grapsList={grapsList} detail={selectItem} userId={user.id} visible={detailVisible}/>
     </div>
     )
  }
